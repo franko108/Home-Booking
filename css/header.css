@@ -1,0 +1,147 @@
+@CHARSET "UTF-8";
+
+.tab{
+font-family: san-serif, verdana;
+font-size: 13px;
+}
+.asd
+{
+text-decoration: none;
+font-family: san-serif, verdana;
+font-size: 12px;
+color:#ffffff;
+}
+
+/*****remove the list style****/
+#nav {
+margin:0;
+padding:0;
+list-style:none;
+}
+
+/*****LI display inline *****/
+#nav li {
+	float:left;
+	display:block;
+	width:150px;
+	/* background: #b35312;  *//* */  /* #e3ad5f; pijesak*/   /* #3173ab; plava cool */  /* #1E5B91; plava tamna */
+	position:relative;
+	z-index:500;
+	margin:0 1px;
+	
+	/* fr dodatak - radius. oval*/
+	
+    text-align: center;
+    border: 1px solid black ;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+
+    background: #9b3b04; /* Old browsers */
+    background: -moz-linear-gradient(top,  #9b3b04 0%, #ba9284 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9b3b04), color-stop(100%,#ba9284)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #9b3b04 0%,#ba9284 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #9b3b04 0%,#ba9284 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #9b3b04 0%,#ba9284 100%); /* IE10+ */
+    background: linear-gradient(top,  #9b3b04 0%,#ba9284 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b3b04', endColorstr='#ba9284',GradientType=0 ); /* IE6-9 */ 
+
+}
+
+/*****parent menu*****/
+#nav li a {
+	display:block;
+	padding:8px 5px 0 5px;
+	font-weight:700;
+	height:23px;
+	text-decoration:none;
+	color:#ffeecc;
+	text-align:center;
+	color:#ffffff;
+}
+
+#nav li a:hover
+{
+	color:#470020;
+}
+
+/* style for default selected value */ #nav a.selected {
+	color:#ffffff;
+}
+/* submenu */ #nav ul
+{
+	position:absolute;
+	left:0;
+	display:none;
+	margin:0 0 0 -1px;
+	padding:0;
+	list-style:none;
+}
+
+#nav ul li
+{
+	width:150px;
+	float:left;
+	border-top:1px solid #fff;
+}
+
+/* display block will make the link fill the whole area of LI */ #nav ul a
+{
+	display:block;
+	height:15px;
+	padding: 8px 5px;
+	color:#ffffff
+}
+
+#nav ul a:hover
+{
+	text-decoration:underline;
+	padding-left:15px;
+}
+
+.column1 {
+	float: left;
+	display: inline;
+	width: 150px;
+	/* margin-right: 35px; */
+	position: relative;
+	
+}
+
+.column2 {
+	float: left; 
+	display: inline;
+	text-align: left;  /* right */
+	/* width: 1024px; */   
+	margin-left: 1%; 
+	position: relative; 
+	margin: 0 auto; 
+}
+
+.column3 {
+	float:left;
+	display:inline;
+	text-align:left;
+	margin-left: 1em;
+	position: relative;
+}	
+
+.transparent {
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=40);
+
+  /* Netscape */
+  -moz-opacity: 0.4;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0.4;
+
+  /* Good browsers */
+  opacity: 0.7;
+  
+	height: 25px;  
+  
+}
