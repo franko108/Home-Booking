@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/knjig/';
+$config['base_url']	= 'http://localhost/knjig-razvoj/';
 
 /*
 |--------------------------------------------------------------------------

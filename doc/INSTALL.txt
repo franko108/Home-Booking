@@ -1,0 +1,39 @@
+Home-Booking works on PHP/MySQL.
+
+REQUIREMENTS
+
+- Web server, Apache or some other. mod_rewrite must be enabled
+- MySQL 5 
+- PHP 5.2
+
+INSTALLATION
+
+- Make directory where programs will be stored and that web server is using for this program.
+On Debian/Ubuntu Linux, and Apache web server, this is /var/www/
+Directory may be: /var/www/home-booking
+
+- Unzip the Home Booking within that directory.
+(check that web server has proper permission to the program)
+
+- Browse to the doc directory and restore the empty database.
+On linux this is:
+  $ mysql -p -u db_username booking < database_empty.sql
+(booking will be the database name)
+
+- Edit application/config/config.php file and change line 17 to be like this:
+$config['base_url']	= 'http://localhost/home-booking/';
+- Edit application/config/database.php from line 52 and put your data instead of this example:
+$db['default']['username'] = 'your_db_usernam';
+$db['default']['password'] = 'db_password';
+$db['default']['database'] = 'booking';
+
+- Fire your browser and go to:
+http://localhost/home-database
+
+Open help to check application, or use it straight.
+Hope it helps.
+
+
+This is a slower installation, maybe will make some script in the future to make installation easier and faster.
+
+
