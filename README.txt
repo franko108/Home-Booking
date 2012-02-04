@@ -11,7 +11,7 @@ Program is localized on English (detail check will be needed) and Croatian langu
 Program is being written in PHP with CodeIgnter framework, with Jquery (used for a reports and menu) with MySQL database.
 Maybe in the future will be for PostgreSQL and MySQL databases.
 
-Actual state of the program: in developing stage, plan to be finished by end of February.
+Actual state of the program: in developing stage, plan to be finished by end of February 2012.
 
 LICENSE
 
