@@ -86,9 +86,9 @@ $(document).ready(function() {
 	<?php 
 	foreach($transaction_query->result() as $res){
 
-		// "income" or "outcome" are parts of transcation
+		// "income" or "outcome" are parts of transaction
 		if($res->outcome > 0){
-			echo "<td>$res->dateEntry</td><td>$res->description</td><td>$res->myaccount => ";	
+			echo "<td>$res->dateEntry</td><td>$res->description</td><td>$res->outcome <- ŠTA $res->myaccount => ";	
 		}
 		else {
 			echo "$res->myaccount</td><td>$res->income $res->currency_name</td>";

@@ -49,7 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'ja';
+$db['default']['username'] = 'daj_maknmi';
 $db['default']['password'] = 'pass';
 $db['default']['database'] = 'booking_dev';
 $db['default']['dbdriver'] = 'mysqli';

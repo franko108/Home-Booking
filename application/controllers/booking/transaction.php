@@ -97,8 +97,18 @@ class Transaction extends CI_Controller {
 	    	$inputGroup = NULL; // ? is this ok ?? There will be no groups on reports for transactions...
 	    	$pending =  0;
 	    	 
-	    	
+	    	// allways the same entry for description: Transfer
 	    	$description = lang('transaction_description');
+
+	    	// get id for transaction... maybe will change and put on separate table
+	    	$q = $this->transactionmodel->last_transaction_id()->row();
+			if(isset($q)){
+				$transaction_id = ($q->transaction) + 1;
+				
+			}
+			else {
+				$transaction_id = 1;
+			}
 	    
 	    	// 2 entries in database, first is amount taken from one account, goes as outcome 
 	    	$data_entry = array('description' => $description,
@@ -108,7 +118,8 @@ class Transaction extends CI_Controller {
 	    						'income' => NULL,
 	    						'dateEntry'=>$date_transaction,
 	    						'outcome' => $amount,
-	    						'pending' => $pending
+	    						'pending' => $pending,
+	    						'transaction' => $transaction_id
 	    	);
 	    	
 	    	// insert into database
@@ -122,7 +133,8 @@ class Transaction extends CI_Controller {
 	    						'income' => $amount,
 	    						'dateEntry'=>$date_transaction,
 	    						'outcome' => NULL,
-	    						'pending' => $pending  
+	    						'pending' => $pending,
+								'transaction' => $transaction_id  
 	    	);
 	    	
 	    	// insert into database
@@ -130,7 +142,7 @@ class Transaction extends CI_Controller {
 			
 			echo "<script>alert('Upisani podaci o transakciji u bazu')</script>";
 			
-			// redirect('booking/transaction','refresh');
+			redirect('booking/transaction','refresh');
 		}
     	
     }

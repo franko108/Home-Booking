@@ -24,7 +24,7 @@ class Transactionmodel extends CI_Model {
 				INNER JOIN accounts acc ON rec.idAccounts = acc.id
 				INNER JOIN currency curr ON rec.idCurrency = curr.id
 				WHERE rec.transaction > 0
-				ORDER BY rec.dateEntry DESC, rec.income ASC';
+				ORDER BY rec.dateEntry DESC, rec.transaction ASC, rec.income ASC';
 		return $this->db->query($q);
 	}
 	
@@ -42,8 +42,8 @@ class Transactionmodel extends CI_Model {
 				FROM recording rec
 				INNER JOIN accounts acc ON rec.idAccounts = acc.id
 				INNER JOIN currency curr ON rec.idCurrency = curr.id
-				WHERE rec.transaction > 0
-				ORDER BY rec.dateEntry DESC, rec.income ASC';
+				WHERE rec.transaction > NULL
+				ORDER BY rec.dateEntry DESC, rec.transaction ASC, rec.income ASC';
 		return $this->db->query($q);
 	}
 	
@@ -55,6 +55,14 @@ class Transactionmodel extends CI_Model {
 	function get($id)
 	{
 		return $this->db->get_where('recording', array('transaction' => $id));
+	}
+	
+	// maybe stupid method, but since transaction is not in a separated table, it needs to be created
+	function last_transaction_id() 
+	{
+		$this->db->select_max('transaction');
+		$this->db->limit(1);
+		return $this->db->get('recording');	
 	}
 	
 	// delete both values of transaction, from first account outcome, second account income
