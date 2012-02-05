@@ -42,7 +42,7 @@ class Transactionmodel extends CI_Model {
 				FROM recording rec
 				INNER JOIN accounts acc ON rec.idAccounts = acc.id
 				INNER JOIN currency curr ON rec.idCurrency = curr.id
-				WHERE rec.transaction > NULL
+				WHERE rec.transaction > 0
 				ORDER BY rec.dateEntry DESC, rec.transaction ASC, rec.income ASC';
 		return $this->db->query($q);
 	}
@@ -54,7 +54,26 @@ class Transactionmodel extends CI_Model {
 	
 	function get($id)
 	{
-		return $this->db->get_where('recording', array('transaction' => $id));
+		// return $this->db->get_where('recording', array('transaction' => $id));
+		$q = "SELECT rec.id, rec.income, rec.dateEntry, rec.outcome, rec.description, rec.idCurrency, rec.idAccounts,
+				 curr.name AS currency, acc.name AS account
+				FROM recording rec 
+				INNER JOIN currency curr ON rec.idCurrency = curr.id
+				INNER JOIN accounts acc ON rec.idAccounts = acc.id
+				WHERE rec.transaction = '$id' ";
+		return $this->db->query($q);
+	}
+	
+	function get_hr($id)
+	{
+		// return $this->db->get_where('recording', array('transaction' => $id));
+		$q = "SELECT rec.id, rec.income, DATE_FORMAT(rec.dateEntry, '%d.%m.%Y') AS dateEntry, rec.outcome, rec.description, rec.idCurrency, rec.idAccounts, 
+				curr.name AS currency, acc.name AS account
+				FROM recording rec 
+				INNER JOIN currency curr ON rec.idCurrency = curr.id
+				INNER JOIN accounts acc ON rec.idAccounts = acc.id
+				WHERE rec.transaction = '$id' ";
+		return $this->db->query($q);
 	}
 	
 	// maybe stupid method, but since transaction is not in a separated table, it needs to be created

@@ -28,6 +28,7 @@ class Transaction extends CI_Controller {
     	$language = $this->lang->lang(); 
     	
     	$data['action'] = 'booking/transaction/add';
+    	$data['id'] = NULL;  // because of edit
     	
     	// accounts dropdown menu
     	$acc = $this->accountsmodel->list_all()->result();
@@ -63,7 +64,7 @@ class Transaction extends CI_Controller {
     		$data['transaction_query'] = $this->transactionmodel->list_all();
     	}	
     	
-		$this->load->view('header');  // very strange bug, not showing header properly if jquery is invoked. 
+		$this->load->view('header');  
 		$this->load->view('booking/transaction_view', $data);
     }
     
@@ -74,17 +75,23 @@ class Transaction extends CI_Controller {
     	if($a < 1)
 		{
 			$data['action'] = 'booking/transaction/add';
-			$data['id']	    = '';
-			$data['name']   = '';
-			$data['deff']   = '';
+			$data['id']	    = NULL;
+			$data['name']   = NULL;
+			$data['deff']   = NULL;
 			
 			$this->load->view('header');
 			$this->load->view('booking/transaction_view', $data);
 		}
 		else
 		{
+			// if edit, delete previous entry and then add new one
+			if($this->input->post('id')){
+				$id = $this->input->post('id');
+				$this->transactionmodel->delete($id);
+			}
+			
 			$date_transaction = form_prep($this->input->post('inputDate'));
-	    	$amount = $this->input->post('booking_amount');
+	    	$amount = $this->input->post('transaction_amount');
 	    	
 		 	// hr language date has a different format and needs to be formated in yyyy-mm-dd 
 	    	$language = $this->input->post('language');
@@ -146,6 +153,62 @@ class Transaction extends CI_Controller {
 		}
     	
     }
+    
+    function edit($id) {
+    	$this->load->model('accountsmodel','',TRUE);
+    	$this->load->model('currencymodel','',TRUE);
+    	$language = $this->lang->lang(); 
+    	
+    	$data['action'] = 'booking/transaction/add';
+
+    	// data for editing
+    	if($language == 'hr'){
+    		$transaction = $this->transactionmodel->get_hr($id)->result();
+    	}
+    	else {
+    		$transaction = $this->transactionmodel->get($id)->result();	
+    	}
+    	
+    	// fill values from previous entry
+    	foreach($transaction as $res) {
+    		$data['inputDate'] = $res->dateEntry;
+    		if($res->income == 0 || $res->income == NULL){
+    			$data['transaction_amount'] = $res->outcome;  
+    			$data['default_currency'] = $res->idCurrency;   
+    			$data['outcome_account'] = $res->idAccounts;  
+    		}
+    		else {
+    			$data['income_account'] = $res->idAccounts;  
+    		}
+    	}
+    	
+    	$data['id'] = $id; 
+    	
+    	// accounts dropdown menu
+    	$acc = $this->accountsmodel->list_all()->result();
+    	
+    	// currencies dropdown menu
+    	$curr = $this->currencymodel->list_all()->result();
+    	
+    	$curr_options = array();
+    	foreach($curr as $res1){
+    		$curr_options["$res1->id"] = ("$res1->name");
+    	}
+    	$data['curr_options'] = $curr_options;
+    	
+    	// acounts dropdown menu
+    	$acc_options = array();
+    	foreach($acc as$res2){
+    		$acc_options["$res2->id"] = ("$res2->name");
+    	}
+    	
+    	$data['acc_options'] = $acc_options;
+    	
+    	$this->load->view('header');  
+		$this->load->view('booking/transaction_edit', $data);
+    		
+    }
+    
     
     function delete($idTransaction){
 

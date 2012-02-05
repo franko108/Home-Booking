@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'daj_maknmi';
-$db['default']['password'] = 'pass';
+$db['default']['username'] = 'ako';
+$db['default']['password'] = 'karamba';
 $db['default']['database'] = 'booking_dev';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
