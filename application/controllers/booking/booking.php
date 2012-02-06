@@ -25,6 +25,11 @@ class Booking extends CI_Controller {
     	$this->load->model('categoriesmodel','',TRUE);
     	$this->load->model('currencymodel','',TRUE);
     	$this->load->model('accountsmodel','',TRUE);
+    	
+    	// check  if there are settings for at least one account, currency and category
+    	$this->load->library(array('checking'));
+    	$this->checking->exist_setting();
+    	
     	// workaround for language within js
     	$delete = lang('delete');
     	$update = lang('update_data');
@@ -61,7 +66,10 @@ class Booking extends CI_Controller {
     	// currencies
     	$curr = $this->currencymodel->list_all()->result();
     	
+    	
     	$curr_options = array();
+    	// in the case there is no default currency
+    	$data['default_currency'] = NULL;
     	foreach($curr as $res1){
     		$curr_options["$res1->id"] = ("$res1->name");
     		if($res1->deff == 1){
@@ -74,6 +82,8 @@ class Booking extends CI_Controller {
     	// accounts
     	$acc = $this->accountsmodel->list_all()->result();
     	$acc_options = array();
+    	// in the case there is no defined default accounts
+    	$data['default_accounts'] = NULL;  
     	foreach($acc as$res2){
     		$acc_options["$res2->id"] = ("$res2->name");
     		if($res2->deff == 1){
@@ -350,6 +360,8 @@ class Booking extends CI_Controller {
     	$data['acc_options'] = $acc_options;
 		
 	}
+	
+
 	
 	// hr date in format yyyy-mm-dd		
 	function hrdatum($datum_b){

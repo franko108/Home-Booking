@@ -24,3 +24,5 @@ $lang['category_name'] = 'Vrsta';
 $lang['transaction_records'] = 'Transakcije iz jednog računa na drugi';
 $lang['transaction_description'] = 'Transfer';
 
+$lang['empty_settings'] = 'Mora postojati najmanje jedna valuta, racun i kategorija !';
+

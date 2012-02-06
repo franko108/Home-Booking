@@ -27,6 +27,10 @@ class Transaction extends CI_Controller {
     	$this->load->model('currencymodel','',TRUE);
     	$language = $this->lang->lang(); 
     	
+    	// check  if there are settings for at least one account, currency and category
+    	$this->load->library(array('checking'));
+    	$this->checking->exist_setting();
+    	
     	$data['action'] = 'booking/transaction/add';
     	$data['id'] = NULL;  // because of edit
     	
