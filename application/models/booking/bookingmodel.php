@@ -108,6 +108,15 @@ class Bookingmodel extends CI_Model {
 		return $this->db->query($q);
 	}
 	
+	function min_max_date()
+	{
+			// to continue TODO
+			//$q = "SELECT MIN(dateEntry) AS min, MAX(dateEntry) AS max FROM recording; ";
+			$this->db->select_max('dateEntry');
+			$this->db->select_min('dateEntry');
+			$query = $this->db->get('recording');
+	}
+	
 	function search_result($value)
 	{
 		$q = "SELECT rec.dateEntry, catt.name, rec.income, rec.outcome, rec.description AS description,  curr.name AS currency 

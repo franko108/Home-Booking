@@ -20,9 +20,9 @@ $language = $this->lang->lang();
 <br />
 <?php     
 
-echo form_open($action); ?>
+echo form_open($action); 
 
-	<?php echo form_hidden('in_out', set_value('in_out', $in_out)); 
+	 echo form_hidden('in_out', set_value('in_out', $in_out)); 
 		  echo form_hidden('id', $id);
 		  echo form_hidden('language', $language); // just because of different date format?>
 	<p><label for="booking_description"><?php echo lang('booking_description'); ?></label>                                

@@ -29,8 +29,26 @@ $language = $this->lang->lang();
 
 <h1 align="center"><?php echo lang('review_records'); ?></h1>
 
+
+<div  >
+<?php     
+
+echo form_open('booking/booking/all_records'); ?>
+<span class="back_blue"><h2>Izmjena datuma:</h2></span> 
+<label for="dateFrom"><?php echo lang('date_from'); ?>
+ <input type="text" name="dateFrom" size="7">
+
+ <label for="dateTo"><?php echo lang('date_to'); ?>
+ <input type="text" name="dateTo" size="7">
+
+<?php 
+	echo form_submit( 'submit', lang('submit')); 
+	echo form_close(); 
+?>
+</div>
+<br /><br />
+<hr>
 <i><?php echo lang('acc_state');?></i>
-<br>
  <?php
     foreach ($account_amount_query->result() as $row) {
         echo "<u>- $row->myaccount = $row->amount $row->currency_name<br></u>";   

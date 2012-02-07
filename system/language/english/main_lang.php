@@ -38,5 +38,8 @@ $lang['categories_entry'] = 'Set category of income or outcome';
 $lang['categories_name'] = 'Name';
 $lang['categories_notdeleted'] = 'Category can not be deleted because it exists in income or outcome booking!';
 
+$lang['date_from'] = 'Date from';
+$lang['date_to'] = 'Date to';
+
 
 ?>

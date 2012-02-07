@@ -37,3 +37,6 @@ $lang['cat_outcome'] = 'Trošak';
 $lang['categories_entry'] = 'Upišite vrste prihoda ili troškova';
 $lang['categories_name'] = 'Naziv';
 $lang['categories_notdeleted'] = 'Vrsta nije obrisana jer postoji u prihodu ili rashodu';
+
+$lang['date_from'] = 'Datum od';
+$lang['date_to'] = 'Datum do';
