@@ -26,3 +26,6 @@ $lang['transaction_description'] = 'Transfer';
 
 $lang['empty_settings'] = 'Mora postojati najmanje jedna valuta, racun i kategorija !';
 
+$lang['change_date'] = 'Izmjena datuma';
+$lang['view_all'] = 'Pregled prihoda/troškova';
+

@@ -154,18 +154,45 @@ class Booking extends CI_Controller {
      *  using jquery for sort table
      */
     function all_records(){
-    	$data['account_amount_query'] = $q = $this->bookingmodel->account_amount();
-    	
+		
     	$language = $this->lang->lang();
-    	
-    	if($language == 'hr') {
-    		$data['query'] = $this->bookingmodel->list_all_hr();
-    		
-    	}
-    	else{
-    		$data['query'] = $this->bookingmodel->list_all();	
-    	}
-    	
+				
+		$dateFrom = $this->input->post('dateFrom');
+		$dateTo = $this->input->post('dateTo');
+				
+		// data within date range date, if entered
+		if($dateFrom && $dateTo) {
+				if($language == 'hr') {
+					$dateFrom = $this->hrdatum($dateFrom);
+					$dateTo = $this->hrdatum($dateTo);
+				}
+			$data['minDate'] = $dateFrom;
+			$data['maxDate'] = $dateTo;
+		}
+		// data without data range
+		else {
+			$dateDb = $this->bookingmodel->min_max_date()->row();
+			$dateFrom = $dateDb->minDate;
+			$dateTo= $dateDb->maxDate; 
+			
+			if($language == 'hr') {
+				// $dateFrom = $this->hrdatum($dateFrom); TODO -hr datum
+				// $dateTo = $this->hrdatum($dateTo);
+				
+			}
+			$data['minDate'] = $dateFrom;
+			$data['maxDate'] = $dateTo;
+		}
+			
+		if($language == 'hr') {
+			$data['query'] = $this->bookingmodel->list_all_hr($dateFrom, $dateTo);
+		}
+		else {
+			$data['query'] = $this->bookingmodel->list_all($dateFrom, $dateTo);
+		}
+		
+		$data['account_amount_query'] = $q = $this->bookingmodel->account_amount($dateTo);
+	   	
     	$this->load->view('header');	
 		$this->load->view('booking/allRecords_view', $data);
     }

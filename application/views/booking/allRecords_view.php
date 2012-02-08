@@ -34,7 +34,7 @@ $language = $this->lang->lang();
 <?php     
 
 echo form_open('booking/booking/all_records'); ?>
-<span class="back_blue"><h2>Izmjena datuma:</h2></span> 
+<span class="back_blue"><h2><?php echo lang('change_date'); ?>:</h2></span> 
 <label for="dateFrom"><?php echo lang('date_from'); ?>
  <input type="text" name="dateFrom" size="7">
 
@@ -46,19 +46,21 @@ echo form_open('booking/booking/all_records'); ?>
 	echo form_close(); 
 ?>
 </div>
-<br /><br />
+<br />
 <hr>
-<i><?php echo lang('acc_state');?></i>
+<i><?php echo lang('acc_state');
+				echo " $maxDate";
+	   ?>
+</i>
+<br/ >
  <?php
     foreach ($account_amount_query->result() as $row) {
         echo "<u>- $row->myaccount = $row->amount $row->currency_name<br></u>";   
     }
-
     // echo "<div class='form1'>";
-   
      ?>
-
-
+<br />
+<i><?php echo lang('view_all');?>: <?php echo "$minDate - $maxDate"; ?></i>
 <table id="myTable" class="tablesorter" border="1" cellspacing="1" width="1024 px">
 <thead>
 <tr>

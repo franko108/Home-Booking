@@ -29,35 +29,63 @@ class Bookingmodel extends CI_Model {
 		return $this->db->get_where('recording', array('id' => $id));
 	}
 	
-	function list_all()
+	function list_all($dateFrom = 0, $dateTo = 0)
 	{
-		$q = 'SELECT rec.id, rec.description, rec.dateEntry, 
+		if($dateFrom == 0 && $dateTo == 0) {
+			$q = "SELECT rec.id, rec.description, rec.dateEntry, 
 				categ.name AS type, rec.income, rec.outcome, acc.name AS myaccount, rec.pending,
 				curr.name as currency_name  
 				FROM recording rec
 				INNER JOIN accounts acc ON rec.idAccounts = acc.id
 				INNER JOIN  inputCategory categ ON rec.idInputGroup = categ.id 
 				INNER JOIN currency curr ON rec.idCurrency = curr.id
-				ORDER BY rec.dateEntry DESC';
+				ORDER BY rec.dateEntry DESC";
+		}		
+		else {
+			$q = "SELECT rec.id, rec.description, rec.dateEntry, 
+				categ.name AS type, rec.income, rec.outcome, acc.name AS myaccount, rec.pending,
+				curr.name as currency_name  
+				FROM recording rec
+				INNER JOIN accounts acc ON rec.idAccounts = acc.id
+				INNER JOIN  inputCategory categ ON rec.idInputGroup = categ.id 
+				INNER JOIN currency curr ON rec.idCurrency = curr.id
+				WHERE rec.dateEntry BETWEEN '$dateFrom'  AND '$dateTo'
+				ORDER BY rec.dateEntry DESC";
+		}
 		return $this->db->query($q);
 	}
 	
-	function list_all_hr()
+	function list_all_hr($dateFrom = 0, $dateTo = 0)
 	{
-		$q = 'SELECT rec.id, rec.description, DATE_FORMAT(rec.dateEntry, "%d.%m.%Y")AS dateEntry, 
+		if($dateFrom == 0 && $dateTo == 0) {
+			$q = "SELECT rec.id, rec.description, DATE_FORMAT(rec.dateEntry, '%d.%m.%Y')AS dateEntry, 
 			categ.name AS type, rec.income, rec.outcome, acc.name AS myaccount, rec.pending,
 				curr.name as currency_name  
 				FROM recording rec
 				INNER JOIN accounts acc ON rec.idAccounts = acc.id
 				INNER JOIN  inputCategory categ ON rec.idInputGroup = categ.id 
 				INNER JOIN currency curr ON rec.idCurrency = curr.id
-				ORDER BY rec.dateEntry DESC';
+				ORDER BY rec.dateEntry DESC";
+		}
+		else {
+			$q = "SELECT rec.id, rec.description, DATE_FORMAT(rec.dateEntry, '%d.%m.%Y')AS dateEntry, 
+			categ.name AS type, rec.income, rec.outcome, acc.name AS myaccount, rec.pending,
+				curr.name as currency_name  
+				FROM recording rec
+				INNER JOIN accounts acc ON rec.idAccounts = acc.id
+				INNER JOIN  inputCategory categ ON rec.idInputGroup = categ.id 
+				INNER JOIN currency curr ON rec.idCurrency = curr.id
+				WHERE rec.dateEntry BETWEEN '$dateFrom'  AND '$dateTo'
+				ORDER BY rec.dateEntry DESC";		
+		}
+		
 		return $this->db->query($q);
 	}
 	
-	function account_amount()
+	function account_amount($dateTo = 0)
 	{
-		$q = 'SELECT  acc.name AS myaccount, 
+		if($dateTo == 0) {
+			$q = "SELECT  acc.name AS myaccount, 
 	  			COALESCE(SUM(rec.income), 0)- COALESCE(SUM(rec.outcome), 0)  as amount,
 	  			curr.name AS currency_name
 				FROM recording rec
@@ -65,7 +93,20 @@ class Bookingmodel extends CI_Model {
 				INNER JOIN currency curr ON rec.idCurrency = curr.id
 				WHERE rec.pending = 0
 				GROUP BY rec.idAccounts, rec.idCurrency
-				ORDER BY myaccount';
+				ORDER BY myaccount";
+		}
+		else {
+			$q = "SELECT  acc.name AS myaccount, 
+	  			COALESCE(SUM(rec.income), 0)- COALESCE(SUM(rec.outcome), 0)  as amount,
+	  			curr.name AS currency_name
+				FROM recording rec
+				INNER JOIN accounts acc ON rec.idAccounts = acc.id 
+				INNER JOIN currency curr ON rec.idCurrency = curr.id
+				WHERE rec.pending = 0 
+				AND rec.dateEntry <= '$dateTo'
+				GROUP BY rec.idAccounts, rec.idCurrency
+				ORDER BY myaccount";
+		}
 		return $this->db->query($q);
 	}
 	
@@ -110,11 +151,16 @@ class Bookingmodel extends CI_Model {
 	
 	function min_max_date()
 	{
-			// to continue TODO
-			//$q = "SELECT MIN(dateEntry) AS min, MAX(dateEntry) AS max FROM recording; ";
-			$this->db->select_max('dateEntry');
-			$this->db->select_min('dateEntry');
-			$query = $this->db->get('recording');
+			$q = "SELECT MIN(dateEntry) AS minDate, MAX(dateEntry) AS maxDate FROM recording";
+			return $this->db->query($q);
+	}
+	
+	function min_max_date_hr()
+	{
+			$q = "SELECT MIN(DATE_FORMAT(dateEntry, '%d.%m.%Y')) AS minDate, 
+					MAX(DATE_FORMAT(dateEntry, '%d.%m.%Y')) AS maxDate
+					FROM recording";
+			return $this->db->query($q);
 	}
 	
 	function search_result($value)

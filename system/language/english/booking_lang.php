@@ -24,3 +24,6 @@ $lang['transaction_records'] = 'Transaction between accounts';
 $lang['transaction_description'] = 'Transfer';
 
 $lang['empty_settings'] = 'Error! Settings must have al least one account, currency and category!'; 
+
+$lang['change_date'] = 'Change date';
+$lang['view_all'] = 'All incomes/outcomes';
