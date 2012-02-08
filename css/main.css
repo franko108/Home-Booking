@@ -133,9 +133,3 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
         vertical-align:middle;
         top:-25px;
 }
-
-.back_blue {
-   background-color: #b35312;	 /* f4a571 */
-   /* color: #fff;   */
-   font-style: italic;   
-}

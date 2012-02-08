@@ -22,7 +22,7 @@ class MY_Lang extends CI_Lang {
    
     // languages
     private $languages = array(
-    	'hr' => 'hrvatski',    
+    	'hr' => 'croatian',    
     	'en' => 'english'
     );
    
