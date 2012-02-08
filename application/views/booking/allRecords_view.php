@@ -6,9 +6,11 @@ $language = $this->lang->lang();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url(); ?>css/calendar.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.tablesorter.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.tablesorter.pager.js"></script>
+<script type="text/javascript" src="<?php echo base_url()."/js/".$language; ?>/calendar.js"></script>
 <script type="text/javascript">
 
     $(function() {
@@ -35,11 +37,13 @@ $language = $this->lang->lang();
 
 echo form_open('booking/booking/all_records'); ?>
 <span class="back_blue"><h2><?php echo lang('change_date'); ?>:</h2></span> 
-<label for="dateFrom"><?php echo lang('date_from'); ?>
- <input type="text" name="dateFrom" size="7">
+<label for="startDate"><?php echo lang('date_from'); ?>
+<a href="javascript:void(0);" onclick="displayDatePicker('startDate');"><img src="<?php echo base_url(); ?>/pictures/calendar.png" alt="calendar" border="0"></a>
+ <input id="startDate" type="text" name="startDate" onClick="displayDatePicker('startDate');" size="7">
 
  <label for="dateTo"><?php echo lang('date_to'); ?>
- <input type="text" name="dateTo" size="7">
+ <a href="javascript:void(0);" onclick="displayDatePicker('dateTo');"><img src="<?php echo base_url(); ?>/pictures/calendar.png" alt="calendar" border="0"></a>
+ <input id="dateTo" type="text" name="dateTo" onClick="displayDatePicker('dateTo');" size="7" >
 
 <?php 
 	echo form_submit( 'submit', lang('submit')); 
