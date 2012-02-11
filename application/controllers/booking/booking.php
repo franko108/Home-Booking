@@ -162,12 +162,15 @@ class Booking extends CI_Controller {
 				
 		// data within date range date, if entered
 		if($dateFrom && $dateTo) {
-				if($language == 'hr') {
-					$dateFrom = $this->hrdatum($dateFrom);
-					$dateTo = $this->hrdatum($dateTo);
-				}
 			$data['minDate'] = $dateFrom;
 			$data['maxDate'] = $dateTo;
+
+				// convert hr date for proper query
+				if($language == 'hr') {
+					$dateFrom = $this->hrdatum($dateFrom);
+    				$dateTo = $this->hrdatum($dateTo);
+				}
+			
 		}
 		// data without data range
 		else {
@@ -176,12 +179,15 @@ class Booking extends CI_Controller {
 			$dateTo= $dateDb->maxDate; 
 			
 			if($language == 'hr') {
-				// $dateFrom = $this->hrdatum($dateFrom); TODO -hr datum
-				// $dateTo = $this->hrdatum($dateTo);
-				
+				$data['minDate'] = $this->formatDate($dateFrom);
+    			$data['maxDate']  = $this->formatDate($dateTo);
+    			 
 			}
-			$data['minDate'] = $dateFrom;
-			$data['maxDate'] = $dateTo;
+			else {
+				$data['minDate'] = $dateFrom;
+				$data['maxDate'] = $dateTo;	
+			}
+			
 		}
 			
 		if($language == 'hr') {
@@ -336,9 +342,46 @@ class Booking extends CI_Controller {
 	
 	function category_sum() {
 		
-		$data['category_sum_query'] = $this->bookingmodel->sum_by_categories();
+		$language = $this->lang->lang();
 		
-    	$data['sum_query'] = $this->bookingmodel->sum_income_outcome();
+		$dateFrom = $this->input->post('dateFrom');
+		$dateTo = $this->input->post('dateTo');
+		
+		// data within date range date, if entered
+		if($dateFrom && $dateTo) {
+			$data['minDate'] = $dateFrom;
+			$data['maxDate'] = $dateTo;
+
+				// convert hr date for proper query
+				if($language == 'hr') {
+					$dateFrom = $this->hrdatum($dateFrom);
+    				$dateTo = $this->hrdatum($dateTo);
+				}
+			
+		}
+		
+		// data without data range
+			else {
+			$dateDb = $this->bookingmodel->min_max_date()->row();
+			$dateFrom = $dateDb->minDate;
+			$dateTo= $dateDb->maxDate; 
+			
+			if($language == 'hr') {
+				$data['minDate'] = $this->formatDate($dateFrom);
+    			$data['maxDate']  = $this->formatDate($dateTo);
+    			 
+			}
+			else {
+				$data['minDate'] = $dateFrom;
+				$data['maxDate'] = $dateTo;	
+			}
+			
+		}
+		
+		
+		
+		$data['category_sum_query'] = $this->bookingmodel->sum_by_categories($dateFrom, $dateTo);		
+    	$data['sum_query'] = $this->bookingmodel->sum_income_outcome($dateFrom, $dateTo);
     	
     	$this->load->view('header');	
 		$this->load->view('booking/categoryInput_view', $data);
