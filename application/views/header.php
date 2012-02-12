@@ -64,9 +64,9 @@ $(document).ready(function () {
 	<ul>
 			<li style='background-color:#1E5B91;'><?php echo anchor('booking/booking/all_records',lang('menu_all_records'));  ?></li>
 			<li style='background-color:#1E5B91;'><?php echo anchor('booking/booking/category_sum',lang('menu_category_reports'));  ?></li>
-			<li style='background-color:#1E5B91;'><a href=grupiranopomjesecima.php>Po datumu</a></li>
+			
 	</ul>
-		<li> <a href='#'>Help</a></li>
+		<li> <?php echo anchor('help',lang('menu_help'));  ?>
 	</ul>
 	
 </div>

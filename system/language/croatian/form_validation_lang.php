@@ -12,7 +12,7 @@ $lang['exact_length']		= "The %s field must be exactly %s characters in length."
 $lang['alpha']				= "The %s field may only contain alphabetical characters.";
 $lang['alpha_numeric']		= "The %s field may only contain alpha-numeric characters.";
 $lang['alpha_dash']			= "The %s field may only contain alpha-numeric characters, underscores, and dashes.";
-$lang['numeric']			= "<span class='required'>The %s field must contain only numbers.</span>";
+$lang['numeric']			= "<span class='required'>Polje %s može sadržavati samo brojeve.</span>";
 $lang['is_numeric']			= "<span class='required'>The %s field must contain only numeric characters.</span>";
 $lang['integer']			= "<span class='required'>The %s field must contain an integer.</span>";
 $lang['regex_match']		= "The %s field is not in the correct format.";

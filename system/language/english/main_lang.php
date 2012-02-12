@@ -10,6 +10,7 @@ $lang['menu_outcome']  = 'Outcome';
 $lang['menu_transaction']  = 'Transaction';
 $lang['menu_all_records'] = 'All records';
 $lang['menu_category_reports'] = 'Categ. reports';
+$lang['menu_help'] = 'Help';
 
 $lang['default_setting'] = 'Yes';
 $lang['default'] = 'Default';

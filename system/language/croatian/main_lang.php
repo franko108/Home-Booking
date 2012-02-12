@@ -10,6 +10,7 @@ $lang['menu_outcome']  = 'Rashod';
 $lang['menu_transaction']  = 'Transakcije';
 $lang['menu_all_records'] = 'Svi unosi';
 $lang['menu_category_reports'] = 'Izvj. po vrstama';
+$lang['menu_help'] = 'Pomoć';
 
 $lang['default_setting'] = 'Da';
 $lang['default'] = 'Zadano';
