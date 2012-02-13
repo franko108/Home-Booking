@@ -6,25 +6,38 @@ font-size: 13px;
 }
 .asd
 {
-text-decoration: none;
-font-family: san-serif, verdana;
-font-size: 12px;
-color:#ffffff;
+	text-decoration: none;
+	text-align:center;
+	/* font-family: san-serif, verdana; */
+	/* font-size: 12px; */
+	font-weight:700; 
+	color:#ffffff;
+	display:block;
+	width:150px;
+	height:23px;
+	z-index:500;
+	margin:1 1px;
+	
+	padding:8px 5px 0 3px;
+	
+	
+	
 }
 
 /*****remove the list style****/
 #nav {
-margin:0;
-padding:0;
-list-style:none;
+	margin:0;
+	padding:0;
+	list-style:none;
 }
+
 
 /*****LI display inline *****/
 #nav li {
 	float:left;
 	display:block;
 	width:150px;
-	/* background: #b35312;  *//* */  /* #e3ad5f; pijesak*/   /* #3173ab; plava cool */  /* #1E5B91; plava tamna */
+	/* background: #b35312;  */ 
 	position:relative;
 	z-index:500;
 	margin:0 1px;

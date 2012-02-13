@@ -1,5 +1,5 @@
 <?php 
-
+$lang['booking'] = 'Knjiženje';
 $lang['booking_income_header'] = 'Unos prihoda';
 $lang['booking_outcome_header'] = 'Unos troškova';
 $lang['booking_edit_income_header'] = 'Izmjena podataka o prihodu';
@@ -13,14 +13,16 @@ $lang['booking_currency'] = 'Valuta';
 $lang['booking_accounts'] = 'Račun';
 $lang['booking_pending'] = 'Odgođeno';
 
-
+$lang['all_records'] = 'Svi zapisi';
 $lang['review_records'] = 'Pregled uplata-isplata';
 $lang['acc_state'] = 'Aktualno stanje računa:';
 
 $lang['search_result'] = 'Rezultat pretrage';
 
+$lang['category_records'] = 'Vrste knjiženja';
 $lang['category_name'] = 'Vrsta';
 
+$lang['transaction'] = 'Transfer';
 $lang['transaction_records'] = 'Transakcije iz jednog računa na drugi';
 $lang['transaction_description'] = 'Transfer';
 

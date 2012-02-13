@@ -21,7 +21,7 @@ $language = $this->lang->lang();
             .tablesorterPager({container: $("#pager")});
     });
 </script>
-<title>Booking</title>
+<title><?php echo lang('all_records'); ?></title>
 </head>
 <body>
 <br />

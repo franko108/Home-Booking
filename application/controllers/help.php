@@ -12,9 +12,10 @@ function __construct()
     }
     
     function index() {
+    	$language = $this->lang->lang();
     	
     	$this->load->view('header');	
-		$this->load->view('help/help_view');
+		$this->load->view("help/$language/help_view");
 		
     }
 	

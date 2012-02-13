@@ -34,7 +34,8 @@ $(document).ready(function() {
     <th><?php echo lang('category_name'); ?></th> 
     <th><?php echo lang('booking_description'); ?></th> 
     <th><?php echo lang('cat_income'); ?></th> 
-    <th><?php echo lang('cat_outcome'); ?></th> 
+    <th><?php echo lang('cat_outcome'); ?></th>
+    <th><?php echo lang('currency') ;?></th> 
 </tr> 
 </thead> 
 <tbody> 
@@ -44,7 +45,8 @@ $(document).ready(function() {
 		
 		
 		echo "<tr>
-				<td>$res->dateEntry</td><td>$res->name</td><td>$res->description</td><td>$res->income $res->currency</td><td>$res->outcome $res->currency</td>
+				<td>$res->dateEntry</td><td>$res->name</td><td>$res->description</td><td>$res->income</td><td>$res->outcome </td>
+				<td>$res->currency</td>
 			</tr>";
 			
 	}

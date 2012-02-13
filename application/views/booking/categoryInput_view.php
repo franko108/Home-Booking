@@ -20,7 +20,7 @@ $(document).ready(function() {
 }); 
 
 </script>
-<title>Booking</title>
+<title><?php echo lang('category_records'); ?></title>
 </head>
 <body>
 <br />

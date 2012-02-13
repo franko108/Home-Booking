@@ -1,4 +1,5 @@
 <?php 
+$lang['currency'] = 'Valuta';
 $lang['currency_entry'] = "Unos valute ";
 $lang['currency_name'] = 'Naziv ';
 $lang['header_name'] = 'NAZIV' ;

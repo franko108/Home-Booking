@@ -37,7 +37,6 @@ $(document).ready(function () {
 </head>
 <body>
 <div class="column1">
-	<img alt="" src="<?php echo base_url(); ?>pictures/nema-logo.jpg">
 	<?php 
 	echo anchor($this->lang->switch_uri('hr'),'Hrvatski')."<br />";
 	echo anchor($this->lang->switch_uri('en'),'English');
@@ -54,19 +53,21 @@ $(document).ready(function () {
 			<li style='background-color:#1E5B91;'><?php echo anchor('accounts',lang('menu_accounts'));  ?></li>
 			<li style='background-color:#1E5B91;'><?php echo anchor('categories',lang('menu_category'));  ?></li>
 	</ul>
-		<li> <?php echo anchor('#',lang('menu_booking'));  ?>
+		<li> <span class='asd' ><?php echo lang('menu_booking');  ?></span>
 	<ul>
 			<li style='background-color:#1E5B91;'><?php echo anchor('booking/booking/in/1',lang('menu_income'));  ?></li>
 			<li style='background-color:#1E5B91;'><?php echo anchor('booking/booking/in/0',lang('menu_outcome'));  ?></li>
 			<li style='background-color:#1E5B91;'><?php echo anchor('booking/transaction/',lang('menu_transaction'));  ?></li>
 	</ul>
-		<li> <a href='#'>Izvještaji</a>
+		<li><span class='asd' > <?php echo lang('menu_reports'); // echo anchor('#',lang('menu_reports'));  ?></span>
 	<ul>
 			<li style='background-color:#1E5B91;'><?php echo anchor('booking/booking/all_records',lang('menu_all_records'));  ?></li>
 			<li style='background-color:#1E5B91;'><?php echo anchor('booking/booking/category_sum',lang('menu_category_reports'));  ?></li>
 			
 	</ul>
 		<li> <?php echo anchor('help',lang('menu_help'));  ?>
+	<ul>	
+		<li style='background-color:#1E5B91;'><?php echo anchor('help/backup', 'Back up');  ?></li>
 	</ul>
 	
 </div>

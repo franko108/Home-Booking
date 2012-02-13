@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
-<title>Currency</title>
+<title><?php echo lang('currency'); ?></title>
 </head>
 <body>
 <?php // include('header.php');?>

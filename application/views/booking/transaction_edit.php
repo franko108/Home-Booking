@@ -19,7 +19,7 @@ $(document).ready(function() {
     }); 
 }); 
 </script>
-<title>Transaction</title>
+<title><?php echo lang('transaction'); ?></title>
 </head>
 <body>
 <br />

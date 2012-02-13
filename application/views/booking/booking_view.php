@@ -8,14 +8,11 @@ $language = $this->lang->lang();
 <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url(); ?>css/tcal.css" rel="stylesheet" type="text/css"  />
 <script type="text/javascript" src="<?php echo base_url()."/js/".$language; ?>/tcal.js"></script>
-<title>Booking</title>
+<title><?php echo lang('booking'); ?></title>
 </head>
 <body>
-<br />
-
 <h1 align="center"><?php echo $booking_header; ?></h1>
 <div class="form">
-
 
 <br />
 <?php     

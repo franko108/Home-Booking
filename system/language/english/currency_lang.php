@@ -1,4 +1,5 @@
 <?php
+
 $lang['currency_entry'] = "Currency Entry ";
 $lang['currency_name'] = 'Name ';
 $lang['header_name'] = 'NAME' ;
