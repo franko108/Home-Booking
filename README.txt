@@ -25,3 +25,5 @@ INSTALLATION
 Instructions in /doc/INSTALL.txt
 However, there will be wizard for setup process.
 
+Demo is available:
+http://home-booking.it-pu.com
