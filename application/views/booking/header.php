@@ -244,7 +244,5 @@ $('ul', this).slideUp(350);
 </div>
 <br /><br />
 
-
-</p>
 </body>
 </html>

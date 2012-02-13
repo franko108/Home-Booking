@@ -9,7 +9,7 @@
 <br />
 <h1 align="center"><?php echo lang('accounts_entry');?></h1>
 
-</p>
+
 <div class="form">
 <?php     
 

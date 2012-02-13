@@ -65,6 +65,7 @@ class Booking extends CI_Controller {
     	
     	
     	// method currencies returns all curtrencies
+    	$data['default_currency'] = NULL; 
     	$currency_arr = $this->currencies();
     	$data['default_currency'] = $currency_arr[0];
     	$data['curr_options'] = $currency_arr[1];

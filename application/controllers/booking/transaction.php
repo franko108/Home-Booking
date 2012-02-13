@@ -13,9 +13,14 @@ class Transaction extends CI_Controller {
     	$this->load->model('booking/transactionmodel','',TRUE);
     	
     	$transaction_amount = lang('booking_amount');
-    	$this->form_validation->set_rules('transaction_amount', $transaction_amount, 'required|trim|xss_clean');
+    	$this->form_validation->set_rules('transaction_amount', $transaction_amount, 'required|trim|xss_clean|numeric');
     	$transaction_date = lang('booking_date');
     	$this->form_validation->set_rules('inputDate', $transaction_date, 'required|trim|xss_clean');
+    	
+    	$this->form_validation->set_rules('outAccount', 'accounts', 'xss_clean');
+    	$this->form_validation->set_rules('inAccount', 'accounts', 'xss_clean');
+    	$this->form_validation->set_rules('currency', 'currency', 'xss_clean');
+    	$this->form_validation->set_rules('id', 'id', 'xss_clean');
     }
     
     /*
@@ -37,28 +42,23 @@ class Transaction extends CI_Controller {
     	// accounts dropdown menu
     	$acc = $this->accountsmodel->list_all()->result();
     	
-    	// currencies dropdown menu
-    	$curr = $this->currencymodel->list_all()->result();
+ 
+     	// method currencies returns all curtrencies
+    	$data['default_currency'] = NULL; 
+    	$currency_arr = $this->currencies();
+    	$data['default_currency'] = $currency_arr[0];
+    	$data['curr_options'] = $currency_arr[1];
     	
-    	$curr_options = array();
-    	foreach($curr as $res1){
-    		$curr_options["$res1->id"] = ("$res1->name");
-    		if($res1->deff == 1){
-    			$data['default_currency'] = $res1->id;
-    		}
-    		
-    	}
-    	$data['curr_options'] = $curr_options;
     	
-    	// acounts dropdown menu
-    	$acc_options = array();
-    	foreach($acc as$res2){
-    		$acc_options["$res2->id"] = ("$res2->name");
-    		if($res2->deff == 1){
-    			$data['default_accounts'] = $res2->id;
-    		}
-    	}
-    	$data['acc_options'] = $acc_options;
+    	// accounts  /////
+    	// in the case there is no defined default accounts
+    	$data['default_accounts'] = NULL; 
+    	
+    	$accounts_arr = $this->accounts();
+    	$data['default_accounts'] = $accounts_arr[0];
+    	$data['acc_options'] = $accounts_arr[1];
+    	
+    	///////////////////////////////////////
     	
     	// for table with listed records of transaction
     	if($language == 'hr'){
@@ -73,18 +73,38 @@ class Transaction extends CI_Controller {
     }
     
     function add() {
-    	// validation 
-    	$a = 1; // TODO ovo maknuti i napraviti pravu validaciju
-    	// if ($this->form_validation->run() == FALSE)
-    	if($a < 1)
+
+    	// validation
+    	if ($this->form_validation->run() == FALSE) 
 		{
+			$this->load->model('currencymodel','',TRUE);
+    		$this->load->model('accountsmodel','',TRUE);
+    		
 			$data['action'] = 'booking/transaction/add';
-			$data['id']	    = NULL;
-			$data['name']   = NULL;
-			$data['deff']   = NULL;
+			$data['id']	    = set_value('id');
+			
+			$data['transaction_amount'] = set_value('transaction_amount');
+			$data['inputDate'] = set_value('inputDate');
+			
+			
+			// method currencies returns all curtrencies
+	    	$data['default_currency'] = NULL; 
+	    	$currency_arr = $this->currencies();
+	    	$data['default_currency'] = set_value('currency');
+	    	$data['curr_options'] = $currency_arr[1];
+	    	
+	    	
+	    	// accounts  /////
+	    	$data['outcome_account'] = set_value('outAccount');
+	    	$data['income_account'] =  set_value('inAccount');
+	    	
+	    	$accounts_arr = $this->accounts();
+	    	$data['default_accounts'] = $accounts_arr[0];
+	    	$data['acc_options'] = $accounts_arr[1];
+				
 			
 			$this->load->view('header');
-			$this->load->view('booking/transaction_view', $data);
+			$this->load->view('booking/transaction_edit', $data);
 		}
 		else
 		{
@@ -188,25 +208,21 @@ class Transaction extends CI_Controller {
     	
     	$data['id'] = $id; 
     	
-    	// accounts dropdown menu
-    	$acc = $this->accountsmodel->list_all()->result();
+   	 	// method currencies returns all curtrencies
+    	$data['default_currency'] = NULL; 
+    	$currency_arr = $this->currencies();
+    	$data['default_currency'] = $currency_arr[0];
+    	$data['curr_options'] = $currency_arr[1];
     	
-    	// currencies dropdown menu
-    	$curr = $this->currencymodel->list_all()->result();
     	
-    	$curr_options = array();
-    	foreach($curr as $res1){
-    		$curr_options["$res1->id"] = ("$res1->name");
-    	}
-    	$data['curr_options'] = $curr_options;
+    	// accounts  /////
+    	// in the case there is no defined default accounts
+    	$data['default_accounts'] = NULL; 
     	
-    	// acounts dropdown menu
-    	$acc_options = array();
-    	foreach($acc as$res2){
-    		$acc_options["$res2->id"] = ("$res2->name");
-    	}
+    	$accounts_arr = $this->accounts();
+    	$data['default_accounts'] = $accounts_arr[0];
+    	$data['acc_options'] = $accounts_arr[1];
     	
-    	$data['acc_options'] = $acc_options;
     	
     	$this->load->view('header');  
 		$this->load->view('booking/transaction_edit', $data);
@@ -219,6 +235,43 @@ class Transaction extends CI_Controller {
     	$this->transactionmodel->delete($idTransaction);
 		redirect('booking/transaction','refresh');
     }
+    
+	// used by add, edit methods and error handling 
+	function currencies() {
+		 // currencies
+    	$curr = $this->currencymodel->list_all()->result();
+    	
+    	$curr_options = array();
+    	foreach($curr as $res1){
+    		$curr_options["$res1->id"] = ("$res1->name");
+    		if($res1->deff == 1){
+    			$default_currency = $res1->id;
+    		}
+    		
+    	}
+
+    	$all_data = array($default_currency, $curr_options);
+    	
+    	return $all_data;
+    	
+	}
+
+	
+		// used by add, edit methods and error handling
+	function accounts() {
+
+    	$acc = $this->accountsmodel->list_all()->result();
+    	$acc_options = array();
+    	foreach($acc as$res2){
+    		$acc_options["$res2->id"] = ("$res2->name");
+    		if($res2->deff == 1){
+    			$default_accounts = $res2->id;
+    		}
+    	}
+    	$all_data = array($default_accounts, $acc_options);
+    	return $all_data;
+		
+	}
     
 	// dd.mm.yyyy date in format yyyy-mm-dd		
 	function hrdatum($datum_b){

@@ -118,7 +118,6 @@ echo form_open('booking/booking/all_records'); ?>
     ?>
 </tbody>
 </table>     
-</div>
 
 <div id="pager" class="pager">
     <form>

@@ -10,7 +10,7 @@
 <br />
 <h1 align="center"><?php echo lang('currency_entry');?></h1>
 
-</p>
+
 <div class="form">
 <?php     
 

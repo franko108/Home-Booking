@@ -37,12 +37,12 @@ $(document).ready(function() {
 	<p><label for="inputDate"><?php echo lang('booking_date'); ?>:<span class="required"> *</span></label>
 	<a href="javascript:void(0);" onclick="displayDatePicker('inputDate');"><img src="<?php echo base_url(); ?>/pictures/calendar.png" alt="calendar" border="0"></a>
 		<input id="inputDate" type="text" name="inputDate" onclick="displayDatePicker('inputDate');" class="text" value="<?php echo set_value('inputDate', $inputDate); ?>"/>
-		<?php echo form_error('input_date','<div>','</div>'); ?>
+		<?php echo form_error('inputDate','<div>','</div>'); ?>
 	</p>
 	
 	<p><label for="transaction_amount"><?php echo lang('booking_amount'); ?>:<span class="required"> *</span></label>                                
 		<input id="transaction_amount" type="text" name="transaction_amount" value="<?php echo set_value('transaction_amount', $transaction_amount); ?>" />
-		<?php echo form_error('$transaction_amount','<div>','</div>'); ?>
+		<?php echo form_error('transaction_amount','<div>','</div>'); ?>
 	</p>
 	
 	<p>
