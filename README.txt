@@ -13,12 +13,15 @@ Program is localized on English (detail check will be needed) and Croatian langu
 Program is being written in PHP with CodeIgnter framework, with JQuery (used for a reports and menu) with MySQL database.
 Maybe in the future will be for PostgreSQL and MySQL databases.
 
-Actual state of the program: in developing stage, plan is to finish it by end of February 2012.
+Actual state of the program: beta, all planned features are implemented. Program can be already used for testing. 
+Help needs to be written and full translation.
+Plan is to finish it by end of February 2012.
 
 LICENSE
 
-License is GPL 2, program is open source.
+License is GPL 2, program is Open Source.
 
 INSTALLATION
 Instructions in /doc/INSTALL.txt
+However, there will be wizard for setup process.
 
