@@ -67,7 +67,7 @@ $(document).ready(function () {
 	</ul>
 		<li> <?php echo anchor('help',lang('menu_help'));  ?>
 	<ul>	
-		<li style='background-color:#1E5B91;'><?php echo anchor('help/backup', 'Back up');  ?></li>
+		<li style='background-color:#1E5B91;'><?php echo anchor('backup', 'Back up');  ?></li>
 	</ul>
 	
 </div>
