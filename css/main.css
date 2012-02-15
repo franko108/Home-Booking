@@ -6,9 +6,10 @@ body {
 	font-weight:bold ;
 	color:#003366;
 	width: 1024px;
+	margin: 0 auto;
 	
-	margin: 0 auto; 
 }
+
 
 h1 {
 		
@@ -23,9 +24,12 @@ th {
 }
 
 div.form {
-	width:800px;
+	width:600px;
 	text-align: right;
 	line-height: 2.4;
+	
+	
+	
 }
 
 div.form1 {
@@ -60,31 +64,7 @@ a.update, a.delete {
 	color: #145558;
 		
 }
-/* radi sve osim backgournd-image ne mijenja sliku
-th.headerSortUp { 
-    background-image: url(../pictures/arrow_up.png);  
-    background-color: #3399FF; 
-} 
 
-th.headerSortDown { 
-    background-image: url(../pictures/arrow_down.gif); 
-    background-color: #3399FF; 
-     color:#900; 
-} 
-
-th.header { 
-    background-image: url(../pictures/arrow_both.gif);     
-    cursor: pointer; 
-    font-weight: bold; 
-    background-repeat: no-repeat; 
-    background-position: center left; 
-    padding-left: 20px; 
-    border-right: 1px solid #dad9c7; 
-    margin-left: -1px; 
-} 
-*/
-
-/* tables */
 table.tablesorter {
 	font-family:arial;
 	
@@ -132,8 +112,6 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 }
 
 .pager {
-        /* position:relative; */
-        /* bottom:0px; */
         vertical-align:middle;
         top:-25px;
 }

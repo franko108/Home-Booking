@@ -51,7 +51,7 @@ class Categoriesmodel extends CI_Model {
 	
 	function delete($id)
 	{
-		// validation - can't be deleted if exits in booking (recording table)
+		// validation - can't be deleted if data exits in booking (recording table)
 		$this->db->where('idinputGroup', $id);
 		$q = $this->db->get('recording');
 		

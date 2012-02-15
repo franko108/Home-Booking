@@ -37,6 +37,7 @@ echo form_open('categories/add'); ?>
 </div>
 <div class="form">
 <?php echo $table; ?>
+
 </div>
 
 </body>

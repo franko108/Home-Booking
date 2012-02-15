@@ -1,0 +1,80 @@
+@CHARSET "UTF-8";
+
+body {
+	/* font-family: Times New Roman, Verdana; */
+	font-size: 11px;
+	font-weight:bold ;
+	color: #0e283a; /*  #003366;  #120601; 0e283a*/
+	width: 1024px;
+	margin: 0 auto; 
+}
+
+.main {
+	font-family: sans, Verdana;
+	clear:both; 
+	background-color: #f9f4ed;
+
+
+}
+
+a:link {
+	color:#08265e;
+}   /* unvisited link */
+a:visited {
+	color:#1a4ba7;
+}  /* visited link */
+a:hover {
+	color:#c85f31;
+}   /*  mouse over link */
+a:active {
+	color:#c85f31;
+}  /*  selected link */
+
+p {
+	text-indent:50px;
+}
+
+.col1 {
+	float: left;
+	display: inline;
+	width: 150px;
+	/* margin-right: 10%; */ 
+	position: relative;
+	
+}
+
+.col2 {
+	float: left; 
+	display: inline;
+	text-align: left;  /* right */
+	width: 150px;
+	/* width: 1024px; */   
+	margin-left: 1%; 
+	position: relative; 
+	margin: 0 auto; 
+
+}
+
+.col3 {
+	float:left;
+	display:inline;
+	/* text-align:right;*/
+	width: 150px;
+	margin-left: 1em;
+	position: relative;
+}	
+
+.col4 {
+	float:left;
+	display:inline;
+	width: 150px;
+	margin-left: 1em;
+	position: relative;
+
+}
+
+div.rightContent {
+   min-height: 1000px;
+   border-left: 1px solid gray;
+   float:left;
+}

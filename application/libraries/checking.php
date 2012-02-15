@@ -18,12 +18,21 @@ class Checking extends CI_Controller{
     		exit;
     	}
     	
-    	$category = $this->categoriesmodel->list_all();
+    	// at least one income value
+    	$category = $this->categoriesmodel->list_income_categories();
     	if($category->num_rows() == 0){
     		echo "<script>alert('$empty_settings ');
 				</script>";
     		redirect('categories','refresh');
-    		echo "KOJIO KURAC";
+    		exit;	
+    	}
+    	
+	  	// at least one outcome value
+    	$category = $this->categoriesmodel->list_outcome_categories();
+    	if($category->num_rows() == 0){
+    		echo "<script>alert('$empty_settings ');
+				</script>";
+    		redirect('categories','refresh');
     		exit;	
     	}
     	

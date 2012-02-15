@@ -76,5 +76,6 @@ echo form_open('booking/booking/category_sum'); ?>
 	?>
 </tbody>
 </table>
+
 </body>
 </html>

@@ -20,8 +20,6 @@ font-size: 13px;
 	
 	padding:8px 5px 0 3px;
 	
-	
-	
 }
 
 /*****remove the list style****/
@@ -37,7 +35,6 @@ font-size: 13px;
 	float:left;
 	display:block;
 	width:150px;
-	/* background: #b35312;  */ 
 	position:relative;
 	z-index:500;
 	margin:0 1px;
@@ -78,10 +75,12 @@ font-size: 13px;
 	color:#470020;
 }
 
-/* style for default selected value */ #nav a.selected {
+/* style for default selected value */ 
+#nav a.selected {
 	color:#ffffff;
 }
-/* submenu */ #nav ul
+/* submenu */ 
+#nav ul
 {
 	position:absolute;
 	left:0;
@@ -98,7 +97,8 @@ font-size: 13px;
 	border-top:1px solid #fff;
 }
 
-/* display block will make the link fill the whole area of LI */ #nav ul a
+/* display block will make the link fill the whole area of LI */ 
+#nav ul a
 {
 	display:block;
 	height:15px;
