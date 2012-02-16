@@ -12,7 +12,7 @@ $language = $this->lang->lang();
 </head>
 <body>
 <h1 align="center"><?php echo $booking_header; ?></h1>
-<div class="form">
+<div class="form0">
 
 <br />
 <?php     

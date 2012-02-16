@@ -29,7 +29,7 @@ $language = $this->lang->lang();
 <h1 align="center"><?php echo lang('review_records'); ?></h1>
 
 
-<div  >
+<div >
 <?php     
 
 echo form_open('booking/booking/all_records'); ?>
@@ -47,6 +47,7 @@ echo form_open('booking/booking/all_records'); ?>
 	echo form_close(); 
 ?>
 </div>
+<div class="form1">
 <br />
 <hr>
 <i><?php echo lang('acc_state');
@@ -118,14 +119,15 @@ echo form_open('booking/booking/all_records'); ?>
     ?>
 </tbody>
 </table>     
+</div>
 
 <div id="pager" class="pager">
     <form>
-        <img src="<?php echo base_url(); ?>pictures/first.png" class="first"/>
-        <img src="<?php echo base_url(); ?>pictures/next1.png" class="prev"/>
-        <input type="text" class="pagedisplay" size="5"/>
-        <img src="<?php echo base_url(); ?>pictures/next.png" class="next"/>
-        <img src="<?php echo base_url(); ?>pictures/last.gif" class="last"/>
+        <img src="<?php echo base_url(); ?>pictures/first2.png" class="first"/>
+        <img src="<?php echo base_url(); ?>pictures/prev.png" class="prev"/>
+        <input type="text" class="pagedisplay" size="5" readonly="readonly" />
+        <img src="<?php echo base_url(); ?>pictures/next2.png" class="next"/>
+        <img src="<?php echo base_url(); ?>pictures/last.png" class="last"/>
         <select class="pagesize">
             <option  value="10">10</option>
             <option value="20">20</option>

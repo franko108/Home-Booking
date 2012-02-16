@@ -5,11 +5,10 @@ body {
 	font-size: 11px;
 	font-weight:bold ;
 	color:#003366;
-	width: 1024px;
+	width: 1010px;
 	margin: 0 auto;
 	
 }
-
 
 h1 {
 		
@@ -23,19 +22,22 @@ th {
 	text-align: center;
 }
 
-div.form {
+div.form0 {
 	width:600px;
 	text-align: right;
 	line-height: 2.4;
-	
-	
-	
+}
+
+div.form {
+	width:800px;
+	text-align: right;
+	line-height: 2.4;
+	margin-left: 5px;
 }
 
 div.form1 {
-	width:1024px;
-	text-align: right;
-	line-height: 2.4;
+	width:1010px;
+	
 }
 .required {
 	color: red;
@@ -62,7 +64,6 @@ a.update, a.delete {
 	padding: 5px;
 	letter-spacing: 2px;
 	color: #145558;
-		
 }
 
 table.tablesorter {
@@ -71,7 +72,7 @@ table.tablesorter {
 	background-color: #CDCDCD;
 	margin:10px 0pt 15px;
 	font-size: 9pt;
-	width: 100%;
+	width: 96%;
 	text-align: left;
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
@@ -113,5 +114,5 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 
 .pager {
         vertical-align:middle;
-        top:-25px;
+        top:25px;
 }

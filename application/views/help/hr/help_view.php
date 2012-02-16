@@ -14,34 +14,7 @@ $language = $this->lang->lang();
 <div class="col1">
 	&nbsp;
 </div>
-
-<div class="col2">
-	<a href="nesto ">O programu</a>
-	<br />
-	<a href="nesto ">Licenca</a>
-	<br />
-	<a href="nesto ">Instalacija</a>
-
-</div>
-
-<div class="col3">
-	<a href="nesto ">Upute za rad</a>
-	<br />
-	<a href="nesto ">Matični podaci</a>
-	<br />
-	<a href="nesto ">Kniženje</a>
-	<br />
-	<a href="nesto ">Transakcija</a>
-</div>
-
-<div class="col4">
-	<a href="nesto ">Izvještaji</a>
-	<br />
-	<a href="nesto ">Pretraga</a>
-	<br />
-	<a href=" nesto">Arhiva</a>
-
-</div> 
+<?php include('menu_help.php'); ?>
 
 <p>&nbsp;</p><br /><br />
 <div class="main">
@@ -49,13 +22,74 @@ $language = $this->lang->lang();
 <h1 align="center">O programu</h1>
 <p>
 Program za vođenje prihoda i troškova.<br>
-robao sam par programa i nisu mi se bas dopali, previse kompliciranja
-za moj ukus.<br>
-Htio sam da program bude vrlo jednostavan, da izgleda ovako kako
-izgleda i da bude brzo gotov.<br>
+Namjera je da program bude pregledan i jednostavan za korištenje. Ne
+koristi se pravo dvojno knjigovodstvo, iako
+bi se moglo prilagoditi za takvu potrebu.
 <br>
-Zato sam radio ovaj program u Codeignter (izasla je i nova verzija,
-sasvim ok) i sam, tako<br>
+<br>
+Program ima funkcionalnosti: <br>
+<ul>
+<li>unos prihoda/rashoda <br>
+</li>
+<li>jedna ili vise valuta, <br>
+</li>
+<li>jedan ili vise računa, <br>
+</li>
+<li>jedna ili vise kategorija prihoda ili troškova <br>
+</li>
+<li>prihod/rashod na "čekanju", tj. nije jos realiziran i ne zbraja
+se sa ostalim promjenama transfer s jednog računa na drugi <br>
+</li>
+<li>izvjestaji sa listom svih prihoda/rashoda, i filter prema datumu
+koji pokazuje i npr. koliko je bio iznos na nekom računu upravo tog
+ranijeg dana. <br>
+</li>
+<li>izvjestaji po kategorijama prihoda troskova sa filterom po
+datumima i iznosi unutar zadanih datuma. <br>
+</li>
+<li>pretraga prema opisu ili kategorijama. <br>
+</li>
+<li>backup skripta, tj. backup baze u sql formatu. <br>
+</li>
+</ul>
+<h2>LICENCA</h2>
+&nbsp;&nbsp;&nbsp; Program je otvorenog koda (Open Source) sa licencom
+GPL v2. To znači da je slobodan za korištenje za osobne ili
+komercijalne svrhe.<br>
+Autor se ograničava od svake odgovornosti od moguće nastale štete ili
+problema nastalih korištenjem programa.<br>
+Korisnik programa instalacijom i korištenjem privhaća odredbe licence
+čiji puni tekst nalati se <a
+href="http://www.gnu.org/licenses/gpl-2.0.html">ovdje</a><br>
+<br>
+<h2>INSTALACIJA</h2>
+&nbsp;&nbsp;&nbsp; Posljednja verzija programa dostupna je ovdje:
+<a href="https://github.com/franko108/Home-Booking/zipball/master">https://github.com/franko108/Home-Booking/zipball/master</a><br>
+<br>
+Program radi na kombinaciji PHP/MySQL.<br>
+<h3>Programski zahtjevi</h3>
+<ul>
+<li>Web server, Apache ili neki drugi. Clean url, odnosno na Apache,
+mod_rewrite mora biti uključen</li>
+<li>MySQL 5</li>
+<li>PHP 5.2</li>
+<li>Operativni sistemi: Linux (preporučen), Windows ili Mac OS</li>
+</ul>
+<h3>Linux instalacija</h3>
+Na većini linux distribucija, instalacija web servera, PHP i MySQL je
+jednostavna.<br>
+- Na Ubuntu distribuciji dovoljno je upisati naredbu u shell:<br>
+<span style="font-family: Courier New;">$ sudo tasksel install
+lamp-server</span><br>
+<br>
+Za vrijeme instalacije, trebati će postaviti root password MySQL.<br>
+<br>
+- Raspakirati sadržaj programa Home-Booking u root web servera. Na
+Debian/Ubutnu je to /var/www<br>
+Obratite paženju da web server mora imati prava nad sadržajem programa.
+Npr. naredba:<br>
+$ sudo chown -R /var/www/Home-Booking<br>
+<br>
 da meni odgovara u prvom redu, a ostali neka se snalaze ili neka pisu
 svoje verzije :-))<br>
 Ima nesto Jquery: menu i sort tabele na browseru.<br>
@@ -74,32 +108,14 @@ sami.<br>
 Program nema pravo dvojno knjigovodstvo, iako bi se moglo koristiti na
 slican nacin.<br>
 <br>
-Program ima funkcionalnosti:<br>
 <br>
-&nbsp;&nbsp;&nbsp; Unos prihoda/rashoda<br>
-&nbsp;&nbsp;&nbsp; jedna ili vise valuta,<br>
-&nbsp;&nbsp;&nbsp; jedan ili vise računa,<br>
-&nbsp;&nbsp;&nbsp; jedna ili vise kategorija prihoda ili troškova<br>
-&nbsp;&nbsp;&nbsp; prihod/rashod na "čekanju", tj. nije jos realiziran
-i ne zbraja se sa ostalim promjenama<br>
-&nbsp;&nbsp;&nbsp; transfer s jednog računa na drugi,<br>
-&nbsp;&nbsp;&nbsp; izvjestaji sa listom svih prihoda/rashoda, i filter
-prema datumu koji pokazuje i npr. koliko je<br>
-&nbsp;&nbsp;&nbsp; bio iznos na nekom računu upravo tog ranijeg dana.<br>
-&nbsp;&nbsp;&nbsp; izvjestaji po kategorijama prihoda troskova ,
-zapravo sam zbog ovoga isao pisati program. Opet filter po datumima<br>
-&nbsp;&nbsp;&nbsp; i iznosi unutar zadanih datuma.<br>
-&nbsp;&nbsp;&nbsp; Search prema opisu ili kategorijama. Radi neovisno
-da li su mala ili velika slova.<br>
-&nbsp;&nbsp;&nbsp; Backup skripta, tj. backup baze u sql formatu.<br>
 <br>
 Demo: http://home-booking.it-pu.com<br>
 <br>
 Ima lokalizacija na eng. treba napisati Help... :-)<br>
 Na helpu ce pisati da je odrzavanje programa u rukama Istra-data.<br>
 Menu ne radi na IE6 i to je isto u redu. #*#*<br>
-</p>
-
+<br>
 
 </div>
 
