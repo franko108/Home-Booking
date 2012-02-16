@@ -17,8 +17,9 @@ $language = $this->lang->lang();
 <?php include('menu_help.php'); ?>
 
 <p>&nbsp;</p><br /><br />
+<hr class="hr" />
 <div class="main">
-<hr>
+
 <h1 align="center">O programu</h1>
 <p>
 Program za vođenje prihoda i troškova.<br>
@@ -52,6 +53,7 @@ datumima i iznosi unutar zadanih datuma. <br>
 <li>backup skripta, tj. backup baze u sql formatu. <br>
 </li>
 </ul>
+<div id="license">
 <h2>LICENCA</h2>
 &nbsp;&nbsp;&nbsp; Program je otvorenog koda (Open Source) sa licencom
 GPL v2. To znači da je slobodan za korištenje za osobne ili
@@ -62,6 +64,10 @@ Korisnik programa instalacijom i korištenjem privhaća odredbe licence
 čiji puni tekst nalati se <a
 href="http://www.gnu.org/licenses/gpl-2.0.html">ovdje</a><br>
 <br>
+Razvoj i održavanje programa vodi <a href="http://istra-data.org">Istra-Data.</a>
+</div>
+
+<div id="inst">
 <h2>INSTALACIJA</h2>
 &nbsp;&nbsp;&nbsp; Posljednja verzija programa dostupna je ovdje:
 <a href="https://github.com/franko108/Home-Booking/zipball/master">https://github.com/franko108/Home-Booking/zipball/master</a><br>
@@ -74,48 +80,54 @@ mod_rewrite mora biti uključen</li>
 <li>MySQL 5</li>
 <li>PHP 5.2</li>
 <li>Operativni sistemi: Linux (preporučen), Windows ili Mac OS</li>
+<li>Moderan browser - Firefox, Opera, Chrome, IE7 najmanje. (IE6 ne radi, to nije moderan browser)</li>
 </ul>
 <h3>Linux instalacija</h3>
-Na većini linux distribucija, instalacija web servera, PHP i MySQL je
-jednostavna.<br>
-- Na Ubuntu distribuciji dovoljno je upisati naredbu u shell:<br>
-<span style="font-family: Courier New;">$ sudo tasksel install
-lamp-server</span><br>
-<br>
-Za vrijeme instalacije, trebati će postaviti root password MySQL.<br>
-<br>
-- Raspakirati sadržaj programa Home-Booking u root web servera. Na
-Debian/Ubutnu je to /var/www<br>
-Obratite paženju da web server mora imati prava nad sadržajem programa.
-Npr. naredba:<br>
-$ sudo chown -R /var/www/Home-Booking<br>
-<br>
-da meni odgovara u prvom redu, a ostali neka se snalaze ili neka pisu
-svoje verzije :-))<br>
-Ima nesto Jquery: menu i sort tabele na browseru.<br>
-Open source je program, nalazi se na github, bio sam znatizeljan kako
-radi github.<br>
-Uglavnom, slicno kao assembla, daju wiki za open soruce program.
-Assembla ima ipak preglednije sučelje.<br>
-Link: https://github.com/franko108/Home-Booking<br>
-<br>
-Manje-vise je program gotov, jos par detalja je ostalo za srediti, a
-htio bi napraviti i neki user friendly setup,<br>
-nesto kao sto ima npr. Drupal, tako da postavi bazu i konfiguracijske
-datoteke. Nesto sam poceo i po tome, mislim da<br>
-ce ici, osim ako ljudi nalete na probleme sa web serverom, to ce morati
-sami.<br>
-Program nema pravo dvojno knjigovodstvo, iako bi se moglo koristiti na
-slican nacin.<br>
-<br>
-<br>
-<br>
-Demo: http://home-booking.it-pu.com<br>
-<br>
-Ima lokalizacija na eng. treba napisati Help... :-)<br>
-Na helpu ce pisati da je odrzavanje programa u rukama Istra-data.<br>
-Menu ne radi na IE6 i to je isto u redu. #*#*<br>
-<br>
+Ukratko:<br />
+- Podesiti lamp (linux, apache, mysql i php)
+<br />
+- Raspakirati sadzaj programa u web root
+<br />
+- Pokrenuti instalaciju u browseru naredbom: http://localhost/Home-Booking/install/install.php
+<br /> &nbsp;&nbsp; pratiti upute za instalaciju, biti ce postavljena baza podataka i konfiguracijske datoteke.
+<p>
+	Detaljniji opis kao i rješavanje mogućih problema je <?php echo anchor('help/install','ovdje');  ?>
+</p>
+
+<h3>Windows instalacija</h3>
+Može se instalirati wamp server koji ima podešen i konfiguriran apache, PHP i MySQL za windows.
+<br>Download je <a href="http://www.wampserver.com/en/#download-wrapper">ovdje</a>
+<br /><br />
+ &nbsp; - Raspakirati program u web root: C:\wamp\www
+ <br />&nbsp;- Pokrenuti instalaciju u browseru sa http://localhost/Home-Booking/install/install.php (ne kopirati ovaj link u google! Ništa nećete naštetiti, ali niti postići)
+ <br />&nbsp;- Odgovoriti na nekoliko pitanja tokom instalacije
+ <br />&nbsp;- Korištenje programa
+</div>
+
+<p>
+<h3>Credits</h3>
+Korišteni su slijedeći programi, platforme i biblioteke:
+<ul>
+<li>Linux</li>
+<li>PHP</li>
+<li>MySQL</li>
+<li><a href="http://codeigniter.com">CodeIgniter</a></li>
+<li><a href="http://jquery.com/">JQuery</a></li>
+<li><a href="http://tablesorter.com">TableSorter</a></li>
+<li><a href="http://www.softcomplex.com/products/tigra_calendar/">Tigra Calendar</a></li>
+</ul>
+<br /> 
+<br /> 
+<br /> 
+<br /> 
+<br /> 
+</p>
+
+<br />
+<br />
+<br />
+
+
 
 </div>
 

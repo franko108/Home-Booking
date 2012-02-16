@@ -1,0 +1,54 @@
+<?php
+$language = $this->lang->lang();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url(); ?>css/help.css" rel="stylesheet" type="text/css"  />
+</head>
+<body>
+<p>&nbsp;</p>
+<div class="col1">
+	&nbsp;
+</div>
+<?php include('menu_help.php'); ?>
+
+<p>&nbsp;</p><br /><br />
+<hr class="hr" />
+<div class="main">
+<h1 align="center">Instalacija</h1>
+Na većini linux distribucija, instalacija web servera, PHP i MySQL je
+jednostavna.<br>
+- Na Ubuntu distribuciji dovoljno je upisati naredbu u shell:<br>
+<pre>$ sudo tasksel install lamp-server
+</pre>
+Za vrijeme instalacije, trebati će postaviti root password MySQL. (treba li naglasiti kako je potrebno zapamtiti password)<br>
+<br>
+- Raspakirati sadržaj programa Home-Booking u root web servera. Na
+Debian/Ubutnu je to <i>/var/www</i><br>
+Obratite paženju da web server mora imati prava nad sadržajem programa.
+Npr. naredba:<br>
+<pre>$ sudo chown -R /var/www/Home-Booking</pre>
+<br>
+
+- Napraviti restore baze koja se nalazi u doc/database.sql naredbom:
+<pre>
+$ mysql -p -u db_username booking < database_empty.sql
+</pre> 
+<br />
+- Podesiti <i>application/config/config.php</i> na liniji br.17 upisati liniju koja je ista kao i nazvani direktorij u kojem se nalazi aplikacija.
+<pre>$config['base_url'] = 'http://localhost/Home-Booking/';</pre>
+<br /> - Upisati u <i> application/config/database</i> odgovarajuće podatke o bazi. Npr.
+<pre>$db['default']['username'] = 'your_db_username';
+$db['default']['password'] = 'db_password';
+$db['default']['database'] = 'booking';
+</pre>
+Pokrenute browser, upišite maloprije postavljeni link http://localhost/Home-Booking/ i upisujte što želite ili što vam je potrebno. 
+</p>
+
+
+</div>
+</body>
+</html>

@@ -13,6 +13,7 @@ body {
 	font-family: sans, Verdana;
 	clear:both; 
 	background-color: #f9f4ed;
+	padding: 15px;
 
 
 }
@@ -31,7 +32,22 @@ a:active {
 }  /*  selected link */
 
 p {
-	text-indent:50px;
+	text-indent:2em;
+}
+h3 {
+	text-decoration:underline;
+	padding: 5px;
+	letter-spacing: 2px;	
+}
+
+.hr {
+	width:1024px;
+	height: 5px;	
+	background-color: #b35312;
+}
+
+pre {
+	background-color: #d4d4d4;
 }
 
 .col1 {

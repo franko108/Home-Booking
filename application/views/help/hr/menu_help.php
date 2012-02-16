@@ -1,27 +1,27 @@
 <div class="col2">
-	<a href="#">O programu</a>
+	<?php echo anchor('help/index','O programu');  ?>
 	<br />
-	<a href="nesto ">Licenca</a>
+	<?php echo anchor('help/index#license','Licenca');  ?>
 	<br />
-	<a href="nesto ">Instalacija</a>
+	<?php echo anchor('help/index#inst','Instalacija');  ?>
 
 </div>
 
 <div class="col3">
-	<a href="nesto ">Upute za rad</a>
+	<?php echo anchor('help/install','Upute za rad');  ?>
 	<br />
-	<a href="nesto ">Matični podaci</a>
+	<a href="#">Matični podaci</a>
 	<br />
-	<a href="nesto ">Kniženje</a>
+	<a href="#">Kniženje</a>
 	<br />
-	<a href="nesto ">Transakcija</a>
+	<a href="#">Transakcija</a>
 </div>
 
 <div class="col4">
-	<a href="nesto ">Izvještaji</a>
+	<a href="#">Izvještaji</a>
 	<br />
-	<a href="nesto ">Pretraga</a>
+	<a href="#">Pretraga</a>
 	<br />
-	<a href=" nesto">Arhiva</a>
+	<a href="#">Arhiva</a>
 
 </div> 

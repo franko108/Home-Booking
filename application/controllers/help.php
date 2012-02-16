@@ -8,6 +8,7 @@ function __construct()
     	$this->load->helper(array('form', 'language'));
     	// load language file
 		$this->lang->load('booking');
+		
     	
     }
     
@@ -16,6 +17,14 @@ function __construct()
     	
     	$this->load->view('header');	
 		$this->load->view("help/$language/help_view");
+		
+    }
+    
+    function install() {
+    	$language = $this->lang->lang();
+    	
+    	$this->load->view('header');	
+		$this->load->view("help/$language/install_view");
 		
     }
 	
