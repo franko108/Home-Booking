@@ -27,6 +27,14 @@ function __construct()
 		$this->load->view("help/$language/install_view");
 		
     }
+    
+    function guide() {
+    	$language = $this->lang->lang();
+    	
+    	$this->load->view('header');	
+		$this->load->view("help/$language/guide_view");
+    	
+    }
 	
 	
 }

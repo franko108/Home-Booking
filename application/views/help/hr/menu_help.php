@@ -8,7 +8,7 @@
 </div>
 
 <div class="col3">
-	<?php echo anchor('help/install','Upute za rad');  ?>
+	<?php echo anchor('help/guide','Upute za rad');  ?>
 	<br />
 	<a href="#">Matični podaci</a>
 	<br />
