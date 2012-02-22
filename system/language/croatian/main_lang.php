@@ -23,7 +23,7 @@ $lang['delete_data'] = 'Brisanje';
 
 $lang['submit'] = ' Unos ';
 $lang['cancel'] = 'Povratak';
-$lang['data_inserted'] = 'Upisani podaci o valuti u bazu';
+$lang['data_inserted'] = 'Upisani podaci u bazu';
 
 $lang['accounts'] = 'Računi';
 $lang['accounts_entry'] = "Unos računa ";

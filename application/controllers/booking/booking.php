@@ -376,8 +376,16 @@ class Booking extends CI_Controller {
 			$dateTo= $dateDb->maxDate; 
 			
 			if($language == 'hr') {
-				$data['minDate'] = $this->formatDate($dateFrom);
-    			$data['maxDate']  = $this->formatDate($dateTo);
+				// if there is records
+				if($dateFrom) {
+					$data['minDate'] = $this->formatDate($dateFrom);
+    				$data['maxDate']  = $this->formatDate($dateTo);
+				}
+				else {
+					$data['minDate'] = NULL;
+					$data['maxDate'] = NULL;
+				}
+				
     			 
 			}
 			else {
@@ -414,10 +422,9 @@ class Booking extends CI_Controller {
 
 				// convert hr date for proper query
 				if($language == 'hr') {
-					$dateFrom = $this->hrdatum($dateFrom);
-    				$dateTo = $this->hrdatum($dateTo);
+					$data['minDate'] = $this->formatDate($dateFrom);
+    				$data['maxDate']  = $this->formatDate($dateTo);
 				}
-			
 		}
 		
 		// data without data range
@@ -427,8 +434,16 @@ class Booking extends CI_Controller {
 			$dateTo= $dateDb->maxDate; 
 			
 			if($language == 'hr') {
-				$data['minDate'] = $this->formatDate($dateFrom);
-    			$data['maxDate']  = $this->formatDate($dateTo);
+				// if there is no entry yet
+				if($dateFrom){
+						$dateFrom = $this->hrdatum($dateFrom);
+    					$dateTo = $this->hrdatum($dateTo);
+				}
+				else {
+						$data['minDate'] = NULL;
+						$data['maxDate'] = NULL;
+				}
+				
     			 
 			}
 			else {

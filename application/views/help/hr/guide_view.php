@@ -22,7 +22,7 @@ $language = $this->lang->lang();
 
 <h1 align="center">Korištenje programa</h1>
 <p>
-	Nakon uspješne instalacije programa, može se početi korištenje programa.
+	Nakon uspješne instalacije programa, može se početi sa korištenjem programa.
 <br />Prvo je potrebno podesiti matične podatke, račune, valute, kategorije isplata i uplata.
 Bez podešenih matičnih podataka, program neće dozvoliti knjiženje uplata/isplata.
 <br />
@@ -45,6 +45,19 @@ zadan i biti će prvi ponuđen kod unosa isplata ili uplata.
 Slika 2.
 <br />
 <img src="<?php echo base_url(); ?>/help-pictures/hr/rn.png" border="1">
+
+</div>
+
+<div id="vrste">
+<h3>Unos i izmjena vrsta prihoda i rashoda</h3>
+Slika 3 prikazuje sučelje za unos i izmjenu kategorija ili vrsta uplata i isplata. Mora biti postavljena najmanje jedna vrsta
+prihoda i jedna vrsta rashoda.
+<br />Ispod forme za upis, nalazi se tabela sa pregledom upisanih kategorija i opcijama za izmjenu ili brisanje kategorije.
+<br />Ako je vrsta prihoda ili rashoda već korištena u knjiženju uplata ili isplata, brisanje neće biti dozvoljeno.
+<br /><br />
+Slika 3.
+<br />
+<img src="<?php echo base_url(); ?>/help-pictures/hr/vrste.png" border="1">
 
 </div>
 

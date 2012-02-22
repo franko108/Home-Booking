@@ -35,6 +35,22 @@ function __construct()
 		$this->load->view("help/$language/guide_view");
     	
     }
+    
+	function recording() {
+    	$language = $this->lang->lang();
+    	
+    	$this->load->view('header');	
+		$this->load->view("help/$language/recording_view");
+    	
+    }
+    
+	function transaction() {
+    	$language = $this->lang->lang();
+    	
+    	$this->load->view('header');	
+		$this->load->view("help/$language/transaction_view");
+    	
+    }
 	
 	
 }

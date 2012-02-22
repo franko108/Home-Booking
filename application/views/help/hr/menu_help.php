@@ -8,20 +8,21 @@
 </div>
 
 <div class="col3">
-	<?php echo anchor('help/guide','Upute za rad');  ?>
+	<?php echo anchor('help/guide','Matični podaci');  ?>
 	<br />
-	<a href="#">Matični podaci</a>
+	<?php echo anchor('help/recording','Knjiženje');  ?>
 	<br />
-	<a href="#">Kniženje</a>
-	<br />
-	<a href="#">Transakcija</a>
+	<?php echo anchor('help/transaction','Transakcije');  ?>
 </div>
 
 <div class="col4">
-	<a href="#">Izvještaji</a>
+	<?php echo anchor('help/allRecords','Svi unosi');  ?>
 	<br />
-	<a href="#">Pretraga</a>
+	<?php echo anchor('help/categories','Izv. po vrstama');  ?>
 	<br />
-	<a href="#">Arhiva</a>
+	<?php echo anchor('help/search','Pretraga');  ?>
+	<br />
+	<?php echo anchor('help/backup','Arhiva');  ?>
+	
 
 </div> 
