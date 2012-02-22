@@ -10,14 +10,15 @@ $language = $this->lang->lang();
 <script type="text/javascript" src="<?php echo base_url()."/js/".$language; ?>/calendar.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script> 
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.tablesorter.js"></script> 
+<script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.tablesorter.pager.js"></script>
 <script type="text/javascript">
-$(document).ready(function() { 
-    // call the tablesorter plugin 
-    $("#myTable").tablesorter({ 
-        // sort on the first column , order desc 
-        sortList: [[0,1]] 
-    }); 
-}); 
+$(function() {
+    $("#myTable")
+        .tablesorter({widthFixed: true, widgets: ['zebra'],
+        	dateFormat: 'dd.mm.yyyy',
+            headers: {0:{sorter:'hrdate'}}
+         }) ;
+});
 </script>
 <title><?php echo lang('transaction'); ?></title>
 </head>
@@ -74,13 +75,14 @@ $(document).ready(function() {
 
 <hr />
 
-<table id="myTable" class="tablesorter" border="1" cellspacing="1" width="1024 px"> 
+<table id="myTable" class="tablesorter" border="1" cellspacing="1" width="1020 px"> 
 <thead> 
 <tr> 
-    <th><?php echo lang('booking_date'); ?></th> 
+    <th id="hrdate"><?php echo lang('booking_date'); ?></th> 
     <th><?php echo lang('booking_description'); ?></th>
     <th><?php echo lang('accounts_name'); ?></th> 
-    <th><?php echo lang('booking_amount'); ?></th> 
+    <th><?php echo lang('booking_amount'); ?></th>
+    <th>&nbsp;</th> 
     <th>&nbsp;</th>
 </tr> 
 </thead> 
@@ -93,7 +95,7 @@ $(document).ready(function() {
 			echo "<td>$res->dateEntry</td><td>$res->description</td><td>$res->myaccount => ";	
 		}
 		else {
-			echo "$res->myaccount</td><td>$res->income $res->currency_name</td>";
+			echo "$res->myaccount</td><td>$res->income</td><td>$res->currency_name</td>";
 			echo "<td>";
 			echo anchor('booking/transaction/edit/'.$res->transaction, 'Update',  array('class'=>'update')) .'|' ;
 			echo anchor('booking/transaction/delete/'.$res->transaction, 'Delete' , array('class'=>'delete','onclick'=>"return confirm('Delete $res->description $res->dateEntry ? ')"));
