@@ -18,6 +18,24 @@ $(document).ready(function() {
         sortList: [[0,1]] 
     }); 
 }); 
+
+// check if transaction from and to accounts are the same
+function checkAcc(msg) {
+	
+	var outAcc, inAcc;
+	outAcc    = document.getElementById('outAccount').value;
+	inAcc     = document.getElementById('inAccount').value;
+
+	// same acount from and into value, continue ?	
+	if(inAcc == outAcc){
+		if (confirm(msg)) {
+			return TRUE;
+        }
+        else {
+            return false;
+        }
+	}
+}
 </script>
 <title><?php echo lang('transaction'); ?></title>
 </head>
@@ -28,10 +46,13 @@ $(document).ready(function() {
 
 <div class="form">
 <br />
-<?php echo form_open($action); ?>
+<?php 
+$msg = lang('same_acc'); // message - question about same account
+$js = array('onSubmit' =>"return checkAcc('$msg');");  
+echo form_open($action, $js);
 
-	<?php echo form_hidden('language', $language); // just because of different date format
-		  echo form_hidden('id', $id);
+	 echo form_hidden('language', $language); // just because of different date format
+	 echo form_hidden('id', $id);
 	?>
 
 	<p><label for="inputDate"><?php echo lang('booking_date'); ?>:<span class="required"> *</span></label>
@@ -55,13 +76,15 @@ $(document).ready(function() {
 	<p>
 		<label for="outAccount"><?php echo lang('transaction_out'); ?></label> 
 		<?php
-			echo form_dropdown('outAccount', $acc_options, $outcome_account);
+			$js = 'id="outAccount" ';
+			echo form_dropdown('outAccount', $acc_options, $outcome_account, $js);
 		?>
 		= >
 		
 		<label for="inAccount"><?php echo lang('transaction_in'); ?></label> 
 		<?php
-			echo form_dropdown('inAccount', $acc_options, $income_account); 
+			$js = 'id="inAccount" ';
+			echo form_dropdown('inAccount', $acc_options, $income_account, $js); 
 		?>
 	</p>
 	                                    

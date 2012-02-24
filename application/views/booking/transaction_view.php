@@ -20,9 +20,6 @@ $(function() {
          }) ;
 });
 
-</script>
-<script type="text/javascript">
-
 // check if transaction from and to accounts are the same
 function checkAcc(msg) {
 	
@@ -32,7 +29,6 @@ function checkAcc(msg) {
 
 	// same acount from and into value, continue ?	
 	if(inAcc == outAcc){
-		// alert('Što radiš bolan !?!?');
 		if (confirm(msg)) {
 			return TRUE;
         }
@@ -58,13 +54,9 @@ $js = array('onSubmit' =>"return checkAcc('$msg');");
 echo form_open($action, $js);
 
 // <form  action="transaction/add" method="post" name=submitform onSubmit="return checkAcc()">
+	 echo form_hidden('language', $language); // just because of different date format
+	 echo form_hidden('id', $id);  // for edit only
 ?>
-
-
-
-	<?php echo form_hidden('language', $language); // just because of different date format
-		  echo form_hidden('id', $id);  // for edit only
-	?>
 
 	<p><label for="inputDate"><?php echo lang('booking_date'); ?>:<span class="required"> *</span></label>
 	<a href="javascript:void(0);" onclick="displayDatePicker('inputDate');"><img src="<?php echo base_url(); ?>/pictures/calendar.png" alt="calendar" border="0"></a>
