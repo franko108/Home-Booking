@@ -125,23 +125,6 @@ class Transaction extends CI_Controller {
 	    	
 	    	$outAccount = $this->input->post('outAccount');
 	    	$inAccount = $this->input->post('inAccount');
-			// inAccount and outAccount are the same ?
-	    	if($outAccount  == $inAccount ){
-	    		
-	    		$sameAccount = lang('same_acc');
-	    		
-				// move into a view
-	    		echo "<script>
-	    				if (confirm('$sameAccount')) {
-	    					
-	    				}
-	    				else {
-	    					return false;
-	    				}
-	    		</script>";
-	    	}
-	    	
-	    	
 	    	
 	    	$inputGroup = NULL; // ? is this ok ?? There will be no groups on reports for transactions...
 	    	$pending =  0;
@@ -189,7 +172,8 @@ class Transaction extends CI_Controller {
 	    	// insert into database
 			$this->transactionmodel->add($data_entry1);
 			
-			echo "<script>alert('Upisani podaci o transakciji u bazu')</script>";
+			$data_inserted = lang('data_inserted');
+			echo "<script>alert('$data_inserted')</script>";
 			
 			redirect('booking/transaction','refresh');
 		}

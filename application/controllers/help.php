@@ -49,7 +49,20 @@ function __construct()
     	
     	$this->load->view('header');	
 		$this->load->view("help/$language/transaction_view");
+    }
+    
+    function allRecords() {
+    	$language = $this->lang->lang();
     	
+    	$this->load->view('header');	
+		$this->load->view("help/$language/allRecords_view");
+    }
+    
+	function categories() {
+    	$language = $this->lang->lang();
+    	
+    	$this->load->view('header');	
+		$this->load->view("help/$language/categories_view");
     }
 	
 	

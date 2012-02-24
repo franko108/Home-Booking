@@ -31,11 +31,7 @@ class Transactionmodel extends CI_Model {
 	// date format as dd.mm.YYYY
 	function list_all_hr()
 	{
-		/*
-		$this->db->order_by('dateEntry');
-		$this->db->where("transaction > 0");
-		return $this->db->get('recording');
-		*/
+	
 		$q = 'SELECT rec.id, rec.description, DATE_FORMAT(rec.dateEntry, "%d.%m.%Y") AS dateEntry, rec.income, rec.outcome, rec.transaction, 
 				acc.name AS myaccount, 
 				curr.name as currency_name  
@@ -54,7 +50,6 @@ class Transactionmodel extends CI_Model {
 	
 	function get($id)
 	{
-		// return $this->db->get_where('recording', array('transaction' => $id));
 		$q = "SELECT rec.id, rec.income, rec.dateEntry, rec.outcome, rec.description, rec.idCurrency, rec.idAccounts,
 				 curr.name AS currency, acc.name AS account
 				FROM recording rec 

@@ -19,6 +19,29 @@ $(function() {
             headers: {0:{sorter:'hrdate'}}
          }) ;
 });
+
+</script>
+<script type="text/javascript">
+
+// check if transaction from and to accounts are the same
+function checkAcc(msg) {
+	
+	var outAcc, inAcc;
+	outAcc    = document.getElementById('outAccount').value;
+	inAcc     = document.getElementById('inAccount').value;
+
+	// same acount from and into value, continue ?	
+	if(inAcc == outAcc){
+		// alert('Što radiš bolan !?!?');
+		if (confirm(msg)) {
+			return TRUE;
+        }
+        else {
+            return false;
+        }
+	}
+
+}
 </script>
 <title><?php echo lang('transaction'); ?></title>
 </head>
@@ -29,7 +52,15 @@ $(function() {
 
 <div class="form">
 <br />
-<?php echo form_open($action); ?>
+<?php
+$msg = lang('same_acc'); // message - question about same account
+$js = array('onSubmit' =>"return checkAcc('$msg');");  
+echo form_open($action, $js);
+
+// <form  action="transaction/add" method="post" name=submitform onSubmit="return checkAcc()">
+?>
+
+
 
 	<?php echo form_hidden('language', $language); // just because of different date format
 		  echo form_hidden('id', $id);  // for edit only
@@ -55,13 +86,15 @@ $(function() {
 	<p>
 		<label for="outAccount"><?php echo lang('transaction_out'); ?></label> 
 		<?php
-			echo form_dropdown('outAccount', $acc_options, $default_accounts);
+			$js = 'id="outAccount" ';
+			echo form_dropdown('outAccount', $acc_options, $default_accounts, $js);
 		?>
 		= >
 		
 		<label for="inAccount"><?php echo lang('transaction_in'); ?></label> 
 		<?php
-			echo form_dropdown('inAccount', $acc_options, $default_accounts); 
+			$js = 'id="inAccount" ';
+			echo form_dropdown('inAccount', $acc_options, $default_accounts, $js); 
 		?>
 	</p>
 	                                    
