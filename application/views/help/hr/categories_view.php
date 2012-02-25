@@ -21,6 +21,20 @@ $language = $this->lang->lang();
 <div class="main">
 
 <h1 align="center">Pregled unosa po kategorijama uplata/isplata</h1>
+<p>
+Ovaj izvještaj nalazi se na meniju: <i>Izvještaji->Izv. po vrstama</i> i prikazuje zbroj prihoda ili rashoda po definiranim kategorijama.
+<br>Kao i kod pregleda svih unosa, nalazi se mogućnost izmjene datauma unutar kojeg su prikazani izvještaji. Početno su postavljene sume po kategorijama 
+unutar cijelog dostupnog razdoblja.
+<br>Ispod toga nalazi se ispis ukupnog zbroja prihoda i rashoda po valutama.
+<br><br>Tabela sa slike 1 prikazuje sumarni pregled uplata ili isplata po kategorijama. Kao i kod pregleda svih unosa, klikom na naslov kolone, zapisi su poredani po redu
+s obzirom na zapise u koloni.
+<br>
+<br>
+<br>
+<br>
+Slika 1.
+
+</p>
 </div>
 </body>
 </html>
