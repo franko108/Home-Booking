@@ -3,9 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../css/main.css" rel="stylesheet" type="text/css" />
-<title>Currency</title>
+<link href="../css/help.css" rel="stylesheet" type="text/css" />
+<title>Install</title>
 </head>
 <body>
+<hr class="hr" />
+<div class="main">
 <?php
 include("cro_lang.php");
 //include("../funkcije.php");
@@ -21,5 +24,6 @@ echo "<h2>$welcome</h2>";
 	</select>
 		<input name="unos" type="submit" id="unos" value="Submit" />
 </form> 
+</div>
 </body>
 </html>
