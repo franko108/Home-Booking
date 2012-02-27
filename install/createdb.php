@@ -1,6 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../css/main.css" rel="stylesheet" type="text/css" />
+<link href="../css/help.css" rel="stylesheet" type="text/css" />
+<title>Install</title>
+</head>
+<body>
+<hr class="hr" />
+<div class="main">
 <?php
-/*
-// language for eventual errors.
+
+// language for messages and eventual errors.
 if(isset($_POST['lang'])){
 	$lang = $_POST['lang'];	
 }
@@ -10,15 +21,19 @@ else {
 
 $lang_name = $lang."_lang.php";
 include($lang_name);
-*/
-include("cro_lang.php");
+
+// include("cro_lang.php");
 
 $url = $_POST['url'];
 
 $dbhost = $_POST['webServer'];
+$dbhost = str_replace(' ', '', $dbhost);
 $dbuser = $_POST['dbUser']; 
+$dbuser = str_replace(' ', '', $dbuser);
 $dbpass = $_POST['dbPasswd']; 
+$dbpass = str_replace(' ', '', $dbpass);
 $dbname = $_POST['dbName']; 
+$dbname = str_replace(' ', '', $dbname);
 
 echo "<h1>URL: $url <br>host: $dbhost<br>dbuser:$dbuser<br> pass: $dbpass<br>dbname: $dbname</h1>";
 
@@ -28,7 +43,7 @@ if (!$con)  {
   die("$connection_failure" . mysqli_error());
   }
 
-$q = "CREATE DATABASE $dbname ;";
+$q = "CREATE DATABASE IF NOT EXISTS $dbname ;";
 if (mysqli_query($con, $q))  {
   echo "$dbCreated";
 }
@@ -45,7 +60,7 @@ mysqli_close($con);
 
 $db = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
-$createAccounts = "CREATE TABLE  `accounts` (
+$createAccounts = "CREATE TABLE IF NOT EXISTS `accounts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `deff` tinyint(1) DEFAULT NULL,
@@ -59,7 +74,7 @@ if($sql == FALSE) {
 		exit;
 }
 	
- $createCurrency= 'CREATE TABLE  `currency` (
+ $createCurrency= 'CREATE TABLE IF NOT EXISTS `currency` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(25) DEFAULT NULL,
   `deff` tinyint(1) DEFAULT NULL,
@@ -72,7 +87,7 @@ if($sql2 == FALSE) {
 		exit;
 }
 
-$inputCategory = 'CREATE TABLE  `inputCategory` (
+$inputCategory = 'CREATE TABLE IF NOT EXISTS `inputCategory` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `income_outcome` tinyint(1) NOT NULL,
@@ -86,7 +101,7 @@ if($sql3 == FALSE) {
 		exit;
 }
 
-$recording = ' CREATE TABLE  `recording` (
+$recording = ' CREATE TABLE IF NOT EXISTS `recording` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idCurrency` int(11) NOT NULL,
   `idAccounts` int(11) NOT NULL,
@@ -127,7 +142,10 @@ echo "<p>Tables created...</p>";
  
  file_put_contents($file1, $content);
   
-  echo "<p>Configuration finished
+  echo "<p>$confEnd
   <br><br>klik to <a href='$url'>home-page</a>...</p>";
 
-?> 
+?>
+</div>
+</body>
+</html> 

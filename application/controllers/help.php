@@ -65,6 +65,13 @@ function __construct()
 		$this->load->view("help/$language/categories_view");
     }
     
+	function search() {
+    	$language = $this->lang->lang();
+    	
+    	$this->load->view('header');	
+		$this->load->view("help/$language/search_view");
+    }
+    
 	function backup() {
     	$language = $this->lang->lang();
     	

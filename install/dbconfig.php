@@ -55,6 +55,12 @@ echo "<h1>$fill_out</h1>
 	<input id="webServer" type="text" name="webServer" value="localhost"  />
 	<hr>
 	
+	<h3><?php echo $sqlServer; ?></h3>
+	<?php echo $sqlMore; ?>
+	<br>
+	<input id="sqlServer" type="text" name="sqlServer" value="localhost"  />
+	<hr>
+	
 	<h3><?php echo $dbUser; ?></h3>
 	<input id="dbUser" type="text" name="dbUser" value="root"  />
 	<hr>

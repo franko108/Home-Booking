@@ -42,7 +42,7 @@ $lang['categories_entry'] = 'Upišite vrste prihoda ili troškova';
 $lang['categories_name'] = 'Naziv';
 $lang['categories_notdeleted'] = 'Vrsta nije obrisana jer postoji u prihodu ili rashodu';
 
-$lang['currency'] = 'Currency';
+$lang['currency'] = 'Valuta';
 
 $lang['date_from'] = 'Datum od';
 $lang['date_to'] = 'Datum do';
