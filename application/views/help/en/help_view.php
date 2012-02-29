@@ -107,19 +107,21 @@ It can be installed wamp server that has configured apache, PHP and MySQL for wi
   <br />&nbsp;- Answer the questions during setup process.
 </div>
 
-<h3>Instalacija na javnom serveru</h3>
-Program je moguće koristiti na nekom dijeljenom serveru, ako vam tako odgovara.
-<br />Instalira se na sličan način:
-<br /> - Raspakirati sadržaj programa u direktorij, tipično <i>public_html</i> ili <i>www</i>
-<br /> - U control panelu stvoriti bazu podataka i korisnika baze koji će imati sva prava nad bazom podataka.
-<br /> - Pokrenuti instalaciju u browseru, (url bio bi sličan ovome: <i>http://mojadomena.com/home-booking/install/install.php</i>.
- Odgovoriti na postavljena pitanja, tj. upisati odgovarajuće podatke o bazi podataka, vlasniku baze podataka kojeg smo stvorili, 
-url aplikacije bi u tom slučaju bio slican ovome: <i>http://mojadomena.com/home-booking/</i>
-<br /><br />Naravno, za očekivati je da u takvom okruženju zaštitite pristup podataka autentikacijom koja se može podesiti na Apache serveru.
+<h3>Installation on shared server</h3>
+It's possible to use the program on the shared server if convenient.
+<br />Installation is on the similar manner:
+<br /> - Unzip program in direcotry, typically <i>public_html</i> or <i>www</i>
+<br /> - In control panel create database and database user that will have all privileges on that database.
+<br /> - Run installacion in browser, (url something like this: <i>http://mydomain.com/home-booking/install/install.php</i>.
+ Answer the question, fill information about database name, database user name and password.
+  
+
+<br /><br /> Of course, you should protect your data with some authentication, as Apache authentication or so.
+
 
 <p>
 <h3>Credits</h3>
-Korišteni su slijedeći programi, platforme i biblioteke:
+The following programs, platforms and libraries are being used:
 <ul>
 <li>Linux <a href="http://ubuntu.com">Ubuntu</a></li>
 <li><a href="http://php.net">PHP</a></li>
