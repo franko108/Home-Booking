@@ -6,7 +6,6 @@ $language = $this->lang->lang();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
-
 <link href="<?php echo base_url(); ?>css/help.css" rel="stylesheet" type="text/css"  />
 </head>
 <body>
@@ -55,6 +54,7 @@ datume i iznose unutar zadanih datuma. <br>
 </li>
 </ul>
 
+
 <div id="license">
 <h2>LICENCA</h2>
 &nbsp;&nbsp;&nbsp; Program je otvorenog koda (Open Source) sa licencom
@@ -89,7 +89,7 @@ mod_rewrite mora biti uključen</li>
 Ukratko:<br />
 - Podesiti lamp (linux, apache, mysql i php)
 <br />
-- Raspakirati sadzaj programa u web root
+- Raspakirati sadžaj programa u web root
 <br />
 - Pokrenuti instalaciju u browseru naredbom: http://localhost/Home-Booking/install/install.php
 <br /> &nbsp;&nbsp; pratiti upute za instalaciju, biti ce postavljena baza podataka i konfiguracijske datoteke.
@@ -107,7 +107,6 @@ Može se instalirati wamp server koji ima podešen i konfiguriran apache, PHP i 
  <br />
  Napomena: ne kopirati ovaj link u google! Ništa nećete naštetiti, ali niti postići.
  <br />&nbsp;- Odgovoriti na nekoliko pitanja tokom instalacije
- <br />&nbsp;- Korištenje programa
 </div>
 
 <p>
@@ -119,7 +118,7 @@ Program je moguće koristiti na nekom dijeljenom serveru, ako vam tako odgovara.
 <br /> - Pokrenuti instalaciju u browseru, (url bio bi sličan ovome: <i>http://mojadomena.com/home-booking/install/install.php</i>.
  Odgovoriti na postavljena pitanja, tj. upisati odgovarajuće podatke o bazi podataka, vlasniku baze podataka kojeg smo stvorili, 
 url aplikacije bi u tom slučaju bio slican ovome: <i>http://mojadomena.com/home-booking/</i>
-<br /><br />Naravno, za očekivati je da u takvom orkuženju zaštitite pristup podataka autentikacijom koja se može podesiti na Apache serveru.
+<br /><br />Naravno, za očekivati je da u takvom okruženju zaštitite pristup podataka autentikacijom koja se može podesiti na Apache serveru.
 </p>
 
 <p>
@@ -139,11 +138,8 @@ Korišteni su slijedeći programi, platforme i biblioteke:
 <br /> 
 <br /> 
 <br /> 
-</p>
 
-<br />
-<br />
-<br />
+
 
 
 

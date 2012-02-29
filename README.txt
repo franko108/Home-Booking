@@ -9,6 +9,7 @@ Intended to be very simple for use with a several features:
 - Booking of incomes or outcomes from the same interface
 - Booking of income or outcome may be on pending. It will show different color on reports and amount will not be included in the sumaries.
 - Various reports according to date of income/outcome, categories, search by description or the categories, search through date of income/outcome.
+- Backup script in sql format.
 
 Program is localized on English (detail check will be needed) and Croatian languages.
 Program is being written in PHP with CodeIgnter framework, with JQuery (used for a reports and menu) with MySQL database.

@@ -10,7 +10,7 @@
 <hr class="hr" />
 <div class="main">
 <?php
-include("cro_lang.php");
+include("hr_lang.php");
 //include("../funkcije.php");
 
 echo "<h2>$welcome</h2>";
@@ -19,8 +19,9 @@ echo "<h2>$welcome</h2>";
 	<?php echo $language; ?>
 	
 	<select name="lang">
-			<option value="eng">English</option>
-			<option value="cro">Hrvatski</option>
+			<option value="hr">Hrvatski</option>
+			<option value="en">English</option>
+			
 	</select>
 		<input name="unos" type="submit" id="unos" value="Submit" />
 </form> 

@@ -16,34 +16,16 @@ if(isset($_POST['lang'])) {
 	$lang = $_POST['lang'];
 }
 
-if($lang == 'cro'){
-	include("cro_lang.php");
+if($lang == 'hr'){
+	include("hr_lang.php");
 }
-elseif($lang == 'eng') {
-	include("eng_lang.php");
-}
-
-function curPageURL() {
-	 $pageURL = 'http';
-	 if (isset($_SERVER["HTTPS"])) {
-	 	$pageURL .= "s";
-	 }
-	 $pageURL .= "://";
-	 if ($_SERVER["SERVER_PORT"] != "80") {
-	  	$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-	 } else {
-	  	$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
-	 }
-	 // cut out  install/dbconfig.php from url for config
-	 $url = str_replace('install/dbconfig.php', "", $pageURL);
-	 
-	 return $url;
+elseif($lang == 'en') {
+	include("en_lang.php");
 }
 
 
-$url = curPageURL();
-echo "URL: $url";
 echo "<h1>$fill_out</h1>
+	$license<hr>
 	$writeAccess ";
 ?>
 <form name='forma' method='post' action='createdb.php'>
@@ -52,7 +34,7 @@ echo "<h1>$fill_out</h1>
 	<input type='hidden' name='lang' value="<?php echo $lang; ?>" />
 
 	<h3><?php echo $webServer; ?></h3>
-	<input id="webServer" type="text" name="webServer" value="localhost"  />
+	<input id="webServer" type="text" name="webServer" value="<?php echo $_SERVER['SERVER_NAME']; ?>"  />
 	<hr>
 	
 	<h3><?php echo $sqlServer; ?></h3>

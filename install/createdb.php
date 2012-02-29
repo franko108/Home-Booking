@@ -10,33 +10,83 @@
 <hr class="hr" />
 <div class="main">
 <?php
+// creating and controlling url
+function curPageURL($webServer) {
+	 $pageURL = 'http';
+	 if (isset($_SERVER["HTTPS"])) {
+	 	$pageURL .= "s";
+	 }
+	 $pageURL .= "://";
+	 if ($_SERVER["SERVER_PORT"] != "80") {
+	  	$pageURL .= $webServer.":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+	 } else {
+	  	$pageURL .= $webServer.$_SERVER["REQUEST_URI"];
+	 }
+	 // cut out  install/dbconfig.php from url for config purpose
+	 $url = str_replace('install/createdb.php', "", $pageURL);
+	 
+	 return $url;
+}
 
-// language for messages and eventual errors.
+
+////////// language for messages and eventual errors.
 if(isset($_POST['lang'])){
 	$lang = $_POST['lang'];	
 }
 else {
+	echo "Direct access is not allowed!";
 	exit;
 }
 
 $lang_name = $lang."_lang.php";
 include($lang_name);
 
-// include("cro_lang.php");
+//////////////////////////////////////////////////////////////////////////////
+// get data from post
+$webServer = $_POST['webServer'];
+if($webServer == NULL) {
+	echo $db_error;
+	echo "	<a href='javascript:history.back();'><br><br><span style='color: rgb(153, 0, 0);'><b>$back</b></span></a>";
+	exit;
+}
+$webServer = str_replace(' ', '', $webServer);
+$url = curPageURL($webServer);  // function curPageURL
+$url = $url."".$lang;
 
-$url = $_POST['url'];
-
-$dbhost = $_POST['webServer'];
+$dbhost = $_POST['sqlServer'];
+if($dbhost == NULL) {
+	echo $db_error;
+	echo "	<a href='javascript:history.back();'><br><br><span style='color: rgb(153, 0, 0);'><b>$back</b></span></a>";
+	exit;
+}
 $dbhost = str_replace(' ', '', $dbhost);
+
 $dbuser = $_POST['dbUser']; 
+if($dbuser == NULL) {
+	echo $db_error;
+	echo "	<a href='javascript:history.back();'><br><br><span style='color: rgb(153, 0, 0);'><b>$back</b></span></a>";
+	exit;
+}
 $dbuser = str_replace(' ', '', $dbuser);
 $dbpass = $_POST['dbPasswd']; 
 $dbpass = str_replace(' ', '', $dbpass);
-$dbname = $_POST['dbName']; 
+
+$dbname = $_POST['dbName'];
+if($dbname == NULL) {
+	echo $db_error;
+	echo "	<a href='javascript:history.back();'><br><br><span style='color: rgb(153, 0, 0);'><b>$back</b></span></a>";
+	exit;
+}
 $dbname = str_replace(' ', '', $dbname);
+
 
 echo "<h1>URL: $url <br>host: $dbhost<br>dbuser:$dbuser<br> pass: $dbpass<br>dbname: $dbname</h1>";
 
+////////////////////////////////
+// exit;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CREATE DATABASE if not exist
 
 $con = mysqli_connect($dbhost, $dbuser, $dbpass);
 if (!$con)  {
@@ -54,7 +104,7 @@ else  {
 
 mysqli_close($con);
 
-////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 /////// Fill the database:
 
 
@@ -123,7 +173,8 @@ if($sql4 == FALSE) {
 }
 
 echo "<p>Tables created...</p>";
-///////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////
 // Edit the configuration file, first config.php
 
    $file = '../application/config/config.php';
@@ -143,7 +194,7 @@ echo "<p>Tables created...</p>";
  file_put_contents($file1, $content);
   
   echo "<p>$confEnd
-  <br><br>klik to <a href='$url'>home-page</a>...</p>";
+  <br><br>klik to <a href='$url/$lang'>home-page</a>...</p>";
 
 ?>
 </div>
