@@ -100,6 +100,11 @@ Ukratko:<br />
 <h3>Windows instalacija</h3>
 Može se instalirati wamp server koji ima podešen i konfiguriran apache, PHP i MySQL za windows.
 <br>Download wamp servera je <a href="http://www.wampserver.com/en/#download-wrapper">ovdje</a>
+<br>Wamp server treba biti pokrenut nakon instalacije, ikona treba izgledati kao na slici:
+<br><img src="<?php echo base_url(); ?>/help-pictures/wamp.png">
+<br>Provjeriti da li je uključen <i>rewrite modul</i>. Klik na ikonu sa slike -> Apache -> Apache modules -> <i>rewrite_module </i> treba biti označen kao na slici:
+<br><img src="<?php echo base_url(); ?>/help-pictures/wamp-rewrite.png">
+<br>Restart Apache servera: klik na wamp ikonu -> Restart All services
 <br /><br />
  &nbsp; - Nakon instalacije wamp servera, raspakirati program u web root: C:\wamp\www
  <br />&nbsp;- Pokrenuti instalaciju u browseru sa http://localhost/Home-Booking/install/install.php kao na slici 

@@ -36,18 +36,32 @@ $(document).ready(function() {
     <th><?php echo lang('cat_income'); ?></th> 
     <th><?php echo lang('cat_outcome'); ?></th>
     <th><?php echo lang('currency') ;?></th> 
+    <th>&nbsp;</th>
 </tr> 
 </thead> 
 <tbody> 
 	<?php 
 
 	foreach($query_search->result() as $res){
-		
+		$income = $res->income;
+		$outcome = $res->outcome;
+		// income or outcome ?
+		if($income){
+			$in_out = 1;
+		}
+		else {
+			$in_out = 0;
+		}
 		
 		echo "<tr>
 				<td>$res->dateEntry</td><td>$res->name</td><td>$res->description</td><td>$res->income</td><td>$res->outcome </td>
-				<td>$res->currency</td>
-			</tr>";
+				<td>$res->currency</td>";
+		
+		echo "<td>";
+		echo anchor('booking/booking/edit/'.$in_out.'/'.$res->id, 'Update',  array('class'=>'update')) .'|' ;
+        echo anchor('booking/booking/delete/'.$res->id, 'Delete' , array('class'=>'delete','onclick'=>"return confirm('Delete $res->description $res->dateEntry ? ')"));
+        echo "</td>";		
+		echo "</tr>";
 			
 	}
 	?>

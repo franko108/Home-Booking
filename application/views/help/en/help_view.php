@@ -98,6 +98,12 @@ Short:<br />
 <h3>Windows installation</h3>
 It can be installed wamp server that has configured apache, PHP and MySQL for windows.
 <br>Download wamp servera is <a href="http://www.wampserver.com/en/#download-wrapper">here</a>
+br>Wamp server shall be started after installation with icon as in the picture:
+<br><img src="<?php echo base_url(); ?>/help-pictures/wamp.png">
+<br>Check out if <i>rewrite modul</i> is enabled. 
+Click on icon as on the picture: Apache -> Apache modules -> <i>rewrite_module </i>  shall be enabled as in the picture:
+<br><img src="<?php echo base_url(); ?>/help-pictures/wamp-rewrite.png">
+<br>Restart Apache server: click on wamp icon -> Restart All services
 <br /><br />
  &nbsp; - After installation of wamp servera, unzip program in web root: C:\wamp\www
  <br />&nbsp;- Start with installation in the browser: http://localhost/Home-Booking/install/install.php as on the picture 

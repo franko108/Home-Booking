@@ -131,7 +131,7 @@ class Bookingmodel extends CI_Model {
 	
 	function search_result($value)
 	{
-		$q = "SELECT rec.dateEntry, catt.name, rec.income, rec.outcome, rec.description AS description,  curr.name AS currency 
+		$q = "SELECT rec.id AS id, rec.dateEntry, catt.name, rec.income, rec.outcome, rec.description AS description,  curr.name AS currency 
 				FROM recording rec 
 				INNER JOIN inputCategory catt ON rec.idinputGroup = catt.id
 				INNER JOIN currency curr ON rec.idCurrency = curr.id
@@ -141,7 +141,7 @@ class Bookingmodel extends CI_Model {
 	
 	function search_result_hr($value)
 	{
-		$q = "SELECT DATE_FORMAT(rec.dateEntry, '%d.%m.%Y')AS dateEntry, catt.name, rec.income, rec.outcome, rec.description AS description,  curr.name AS currency 
+		$q = "SELECT rec.id AS id, DATE_FORMAT(rec.dateEntry, '%d.%m.%Y')AS dateEntry, catt.name, rec.income, rec.outcome, rec.description AS description,  curr.name AS currency 
 				FROM recording rec 
 				INNER JOIN inputCategory catt ON rec.idinputGroup = catt.id
 				INNER JOIN currency curr ON rec.idCurrency = curr.id

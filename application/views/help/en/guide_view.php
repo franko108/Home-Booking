@@ -35,7 +35,7 @@ However, the currency that is being used in booking can't be deleted.
 <br ><br >
 Picture 1.
 <br >
-<img src="<?php echo base_url(); ?>/help-pictures/hr/valuta.png" border="1"></img>
+<img src="<?php echo base_url(); ?>/help-pictures/en/currency.png" border="1"></img>
 </p>
 
 <div id="rn">
@@ -47,7 +47,7 @@ One account can be default for income or outcome.
 <br /><br />
 Picture 2.
 <br />
-<img src="<?php echo base_url(); ?>/help-pictures/hr/rn.png" border="1">
+<img src="<?php echo base_url(); ?>/help-pictures/en/accounts.png" border="1">
 
 </div>
 
@@ -60,7 +60,7 @@ Picture 3 shows the form for input and editing of categories for income and outc
 <br /><br />
 Picture 3.
 <br />
-<img src="<?php echo base_url(); ?>/help-pictures/hr/vrste.png" border="1">
+<img src="<?php echo base_url(); ?>/help-pictures/en/category.png" border="1">
 
 </div>
 

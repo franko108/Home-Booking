@@ -26,20 +26,22 @@ jednostavna.<br>
 <pre>$ sudo tasksel install lamp-server
 </pre>
 Za vrijeme instalacije, trebati će postaviti root password MySQL. (treba li naglasiti kako je potrebno zapamtiti password)
-<br />Na drugim instalacijama je također instalacija jednostavna. Za Debian, dovoljno je označiti u <i>Synaptic</i> pakete: php5-coomon, mysql-server, apache2
+<br />Na većini drugih distribucija instalacija je također jednostavna. Za Debian, dovoljno je označiti u <i>Synaptic</i> pakete: php5-common, mysql-server, apache2
  i operativni sustav će podesiti sve instalacije i konfiguracije.
 
 <br><br>
 <u>Važna napomena:</u> web server mora imati uključenu opciju tzv. "clean url", kod Apache je to <i>mod_rewrite</i>
+<br>Na dnu poglavlja nalazi se opis aktivacije za Ubuntu linux.
 <br><br>
 - Raspakirati sadržaj programa Home-Booking u root web servera. Na
 Debian/Ubutnu je to <i>/var/www</i><br>
 Obratite paženju da web server mora imati prava nad sadržajem programa.
 Npr. naredba:<br>
-<pre>$ sudo chown -R /var/www/Home-Booking</pre>
+<pre>$ sudo chown -R www-data /var/www/Home-Booking</pre>
 
 <br />
 Pokretanje set-up kroz url:  <i>http://localhost/home-booking/install/install.php</i>
+<br>Pratite upute sa ekrana.
 <br /><br />
 
 <h3>Ručna instalacija aplikacije</h3>
@@ -60,6 +62,39 @@ $db['default']['database'] = 'booking';
 Pokrenute browser, upišite maloprije postavljeni link http://localhost/Home-Booking/ i koristite program po volji. 
 </p>
 
+<h3>Apache clean_url</h3>
+<p>
+Provjeriti da li je uključen mod_rewrite ako se koristi Apache web server, ovo je procedura za Ubuntu.
+<br>- Upisati naredbu:
+<pre>
+$ apache2ctl -M
+</pre>
+- Ako nije na listi <i>rewrite_module</i> upisati naredbu:
+<pre>
+$ sudo a2enmod rewrite
+</pre>
+- Izmijeniti postavke Apache tako da se uvijek čita <i>.htaccess</i> definiran u lokalnom direktoriju. 
+<br>Izmijeniti <i>/etc/apache2/sites-enabled/000-default</i>  da izgleda ovako  :
+<pre>
+DocumentRoot /var/www
+   &lt;Directory />
+      Options FollowSymLinks
+      AllowOverride All
+   &lt;/Directory>
+   &lt;Directory /var/www/>
+      Options Indexes FollowSymLinks MultiViews
+      AllowOverride All
+      Order allow,deny
+      allow from all
+   &lt;/Directory>
+</pre>
+- Restart Apache naredbom:
+<pre>
+$ sudo /etc/init.d/apache2 restart 
+</pre>
+
+
+</p>
 
 </div>
 </body>
