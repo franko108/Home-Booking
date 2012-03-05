@@ -51,7 +51,7 @@ if($webServer == NULL) {
 }
 $webServer = str_replace(' ', '', $webServer);
 $url = curPageURL($webServer);  // function curPageURL
-$url = $url."".$lang;
+
 
 $dbhost = $_POST['sqlServer'];
 if($dbhost == NULL) {
