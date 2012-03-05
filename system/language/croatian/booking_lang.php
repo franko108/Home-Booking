@@ -30,7 +30,7 @@ $lang['transaction'] = 'Transfer';
 $lang['transaction_records'] = 'Transakcije iz jednog računa na drugi';
 $lang['transaction_description'] = 'Transfer';
 
-$lang['empty_settings'] = 'Mora postojati najmanje jedna valuta, racun i kategorija !';
+$lang['empty_settings'] = 'Mora postojati najmanje jedna valuta, racun i kategorija za prihod i rashod !';
 
 $lang['change_date'] = 'Izmjena datuma';
 $lang['view_all'] = 'Pregled prihoda/troškova';
