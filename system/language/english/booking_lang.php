@@ -17,6 +17,10 @@ $lang['all_records'] = 'All records';
 $lang['review_records'] = 'Income-outcome review';
 $lang['acc_state'] = 'Bill state:';
 
+$lang['category_income'] = 'Income/outcome by categories';
+$lang['total_income'] = 'TOTAL INCOME';
+$lang['total_outcome'] = 'TOTAL OUTCOME';
+
 $lang['search_result'] = 'Search result';
 
 $lang['category_records'] = 'Category records';

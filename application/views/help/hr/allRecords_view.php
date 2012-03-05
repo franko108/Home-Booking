@@ -29,8 +29,8 @@ Ako odaberemo datum od 01.01.2012 - 31.01.2012, biti će prikazani podaci unutar
 <i>Aktualno stanje računa:</i> 31.01.2012. po definiranim računima.
 <br>
 <br>
-<br>Prikazani svi unosi u tabeli, 30 redova ima jedna stranica. Ispod tablice je mogućnost navigacije kroz stranice
-te izbor za prikaz 10, 20, 30 ili 40 redova u tabeli.
+<br>Prikazani svi unosi u tabeli, 25 redova ima jedna stranica. Ispod tablice je mogućnost navigacije kroz stranice
+te izbor za prikaz 10, 25, ili 50 redova u tabeli.
 <br>Klikom na naslov pojedine kolone podaci postaju poslagani padajućim nizom te kolone, ako kliknemom na datum, 
 redovi su poslagani po datumima, klik na vrstu ili opis, podaci su poslagani po abecedi, klik na prihod ili trošak, podaci 
 postaju poslagani po padajućim ili rastućim vrijednostima.

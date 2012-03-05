@@ -130,9 +130,8 @@ echo form_open('booking/booking/all_records'); ?>
         <img src="<?php echo base_url(); ?>pictures/last.png" class="last"/>
         <select class="pagesize">
             <option  value="10">10</option>
-            <option value="20">20</option>
-            <option selected="selected" value="30">30</option>
-            <option  value="40">40</option>
+            <option selected="selected" value="25">25</option>
+            <option  value="50">50</option>
         </select>
     </form>
 </div>

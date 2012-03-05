@@ -33,10 +33,14 @@ $lang['header_name'] = 'NAME' ;
 $lang['accounts_edit'] = 'Edit accounts data';
 $lang['accounts_notdeleted'] = 'Account can not be deleted because it exits in income or outcome booking!';
 
+$lang['category'] = 'Categories';
 $lang['categories'] = 'Income/Outcome categories';
 $lang['cat_income_outcome'] = 'Income/Outcome';
 $lang['cat_income'] = 'Income';
 $lang['cat_outcome'] = 'Outcome';
+
+$lang['sum_income'] = 'SUM INCOME';
+$lang['sum_outcome'] = 'SUM OUTCOME';
 
 $lang['categories_entry'] = 'Set category of income or outcome';
 $lang['categories_name'] = 'Name';

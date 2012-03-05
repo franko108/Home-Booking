@@ -8,6 +8,7 @@ $language = $this->lang->lang();
 <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
 
 <link href="<?php echo base_url(); ?>css/help.css" rel="stylesheet" type="text/css"  />
+<title>Settings</title>
 </head>
 <body>
 <p>&nbsp;</p>

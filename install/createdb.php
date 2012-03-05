@@ -179,17 +179,17 @@ echo "<p>Tables created...</p>";
 
    $file = '../application/config/config.php';
    $content0 = file_get_contents('../application/config/config.php');
-   $content0 = str_replace('http://localhost/booking/', $url, $content0);
+   $content0 = str_replace('http://localhost/home-booking/', $url, $content0);
    file_put_contents($file, $content0);
    
   
   // edit the database.php:
  $file1 = '../application/config/database.php';
  $content = file_get_contents('../application/config/database.php');
- $content = str_replace('localhoster', $dbhost, $content);
- $content = str_replace('fivasic', $dbuser, $content);
+ $content = str_replace('localhost', $dbhost, $content);
+ $content = str_replace('root', $dbuser, $content);
  $content = str_replace('dbPassword', $dbpass, $content);
- $content = str_replace('booking_dev', $dbname, $content);
+ $content = str_replace('booking', $dbname, $content);
  
  file_put_contents($file1, $content);
   

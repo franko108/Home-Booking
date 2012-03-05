@@ -33,10 +33,14 @@ $lang['header_name'] = 'NAZIV' ;
 $lang['accounts_edit'] = 'Izmjena podatka o računu';
 $lang['accounts_notdeleted'] = 'Racun nije obrisan jer postoji upisan u prihodu ili rashodu';
 
+$lang['category'] = 'Kategorije';
 $lang['categories'] = 'Vrste prihoda/troškova';
 $lang['cat_income_outcome'] = 'Prihod/Trošak';
 $lang['cat_income'] = 'Prihod';
 $lang['cat_outcome'] = 'Trošak';
+
+$lang['sum_income'] = 'SUMA UPLATE';
+$lang['sum_outcome'] = 'SUMA ISPLATE';
 
 $lang['categories_entry'] = 'Upišite vrste prihoda ili troškova';
 $lang['categories_name'] = 'Naziv';

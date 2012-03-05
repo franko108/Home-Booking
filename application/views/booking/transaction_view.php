@@ -6,8 +6,8 @@ $language = $this->lang->lang();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo base_url(); ?>css/calendar.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<?php echo base_url()."/js/".$language; ?>/calendar.js"></script>
+<link href="<?php echo base_url(); ?>css/tcal.css" rel="stylesheet" type="text/css"  />
+<script type="text/javascript" src="<?php echo base_url()."/js/".$language; ?>/tcal.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script> 
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.tablesorter.js"></script> 
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.tablesorter.pager.js"></script>
@@ -59,8 +59,8 @@ echo form_open($action, $js);
 ?>
 
 	<p><label for="inputDate"><?php echo lang('booking_date'); ?>:<span class="required"> *</span></label>
-	<a href="javascript:void(0);" onclick="displayDatePicker('inputDate');"><img src="<?php echo base_url(); ?>/pictures/calendar.png" alt="calendar" border="0"></a>
-		<input id="inputDate" type="text" name="inputDate" onclick="displayDatePicker('inputDate');" class="text" value=""/>
+	<input type="text" name="inputDate" class="tcal" size="9" value="<?php echo set_value('inputDate'); ?>" >
+	
 	</p>
 	
 	<p><label for="transaction_amount"><?php echo lang('booking_amount'); ?>:<span class="required"> *</span></label>                                

@@ -6,8 +6,8 @@ $language = $this->lang->lang();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
-
 <link href="<?php echo base_url(); ?>css/help.css" rel="stylesheet" type="text/css"  />
+<title>Booking</title>
 </head>
 <body>
 <p>&nbsp;</p>
@@ -37,7 +37,7 @@ $language = $this->lang->lang();
 will be list of categories defined as income categories, and for outcome as outcome catogires.
 	<br /><br />Picture 1.
 	<br />
-	<img src="<?php echo base_url(); ?>/help-pictures/en/rashod.png" border="1">
+	<img src="<?php echo base_url(); ?>/help-pictures/en/outcome.png" border="1">
 
 </p>
 

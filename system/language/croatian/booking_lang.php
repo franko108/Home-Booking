@@ -17,6 +17,10 @@ $lang['all_records'] = 'Svi zapisi';
 $lang['review_records'] = 'Pregled uplata-isplata';
 $lang['acc_state'] = 'Aktualno stanje računa:';
 
+$lang['category_income'] = 'Grupirane uplate/isplate';
+$lang['total_income'] = 'UKUPNA UPLATA';
+$lang['total_outcome'] = 'UKUPNA ISPLATA';
+
 $lang['search_result'] = 'Rezultat pretrage';
 
 $lang['category_records'] = 'Vrste knjiženja';

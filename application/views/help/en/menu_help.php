@@ -18,7 +18,7 @@
 <div class="col4">
 	<?php echo anchor('help/allRecords','All records');  ?>
 	<br />
-	<?php echo anchor('help/categories','Reports');  ?>
+	<?php echo anchor('help/categories','Category reports');  ?>
 	<br />
 	<?php echo anchor('help/search','Search');  ?>
 	<br />

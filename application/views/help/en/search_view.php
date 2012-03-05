@@ -7,7 +7,7 @@ $language = $this->lang->lang();
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url(); ?>css/help.css" rel="stylesheet" type="text/css"  />
-<title>Pretraga</title>
+<title>Search result</title>
 </head>
 <body>
 <p>&nbsp;</p>
@@ -21,16 +21,16 @@ $language = $this->lang->lang();
 <div class="main">
 
 
-<h1 align="center">Pretraga podataka</h1>
+<h1 align="center">Search of data</h1>
 <p>
-U gornjem desnom kutu nalazi se opcija <i>Search</i> koja omogućuje pretragu podataka.
-<br>Može se upisati naziv kategorije ili opis prihoda/troška, za potvrdu <i>Enter</i>.
-<br>Nije potrebno napisati ni puni naziv, pretraga će biti obavljena.
-<br>I ovaj izvještaj može preslagati redove klikom na naziv kolone, tj. po datumu, nazivu ili iznosu.
+In upper right corner is option for search through entered data.
+<br>Search works by description or name of category, then hit <i>Enter</i>. for submit. 
+<br>Even part of the word is enough to make search properly.
+<br>Output of the search also can change the sequence of rows with click of the header of table, i.e. by date, description or amount.
 <br><br>
-Slika 1.
+Picture 1.
 <br>
-<br><img src="<?php echo base_url(); ?>/help-pictures/hr/pretraga.png" border="1">
+<br><img src="<?php echo base_url(); ?>/help-pictures/en/search.png" border="1">
 </p>
 
 </div>

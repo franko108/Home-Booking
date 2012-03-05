@@ -25,7 +25,7 @@ $(document).ready(function() {
 <body>
 <br />
 
-<h1 align="center">Grupirane uplate/isplate:</h1>
+<h1 align="center"><?php echo lang('category_income');?>:</h1>
 <div>
 <?php     
 echo form_open('booking/booking/category_sum'); ?>
@@ -46,13 +46,16 @@ echo form_open('booking/booking/category_sum'); ?>
 
 <hr>
 <div class="sum">
+	<table>
 	
 	<?php 
 		foreach ($sum_query->result() as $row) {
-			echo "<b>TOTAL INCOME =  $row->total_income $row->currency_name | TOTAL OUTCOME = $row->total_outcome $row->currency_name </b><br>";	
+			echo "<tr><td><b>".lang('total_income')." =  $row->total_income $row->currency_name </b>&nbsp; &nbsp;</td> 
+			<td><b>|  &nbsp; ".lang('total_outcome')." = $row->total_outcome $row->currency_name </b></td></trr>";	
 		}
 	 ?>
-	 </div>
+	 </table>
+</div>
 
 
 <i><?php echo lang('view_all');?>: <?php echo "$minDate - $maxDate"; ?></i>
@@ -60,10 +63,10 @@ echo form_open('booking/booking/category_sum'); ?>
 <table id="myTable" class="tablesorter" border="1" cellspacing="1" width="1024 px"> 
 <thead> 
 <tr> 
-    <th>CATEGORY</th> 
-    <th>SUM INCOME</th> 
-    <th>SUM OUTCOME</th> 
-    <th>CURRENCY</th> 
+    <th><?php echo lang('category');?></th> 
+    <th><?php echo lang('sum_income');?></th> 
+    <th><?php echo lang('sum_outcome');?></th> 
+    <th><?php echo lang('currency');?></th> 
 </tr> 
 </thead> 
 <tbody> 
