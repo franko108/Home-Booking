@@ -57,7 +57,7 @@ echo form_open($action, $js);
 	?>
 
 	<p><label for="inputDate"><?php echo lang('booking_date'); ?>:<span class="required"> *</span></label>
-		<input type="text" name="inputDate" class="tcal" size="9" value="<?php echo set_value('inputDate'); ?>" >
+		<input type="text" name="inputDate" class="tcal" size="9" value="<?php echo set_value('inputDate', $inputDate); ?>" >
 		<?php echo form_error('inputDate','<div>','</div>'); ?>
 	</p>
 	

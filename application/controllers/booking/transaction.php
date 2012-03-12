@@ -243,6 +243,7 @@ class Transaction extends CI_Controller {
 		 // currencies
     	$curr = $this->currencymodel->list_all()->result();
     	
+    	$default_currency = NULL;
     	$curr_options = array();
     	foreach($curr as $res1){
     		$curr_options["$res1->id"] = ("$res1->name");
@@ -263,7 +264,9 @@ class Transaction extends CI_Controller {
 	function accounts() {
 
     	$acc = $this->accountsmodel->list_all()->result();
+    	$default_accounts = NULL;
     	$acc_options = array();
+    	
     	foreach($acc as$res2){
     		$acc_options["$res2->id"] = ("$res2->name");
     		if($res2->deff == 1){
