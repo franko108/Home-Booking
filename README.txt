@@ -1,6 +1,6 @@
-#########	ABOUT   #########
+#########  ABOUT  #########
 
-Program for evidence of a personal income and expenses.
+  Program for evidence of a personal income and expenses.
 Intended to be very simple for use with a several features:
 - One or more currencies (defined by user settings)
 - One or more accounts (user settings)
@@ -15,20 +15,21 @@ Program is localized on English (detail check will be needed) and Croatian langu
 Program is being written in PHP with CodeIgnter framework, with JQuery (used for a reports and menu) with MySQL database.
 Maybe in the future will be available for PostgreSQL and MySQL databases.
 
-Actual state of the program: beta, all planned features are implemented. Program can be already used for testing. 
+Actual state of the program: finished, all planned features are implemented. Program can be used. 
 Help needs to be written and full translation.
 Plan is to finish it by end of February 2012.
 
-#########	INSTALLATION  #########
+#########  INSTALLATION  #########
 
 Instructions in /doc/INSTALL.txt
-However, there will be wizard for setup process.
+However, there is wizard for setup process.
 
 Demo is available:
 http://home-booking.it-pu.com
+(also, the instruction are available on the Help on this demo.)
 
 
-#########	LICENSE  #########
+#########  LICENSE  #########
 
 Copyright (C) 2012  Franko Ivasic
 
