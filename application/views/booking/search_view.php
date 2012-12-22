@@ -8,16 +8,17 @@ $language = $this->lang->lang();
 <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script> 
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.tablesorter.js"></script>
-<script type="text/javascript">
-$(document).ready(function() { 
-    // call the tablesorter plugin 
-    $("#myTable").tablesorter({ 
-        // sort on the first column  order desc 
-        sortList: [[0,1]] 
-    }); 
-}); 
 
-</script> 
+<script type="text/javascript">
+    $(function() {
+        $("#myTable")
+            .tablesorter({widthFixed: true, widgets: ['zebra'],
+                                  dateFormat: 'dd.mm.yyyy',
+                                  headers: {0:{sorter:'hrdate'}}
+                                  })
+            .tablesorterPager({container: $("#pager")});
+    });
+</script>
 <title><?php echo lang('search_result'); ?></title>
 
 
@@ -30,7 +31,7 @@ $(document).ready(function() {
 <table id="myTable" class="tablesorter" border="1" cellspacing="1" width="1024 px"> 
 <thead> 
 <tr> 
-    <th><?php echo lang('booking_date'); ?></th> 
+    <th id="hrdate"><?php echo lang('booking_date'); ?></th> 
     <th><?php echo lang('category_name'); ?></th> 
     <th><?php echo lang('booking_description'); ?></th> 
     <th><?php echo lang('cat_income'); ?></th> 
@@ -54,7 +55,7 @@ $(document).ready(function() {
 		}
 		
 		echo "<tr>
-				<td>$res->dateEntry</td><td>$res->name</td><td>$res->description</td><td>$res->income</td><td>$res->outcome </td>
+				<td id='hrdate'>$res->dateEntry</td><td>$res->name</td><td>$res->description</td><td>$res->income</td><td>$res->outcome </td>
 				<td>$res->currency</td>";
 		
 		echo "<td>";
@@ -67,8 +68,6 @@ $(document).ready(function() {
 	?>
 </tbody>
 </table>
-
-
 
 
 </body>
