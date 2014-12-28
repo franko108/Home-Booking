@@ -74,8 +74,10 @@ echo form_open('booking/booking/category_sum'); ?>
 
 	foreach($category_sum_query->result() as $res){
 		echo "<tr>
-			<td>$res->input_category</td><td>$res->sum_income</td><td>$res->sum_outcome</td><td>$res->currency_name</td></tr>";
+			<td>".anchor('booking/booking/category_details/'.$res->category_id.'/'.$query_date_from.'/'.$query_date_to, $res->input_category)."
+		</td><td>$res->sum_income</td><td>$res->sum_outcome</td><td>$res->currency_name</td></tr>";
 	}
+	// echo anchor('booking/transaction/edit/'.$res->transaction, 'Update',  array('class'=>'update'))
 	?>
 </tbody>
 </table>

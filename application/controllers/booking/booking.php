@@ -408,7 +408,7 @@ class Booking extends CI_Controller {
 		$this->load->view('booking/allRecords_view', $data);
     }
 	
-	function category_sum() {
+	public function category_sum() {
 		
 		$language = $this->lang->lang();
 		
@@ -427,7 +427,18 @@ class Booking extends CI_Controller {
     				// convert for query: yyy-mm-dd
     				$dateFrom = $this->hrdatum($dateFrom);
     				$dateTo = $this->hrdatum($dateTo);
+    				
+    				$data['query_date_from'] = $dateFrom;
+    				$data['query_date_to'] 	 = $dateTo;
 				}
+				else {
+					$dateFrom = str_replace ( '/' , '-', $dateFrom );
+					$data['query_date_from'] = $dateFrom;
+					$dateTo = str_replace ( '/' , '-', $dateTo );
+					$data['query_date_to'] = $dateTo;
+				}
+				
+				
 		}
 		
 		// data without data range
@@ -436,6 +447,8 @@ class Booking extends CI_Controller {
 			$dateFrom = $dateDb->minDate;
 			$dateTo= $dateDb->maxDate; 
 			
+			$data['query_date_from'] = $dateFrom;
+			$data['query_date_to']	 = $dateTo;
 			
 			if($language == 'hr') {
 				// if there is no entry yet
@@ -457,15 +470,41 @@ class Booking extends CI_Controller {
 			
 		}
 		
-		
-		
 		$data['category_sum_query'] = $this->bookingmodel->sum_by_categories($dateFrom, $dateTo);		
     	$data['sum_query'] = $this->bookingmodel->sum_income_outcome($dateFrom, $dateTo);
     	
     	$this->load->view('header');	
 		$this->load->view('booking/categoryInput_view', $data);
 	}
-	
+
+	/*
+	 * details of category input/output within defined period
+	 */
+	function category_details($category_name_id ,$dateFrom, $dateTo) {
+		$language = $this->lang->lang();
+		if($language == 'hr') {
+				// if there is no entry yet
+				if($dateFrom){
+						$data['minDate'] = $this->formatDate($dateFrom);
+    					$data['maxDate'] = $this->formatDate($dateTo);
+				}
+				else {
+						$data['minDate'] = NULL;
+						$data['maxDate'] = NULL;
+				}
+				
+    			 
+			}
+		else {
+			$data['minDate'] = $dateFrom;
+			$data['maxDate'] = $dateTo;	
+		}
+		
+		$data['category_details'] = $this->bookingmodel->sum_by_categories_period($category_name_id, $dateFrom, $dateTo);
+		
+		$this->load->view('header');
+		$this->load->view('booking/category_details_view', $data);
+	}
 	
 	function search() {
 		
@@ -551,7 +590,7 @@ class Booking extends CI_Controller {
 		return $datum;
 	}
 	
-	function formatDate($hrDate) {
+	private function formatDate($hrDate) {
 		$datum_conv = explode("-", $hrDate);
         $datum = "$datum_conv[2].$datum_conv[1].$datum_conv[0]";
 		return $datum;

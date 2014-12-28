@@ -91,7 +91,7 @@ class Bookingmodel extends CI_Model {
 	
 	function sum_by_categories($dateFrom, $dateTo)
 	{
-		$q = "SELECT SUM(rec.income) AS sum_income, SUM(rec.outcome) AS sum_outcome, ic.name AS input_category, curr.name AS currency_name  
+		$q = "SELECT SUM(rec.income) AS sum_income, SUM(rec.outcome) AS sum_outcome, ic.name AS input_category, curr.name AS currency_name, ic.id AS category_id  
 				FROM recording rec
 				INNER JOIN inputCategory ic ON rec.idinputGroup = ic.id
 				INNER JOIN currency curr ON rec.idCurrency = curr.id
@@ -99,6 +99,28 @@ class Bookingmodel extends CI_Model {
 				AND dateEntry BETWEEN '$dateFrom' AND '$dateTo'
 				GROUP BY rec.idInputGroup , rec.idCurrency
 				ORDER BY sum_income DESC";
+		return $this->db->query($q);
+	}
+	
+	/*
+	 * sum by categories in defined period, if there is no period defined, give back all data
+	 */
+	function sum_by_categories_period($category_id, $dateFrom, $dateTo) {
+		if($dateFrom == 0 || $dateTo == 0) {
+			$dateFrom 	= 'SELECT MIN(rec.dateEntry) FROM recording';
+			$dateTo		= 'SELECT MAX(rec.dateEntry) FROM recording';
+		}
+		$q = "SELECT rec.id, rec.description, DATE_FORMAT(rec.dateEntry, '%d.%m.%Y')AS dateEntry, 
+			categ.name AS type, rec.income, rec.outcome, acc.name AS myaccount, rec.pending,
+				curr.name as currency_name  
+				FROM recording rec
+				INNER JOIN accounts acc ON rec.idAccounts = acc.id
+				INNER JOIN  inputCategory categ ON rec.idInputGroup = categ.id 
+				INNER JOIN currency curr ON rec.idCurrency = curr.id
+				WHERE rec.dateEntry BETWEEN '$dateFrom'  AND '$dateTo'
+				AND categ.id = '$category_id'
+				ORDER BY rec.dateEntry DESC";
+		
 		return $this->db->query($q);
 	}
 	

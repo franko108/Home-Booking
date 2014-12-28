@@ -34,6 +34,7 @@ $lang['empty_settings'] = 'Mora postojati najmanje jedna valuta, racun i kategor
 
 $lang['change_date'] = 'Izmjena datuma';
 $lang['view_all'] = 'Pregled prihoda/troškova';
+$lang['details'] = 'Detalji kategorije';
 
 $lang['same_acc'] = 'Transakcija na isti račun nema nekog smisla. Želite li nastaviti ?';
 

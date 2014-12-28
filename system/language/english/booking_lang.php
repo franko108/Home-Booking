@@ -34,5 +34,6 @@ $lang['empty_settings'] = 'Error! Settings must have al least one account, curre
 
 $lang['change_date'] = 'Change date';
 $lang['view_all'] = 'All incomes/outcomes';
+$lang['details'] = 'Category details';
 
 $lang['same_acc'] = 'Tranasaction within the same account does not have much sense. Do you wish to continue ?';
