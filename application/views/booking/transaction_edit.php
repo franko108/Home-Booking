@@ -45,7 +45,7 @@ function checkAcc(msg) {
 
 <h1 align="center"><?php echo lang('transaction_records'); ?></h1>
 
-<div class="form">
+<div class="form0">
 <br />
 <?php 
 $msg = lang('same_acc'); // message - question about same account
