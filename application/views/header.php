@@ -2,37 +2,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="<?php echo base_url(); ?>css/superfish.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url(); ?>css/header.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.js"></script>
-<script type="text/javascript">
-function clickclear(thisfield, defaulttext) {
-  if (thisfield.value == defaulttext) {
-    thisfield.value = "";
-  }
-}
- 
-function clickrecall(thisfield, defaulttext) {
-  if (thisfield.value == "") {
-   thisfield.value = defaulttext;
-  }
-}
-function submitform() {
-  document.myform.submit();
-}
 
-$(document).ready(function () {
-	$('#nav li').hover(
-	function () {
-	//show its submenu
-	$('ul', this).slideDown(350);
-	},
-	function () {
-	//hide its submenu
-	$('ul', this).slideUp(350);
-	}
-	);
-	});
+<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/hoverIntent.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/superfish.js"></script>
+
+<script type="text/javascript">
+
+// initialise plugins
+jQuery(function(){
+	jQuery('ul.sf-menu').superfish();
+});
+
 </script>
 </head>
 <body>
@@ -44,31 +28,44 @@ $(document).ready(function () {
 </div>
 <div class="column2">	
 
-	<input type=hidden name=arav value="4*#*#*3*#*#*2*#*#*2*#*#*1"><ul id='nav'>
+	<input type=hidden name=arav value="4*#*#*3*#*#*2*#*#*2*#*#*1">
 	
-	<li><a href='#'><?php echo lang('menu_settings'); ?></a>
 	
-	<ul>
-			<li style='background-color:#1E5B91;'><?php echo anchor('currency',lang('menu_currency'));  ?></li>
-			<li style='background-color:#1E5B91;'><?php echo anchor('accounts',lang('menu_accounts'));  ?></li>
-			<li style='background-color:#1E5B91;'><?php echo anchor('categories',lang('menu_category'));  ?></li>
-	</ul>
-		<li> <span class='asd' ><?php echo lang('menu_booking');  ?></span>
-	<ul>
-			<li style='background-color:#1E5B91;'><?php echo anchor('booking/booking/in/1',lang('menu_income'));  ?></li>
-			<li style='background-color:#1E5B91;'><?php echo anchor('booking/booking/in/0',lang('menu_outcome'));  ?></li>
-			<li style='background-color:#1E5B91;'><?php echo anchor('booking/transaction/',lang('menu_transaction'));  ?></li>
-	</ul>
-		<li><span class='asd' > <?php echo lang('menu_reports'); // echo anchor('#',lang('menu_reports'));  ?></span>
-	<ul>
-			<li style='background-color:#1E5B91;'><?php echo anchor('booking/booking/all_records',lang('menu_all_records'));  ?></li>
-			<li style='background-color:#1E5B91;'><?php echo anchor('booking/booking/category_sum',lang('menu_category_reports'));  ?></li>
+	
+	<ul class="sf-menu" id='nav'>
+	
+		<li><a href='#'><?php echo lang('menu_settings'); ?></a>
+			<ul>
+				<li><?php echo anchor('currency',lang('menu_currency'));  ?></li>
+				<li><?php echo anchor('accounts',lang('menu_accounts'));  ?></li>
+				<li><?php echo anchor('categories',lang('menu_category'));  ?></li>
+			</ul>
+		</li>	
 			
-	</ul>
-		<li> <?php echo anchor('help',lang('menu_help'));  ?>
-	<ul>	
-		<li style='background-color:#1E5B91;'><?php echo anchor('backup', 'Back up');  ?></li>
-	</ul>
+		
+		<li><a href='#'><?php echo lang('menu_booking');  ?></a>
+			<ul>
+				<li><?php echo anchor('booking/booking/in/1',lang('menu_income'));  ?></li>
+				<li><?php echo anchor('booking/booking/in/0',lang('menu_outcome'));  ?></li>
+				<li><?php echo anchor('booking/transaction/',lang('menu_transaction'));  ?></li>
+			</ul>
+		</li>
+		
+		<li><a href='#'><?php echo lang('menu_reports'); ?></a>
+			<ul>
+				<li><?php echo anchor('booking/booking/all_records',lang('menu_all_records'));  ?></li>
+				<li><?php echo anchor('booking/booking/category_sum',lang('menu_category_reports'));  ?></li>
+			</ul>
+		</li>
+		
+		<li><?php echo anchor('help',lang('menu_help'));  ?>
+			<ul>
+				<li><?php echo anchor('backup', 'Back up');  ?></li>
+			</ul>
+			
+		</li>
+		
+	</ul>	
 	
 </div>
 <div class="column3">

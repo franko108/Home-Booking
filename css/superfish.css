@@ -1,0 +1,117 @@
+/*** ESSENTIAL STYLES ***/
+.sf-menu, .sf-menu * {
+	margin: 0;  
+	margin:			1 0 0 5; 
+	padding: 0;
+	
+	list-style: none;
+	
+}
+.sf-menu li {
+	position: relative;
+	padding: 3px;
+	border; 0;
+	/* padding: 2px 3px 0 0px; */ 
+	
+}
+.sf-menu ul {
+	position: absolute;
+	display: none;
+	top: 100%;
+	left: 0;
+	z-index: 99;
+}
+.sf-menu > li {
+	float: left;
+}
+.sf-menu li:hover > ul,
+.sf-menu li.sfHover > ul {
+	display: block;
+	width:150px;
+	
+}
+
+.sf-menu a {
+	display: block;
+	position: relative;
+	width:130px;
+}
+.sf-menu ul ul {
+	top: 0;
+	left: 100%;
+	
+}
+
+
+/*** DEMO SKIN  - FRANKO ***/
+.sf-menu a:hover {
+	color: black;
+}
+.sf-menu {
+	float: left;
+	margin-bottom: 1em;
+}
+.sf-menu ul {
+	box-shadow: /*2px 2px 6px rgba(0,0,0,.2); */
+	min-width: 12em; /* allow long menu items to determine submenu width */
+	*width: 12em; /* no auto sub width for IE7, see white-space comment below */
+	
+	 
+}
+.sf-menu a {
+	border-left: 0px solid #fff;
+	/* padding: .55em 1em; */
+	padding: 4.5px ;
+	text-decoration: none;
+	zoom: 1; /* IE7 */
+}
+.sf-menu a {
+	color: #fff; /* #13a; */
+}
+.sf-menu li {
+	margin-left: 2px;
+	border-top:1px solid #fff;
+		
+	white-space: nowrap; /* no need for Supersubs plugin */
+	*white-space: normal; /* ...unless you support IE7 (let it wrap) */
+	-webkit-transition: background .2s;
+	transition: background .2s;
+	
+	/* fr dodatak - radius. oval*/
+	
+    text-align: center;
+    /*border: 1px solid black ;*/
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+    
+    background: #9b3b04;
+    background: linear-gradient(#9b3b04, #ba9284);
+	
+}
+.sf-menu ul li {
+	border-top:1px solid #fff;
+	background:   #9b3b04; /*#AABDE6; */
+	background: linear-gradient(#9b3b04, #ba9284);
+	
+	color: #050403; 
+}
+.sf-menu ul ul li {
+	background: #9b3b04; /* #9AAEDB; */
+	
+	
+	
+}
+.sf-menu li:hover,
+.sf-menu li.sfHover {
+	background: #b14910; /*   #9b3b04; #CFDEFF;*/
+	
+	background: linear-gradient(#933b0b, #ba9284); 
+		
+	/* only transition out, not in */
+	-webkit-transition: none;
+	transition: none;
+	
+
+}
+

@@ -18,16 +18,16 @@ body {
 
 }
 
-a:link {
+help a:link {
 	color:#08265e;
 }   /* unvisited link */
-a:visited {
+help a:visited {
 	color:#1a4ba7;
 }  /* visited link */
-a:hover {
+help a:hover {
 	color:#c85f31;
 }   /*  mouse over link */
-a:active {
+help a:active {
 	color:#c85f31;
 }  /*  selected link */
 

@@ -1,5 +1,5 @@
 <div class="col2">
-	<?php echo anchor('help/index','About program');  ?>
+	<?php echo anchor('help/index','About program', array('class'=>'help'));  ?>
 	<br />
 	<?php echo anchor('help/index#license','License');  ?>
 	<br />
@@ -23,6 +23,5 @@
 	<?php echo anchor('help/search','Search');  ?>
 	<br />
 	<?php echo anchor('help/backup','Backup');  ?>
-	
 
 </div> 
