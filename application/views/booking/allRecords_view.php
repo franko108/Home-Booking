@@ -7,19 +7,19 @@ $language = $this->lang->lang();
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url(); ?>css/tcal.css" rel="stylesheet" type="text/css"  />
-<script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery-latest.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.tablesorter.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.tablesorter.pager.js"></script>
 <script type="text/javascript" src="<?php echo base_url()."/js/".$language; ?>/tcal.js"></script>
 <script type="text/javascript">
-    $(function() {
-        $("#myTable")
-            .tablesorter({widthFixed: true, widgets: ['zebra'],
-                                  dateFormat: 'dd.mm.yyyy',
-                                  headers: {0:{sorter:'hrdate'}}
-                                  })
-            .tablesorterPager({container: $("#pager")});
-    });
+$(function() {
+    $("#myTable")
+        .tablesorter({widthFixed: true, widgets: ['zebra'],
+                              dateFormat: 'dd.mm.yyyy',
+                              headers: {0:{sorter:'hrdate'}}
+                              })
+        .tablesorterPager({container: $("#pager")});
+});
 </script>
 <title><?php echo lang('all_records'); ?></title>
 </head>

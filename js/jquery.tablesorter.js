@@ -986,7 +986,7 @@
         }, type: "numeric"
     });
     
-    // hr datum:
+        // hr datum:
 	$.tablesorter.addParser({
 		id: "hrdate",
 	    is: function(s) {
@@ -999,7 +999,7 @@
 	    },
 	    type: "numeric"
 	 });
-	    
+	
     ts.addParser({
         id: "time",
         is: function (s) {

@@ -46,8 +46,7 @@ function checkAcc(msg) {
 
 <h1 align="center"><?php echo lang('transaction_records'); ?></h1>
 
-
-<div class="form0">
+<div class="form">
 <br />
 <?php
 $msg = lang('same_acc'); // message - question about same account
@@ -100,9 +99,6 @@ echo form_open($action, $js);
 <?php echo form_close(); ?>
 
 <hr />
-</div>
-
-<div class="form">
 
 <table id="myTable" class="tablesorter" border="1" cellspacing="1" width="1020 px"> 
 <thead> 
