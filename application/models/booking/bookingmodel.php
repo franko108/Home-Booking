@@ -38,7 +38,8 @@ class Bookingmodel extends CI_Model {
 				INNER JOIN accounts acc ON rec.idAccounts = acc.id
 				INNER JOIN  inputCategory categ ON rec.idInputGroup = categ.id 
 				INNER JOIN currency curr ON rec.idCurrency = curr.id
-				WHERE rec.dateEntry BETWEEN '$dateFrom'  AND '$dateTo'
+				WHERE rec.transaction IS NULL AND 
+				rec.dateEntry BETWEEN '$dateFrom'  AND '$dateTo'
 				ORDER BY rec.dateEntry DESC";
 		return $this->db->query($q);
 	}
@@ -52,7 +53,8 @@ class Bookingmodel extends CI_Model {
 				INNER JOIN accounts acc ON rec.idAccounts = acc.id
 				INNER JOIN  inputCategory categ ON rec.idInputGroup = categ.id 
 				INNER JOIN currency curr ON rec.idCurrency = curr.id
-				WHERE rec.dateEntry BETWEEN '$dateFrom'  AND '$dateTo'
+				WHERE rec.transaction IS NULL AND 
+				rec.dateEntry BETWEEN '$dateFrom'  AND '$dateTo'
 				ORDER BY rec.dateEntry DESC";		
 		
 		return $this->db->query($q);
