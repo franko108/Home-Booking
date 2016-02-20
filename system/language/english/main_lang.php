@@ -4,6 +4,8 @@ $lang['menu_settings'] = 'Settings';
 $lang['menu_currency'] = 'Currency';
 $lang['menu_accounts'] = 'Accounts';
 $lang['menu_category'] = 'Categories';
+$lang['menu_autoinsert'] = 'Fixed insert';
+
 $lang['menu_booking']  = 'Booking';
 $lang['menu_income']   = 'Income';
 $lang['menu_outcome']  = 'Outcome';

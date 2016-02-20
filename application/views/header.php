@@ -39,6 +39,7 @@ jQuery(function(){
 				<li><?php echo anchor('currency',lang('menu_currency'));  ?></li>
 				<li><?php echo anchor('accounts',lang('menu_accounts'));  ?></li>
 				<li><?php echo anchor('categories',lang('menu_category'));  ?></li>
+				<li><?php echo anchor('autoinsert',lang('menu_autoinsert'));  ?></li>
 			</ul>
 		</li>	
 			

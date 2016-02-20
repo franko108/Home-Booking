@@ -522,7 +522,7 @@ class Booking extends CI_Controller {
 		$this->load->view('booking/search_view', $data);
 	}
 	
-	function categories($in_out){
+	private function categories($in_out){
 		// income input 
     	if($in_out == 1){
     		$data['in_out'] = 1;
@@ -543,7 +543,7 @@ class Booking extends CI_Controller {
 	}
 	
 	// used by add, edit methods and error handling 
-	function currencies() {
+	private function currencies() {
 		 // currencies
     	$curr = $this->currencymodel->list_all()->result();
     	
@@ -565,7 +565,7 @@ class Booking extends CI_Controller {
 
 	
 		// used by add, edit methods and error handling
-	function accounts() {
+	private function accounts() {
 
     	$acc = $this->accountsmodel->list_all()->result();
     	$default_accounts = NULL;
@@ -584,7 +584,7 @@ class Booking extends CI_Controller {
 
 	
 	// hr date in format yyyy-mm-dd		
-	function hrdatum($datum_b){
+	private function hrdatum($datum_b){
   		$datum_conv = explode(".", $datum_b);
 		$datum = strftime("%Y-%m-%d",mktime(0,0,0,$datum_conv[1],$datum_conv[0],$datum_conv[2]));
 		return $datum;
