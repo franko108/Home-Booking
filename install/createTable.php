@@ -14,7 +14,7 @@ $createAccounts = "CREATE TABLE  `accounts` (
   `name` varchar(100) DEFAULT NULL,
   `deff` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8";
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8";
 
 $sql = $db->query($createAccounts ) ;
 
@@ -28,7 +28,7 @@ if($sql == FALSE) {
   `name` varchar(25) DEFAULT NULL,
   `deff` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC';	
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC';	
 
 $sql2 = $db->query($createCurrency) ;
 if($sql2 == FALSE) {
@@ -41,7 +41,7 @@ $inputCategory = 'CREATE TABLE  `inputCategory` (
   `name` varchar(255) DEFAULT NULL,
   `income_outcome` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 ';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ';
 
 $sql3 = $db->query($inputCategory);
 
@@ -61,14 +61,35 @@ $recording = ' CREATE TABLE  `recording` (
   `pending` tinyint(1) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `transaction` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8 ';
+  PRIMARY KEY (`id`),
+	INDEX `categoryId` (`categoryId` ASC) )	
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ';
 
 $sql4 = $db->query($recording);
 
 if($sql4 == FALSE) {
 		echo "Failure on creating table <b>recording</b>";
 		exit;
+}
+
+$fixedPayment = 'CREATE TABLE `fixedPayment` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(255)   DEFAULT NULL ,
+  `bookingAmount` DECIMAL(10,2) NOT NULL,		
+  `dateMonthPayment` INT(2) NOT NULL,
+  `numberDays` INT(5) NOT NULL ,
+  `categoryId` INT(11) NOT NULL ,
+  `accountId` INT(11) NOT NULL ,
+  `currencyId` INT(11) NOT NULL ,
+  `incomeOutcome` TINYINT(1) NOT NULL ,
+  PRIMARY KEY (`id`, `categoryId`),
+  INDEX `categoryId` (`categoryId` ASC) ) 
+  	ENGINE=InnoDB DEFAULT CHARSET=utf8';
+$sql5 = $db->query($sql5);
+
+if($sql5 == FALSE) {
+	echo "Failure on creating table <b>fixedPayment</b>";
+	exit;
 }
 
 
