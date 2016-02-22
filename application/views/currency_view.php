@@ -11,7 +11,7 @@
 <h1 align="center"><?php echo lang('currency_entry');?></h1>
 
 
-<div class="form">
+<div class="form0">
 <?php     
 
 echo form_open('currency/add'); ?>

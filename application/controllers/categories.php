@@ -17,6 +17,7 @@ class Categories extends CI_Controller {
     	$delete = lang('delete');
     	$update = lang('update_data');
     	$delete_data = lang('delete_data');
+    	$language = $this->lang->lang();
     	
     	// creating a table of all inserted data 
     	$q = $this->categoriesmodel->list_all()->result();

@@ -27,6 +27,10 @@ class Autoinsert extends CI_Controller {
 		$this->form_validation->set_rules('booking_amount', $book_amount, 'required|trim|xss_clean|numeric');
 		$this->form_validation->set_rules('day_in_month', $num_days, 'required|trim|xss_clean|numeric');
 		$this->form_validation->set_rules('number_days', $day_month, 'required|trim|xss_clean|numeric');
+		$this->form_validation->set_rules('input_group', 'Input group', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('accounts', 'Accounts', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('currency', 'Currency', 'required|trim|xss_clean');
+		//$this->form_validation->set_rules('income_outcome', 'Income/outcome', 'required|trim|xss_clean');
 		
 	}
 
@@ -91,9 +95,9 @@ class Autoinsert extends CI_Controller {
 		
 		$cat = lang('booking_input');
 	
-		echo "$cat <select name='inputGroup'> ";
+		echo "$cat <select name='input_group'> ";
 		foreach($q as $row) {
-			echo "<option value='$row->id'>$row->name</option>";
+			echo "<option value='".$row->id."'>$row->name</option>";
 		}
 		echo "</select>";
 	
@@ -102,10 +106,19 @@ class Autoinsert extends CI_Controller {
 	public function add() {
 		// validation
 		if ($this->form_validation->run() == FALSE)	{
-			$data['action'] = 'booking/booking/add';
+			$data['action'] = 'autoinsert/add';
+			$data['id'] = NULL;
+			$data['booking_description'] = NULL;
+			$data['booking_amount'] = NULL;
+			$data['number_days'] = NULL;
+			$data['day_in_month'] = NULL;
+			$data['input_group'] = NULL;
+			$data['accounts'] = NULL;
+			$data['currency'] = NULL;
+			$data['income_outcome'] = NULL;
 			
 			$this->load->view('header');
-			$this->load->view('booking/booking_edit', $data);
+			$this->load->view('autoinsert_edit', $data);
 		}
 		// input data in database
 		else {
@@ -122,10 +135,122 @@ class Autoinsert extends CI_Controller {
 			$this->auto_insert_model->add($data_entry);
 			redirect('autoinsert','refresh');
 		}
+
 		
 	}
+	public function edit($id) {
+		$data['action'] = 'autoinsert/update';
+		$data['id'] = $id;
+		
+		$payment = $this->auto_insert_model->get($id)->row();
+			$data['booking_description'] = $payment->description;
+			$data['booking_amount'] = $payment->bookingAmount;
+			$data['number_days'] = $payment->numberDays;
+			$data['day_in_month'] = $payment->dateMonthPayment;
+			$data['booking_description'] = $payment->description;
+			
+			$id_category = $payment->categoryId;
+			$id_currency = $payment->currencyId;
+			$id_accounts = $payment->accountId;
+			
+			$in_out = $payment->incomeOutcome;	
+			$data['income_outcome'] = $in_out;
+		
+		// 1 is income, 0 outcome
+		if($in_out == 1){
+			$data['booking_header'] = lang('booking_edit_income_header');
+			$q = $this->categoriesmodel->list_income_categories()->result();
+		}
+		else {
+			$data['booking_header'] = lang('booking_edit_outcome_header');
+			$q = $this->categoriesmodel->list_outcome_categories()->result();
+		}
+		// select options for categories income or outcome
+		$input_options = array();
+		foreach($q as $res){
+			$input_options["$res->id"] = ("$res->name");
+			if($res->id == $id_category) {
+				$data['default_input'] = $id_category;  // Here is default_input previously inserted input type of income/outcome
+			}
+		}
+		$data['input_options'] = $input_options;
+		 
+		// data for currencies
+		$curr = $this->currencymodel->list_all()->result();
+		 
+		$curr_options = array();
+		foreach($curr as $res1){
+			$curr_options["$res1->id"] = ("$res1->name");
+			if($res1->id == $id_currency ){
+				$data['default_currency'] = $id_currency ;   // Here is default_currency previously inserted currency
+			}
+		}
+		$data['curr_options'] = $curr_options;
+		 
+		// accounts
+		$acc = $this->accountsmodel->list_all()->result();
+		$acc_options = array();
+		foreach($acc as $res2){
+			$acc_options["$res2->id"] = ("$res2->name");
+			if($res2->id == $id_accounts ){
+				$data['default_accounts'] = $id_accounts ;
+			}
+		}
+		$data['acc_options'] = $acc_options;
+		
+
+		$this->load->view('header');
+		$this->load->view('autoinsert_edit', $data);
+	}
 	
-	// all defined categories from db
+	public function update() {
+		// validation
+		
+		if ($this->form_validation->run() == FALSE)	{
+			$data['action'] = 'autoinsert/update';
+			$data['id'] = NULL;
+			$data['booking_description'] = NULL;
+			$data['booking_amount'] = NULL;
+			$data['number_days'] = NULL;
+			$data['day_in_month'] = NULL;
+			$data['input_group'] = NULL;
+			$data['accounts'] = NULL;
+			$data['currency'] = NULL;
+			$data['income_outcome'] = NULL;
+				
+			$this->load->view('header');
+			$this->load->view('autoinsert_edit', $data);
+		}
+		
+		// input data in database
+		else {
+			$id = form_prep($this->input->post('id'));
+			$desc =  $this->input->post('booking_description');
+			$am = form_prep($this->input->post('booking_amount')); 
+			//echo "UNOS: ID - $id, opis: $desc, iznos: $am ";
+			
+			
+			$data_entry = array('description' => form_prep($this->input->post('booking_description')),
+					'bookingAmount' => form_prep($this->input->post('booking_amount')),
+					'dateMonthPayment' => form_prep($this->input->post('day_in_month')),
+					'numberDays' => form_prep($this->input->post('number_days')),
+					'categoryId' => form_prep($this->input->post('input_group')),
+					'accountId' => form_prep($this->input->post('accounts')),
+					'currencyId' => form_prep($this->input->post('currency')),
+					'incomeOutcome' => form_prep($this->input->post('income_outcome')));
+				
+			// insert into database
+			$this->auto_insert_model->update($id, $data_entry);
+			redirect('autoinsert','refresh');
+		}
+	}
+	
+	public function delete($id) {
+		$this->auto_insert_model->delete($id);
+		redirect('autoinsert','refresh');
+	}
+	
+	// all defined categories from database
 	private function categories($in_out){
 		// income input
 		if($in_out == 1){

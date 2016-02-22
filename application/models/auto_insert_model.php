@@ -31,7 +31,7 @@ class Auto_insert_model extends CI_Model {
 	function update($id, $data)
 	{
 		$this->db->where('id', $id);
-		$this->db->update($this->accounts, $data);
+		$this->db->update($this->fixedPayment, $data);
 	}
 	
 	public function delete($id)	{

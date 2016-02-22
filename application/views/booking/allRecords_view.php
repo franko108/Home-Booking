@@ -84,6 +84,7 @@ echo form_open('booking/booking/all_records'); ?>
 
     foreach($query->result() as $res){
        
+    	$del = lang('delete');
         // income or outcome value -for editing ?
         if($res->income){
             $in_out = 1;
@@ -112,7 +113,7 @@ echo form_open('booking/booking/all_records'); ?>
            
             echo "<td>";
             echo anchor('booking/booking/edit/'.$in_out.'/'.$res->id, 'Update',  array('class'=>'update')) .'|' ;
-            echo anchor('booking/booking/delete/'.$res->id, 'Delete' , array('class'=>'delete','onclick'=>"return confirm('Delete $res->description $res->dateEntry ? ')"));
+            echo anchor('booking/booking/delete/'.$res->id, 'Delete' , array('class'=>'delete','onclick'=>"return confirm('$del $res->description $res->dateEntry ? ')"));
             echo "</td>
         </tr>";
     }

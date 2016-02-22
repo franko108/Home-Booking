@@ -9,8 +9,9 @@
 <br />
 
 <h1 align="center"><?php echo lang('accounts_entry')?></h1>
-<div class="form">
+<div class="form0">
 <?php     
+$language = $this->lang->lang();
 
 echo form_open($action); ?>
 
@@ -37,7 +38,7 @@ echo form_open($action); ?>
 	 
 	$language = $this->lang->lang();  // giving back the language that is in use
 	?>
-	<input type="button" onClick="location='<?php echo base_url()."/".$language; ?>/accounts' " value="<?php echo lang('cancel')?>">
+	<input type="button" onClick="location='<?php echo base_url()."".$language; ?>/accounts' " value="<?php echo lang('cancel')?>">
 	</p>
 
 <?php echo form_close(); ?>

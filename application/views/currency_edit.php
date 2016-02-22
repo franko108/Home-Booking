@@ -10,9 +10,9 @@
 <br />
 
 <h1 align="center"><?php echo lang('currency_entry')?></h1>
-<div class="form">
+<div class="form0">
 <?php     
-
+$language = $this->lang->lang();
 echo form_open($action); ?>
 
 	<?php echo form_hidden('id', $id); ?>
@@ -36,7 +36,7 @@ echo form_open($action); ?>
 	<?php echo form_submit( 'submit', lang('submit')); 
 	$language = $this->lang->lang();
 	?>
-	<input type="button" onClick="location='<?php echo base_url()."/".$language; ?>/currency' " value="<?php echo lang('cancel')?>">
+	<input type="button" onClick="location='<?php echo base_url()."".$language; ?>/currency' " value="<?php echo lang('cancel')?>">
 	</p>
 
 <?php echo form_close(); ?>

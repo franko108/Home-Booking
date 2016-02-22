@@ -10,8 +10,9 @@
 <h1 align="center"><?php echo lang('categories_entry');?></h1>
 
 
-<div class="form">
+<div class="form0">
 <?php     
+$language = $this->lang->lang();
 
 echo form_open('categories/add'); ?>
 

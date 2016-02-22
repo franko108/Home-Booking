@@ -10,7 +10,7 @@
 <h1 align="center"><?php echo lang('accounts_entry');?></h1>
 
 
-<div class="form">
+<div class="form0">
 <?php     
 
 echo form_open('accounts/add'); ?>
