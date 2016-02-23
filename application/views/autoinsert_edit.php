@@ -7,7 +7,7 @@ $language = $this->lang->lang();
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<?php echo base_url(); ?>css/main.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url(); ?>css/tcal.css" rel="stylesheet" type="text/css"  />
-<script type="text/javascript" src="<?php echo base_url(); ?>js/numbersonly.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/<?php echo $language; ?>/numbersonly.js"></script>
 <title><?php echo lang('autoinsert_header'); ?></title>
 <script type="text/javascript">
 function showCategories(in_out) {
@@ -25,7 +25,7 @@ function showCategories(in_out) {
 			document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
 		}
 	}
-		xmlhttp.open("GET","<?php echo base_url().''.$language; ?>/autoinsert/ajax_income_outcome/"+in_out+"/1",true);
+		xmlhttp.open("GET","<?php echo base_url().''.$language; ?>/autoinsert/categories/"+in_out+"/1",true);
 		xmlhttp.send();
 }
 </script>
@@ -50,16 +50,12 @@ function showCategories(in_out) {
 		<input id="booking_amount" type="text" name="booking_amount" value="<?php echo set_value('booking_amount', $booking_amount); ?>"  />
 		<?php echo form_error('booking_amount','<div>','</div>'); ?>
 	</p>
-	<p><label for="number_days"><?php echo lang('number_days'); ?><span class="required"> *</span></label>                                
-		<input id="number_days" type="text" name="number_days" size="9" value="<?php echo $number_days; ?>" onkeypress="return numbersonly(this, event)" />
-		<?php echo form_error('number_days','<div>','</div>'); ?>
-	</p>
 	
 	<p><label for="day_in_month"><?php echo lang('day_in_month'); ?><span class="required"> *</span></label>
- <input   id="day_in_month" type="text" name="day_in_month"  size="9" value="<?php echo $day_in_month; ?>" onkeypress="return numbersonly(this, event)">
+ 		<input  id="day_in_month" type="text" name="day_in_month"  size="9" value="<?php echo set_value('day_in_month', $day_in_month); ?>" onkeypress="return numbersonly(this, event)">
  		<?php echo form_error('day_in_month','<div>','</div>'); ?>
-		
-	</p>
+ 	</p>
+ 	
 	<div id="txtHint">
 		<p><label for="input_group"><?php echo lang('booking_input'); ?>: </label> 
 			<?php
@@ -96,6 +92,6 @@ function showCategories(in_out) {
 
 </form>
 
-
+</div>
 </body>
 </html>

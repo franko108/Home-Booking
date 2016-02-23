@@ -35,37 +35,35 @@ function checkFields() {
 
 	desc = document.submitform.booking_description.value;
 	book_amount = document.submitform.booking_amount.value;
-	number_days = document.submitform.number_days.value;
 	day_in_month = document.submitform.day_in_month.value;
 	
 	if(desc == "") {
-		alert("Obavezan unos opisa plaćanja!");
+		alert("Description is required field!");
 		return false;
 	}
 
 	if (book_amount == "") {
-		alert("Obavezan unos iznosa mjesečne uplate!");
+		alert("Amount is required field!");
 		return false;
 	}
 	
-	if(number_days == "") {
-		alert("Obavezan unos broja dana koliko se unatrag kontrolira uplata!")
+	if(isNaN(book_amount)) {
+		alert("Amount must be a number! Decimal sign must be a dot.");
 		return false;
 	}
-	if (number_days != parseFloat(number_days)) {
-		alert('Broj dana za kontrolu uplate mora biti cijeli broj!');
-		return false;
-	}
+	
 	if(day_in_month  == "") {
-		alert("Obavezan unos datuma u mjesecu kojeg će biti obavljeno automatsko plaćanje!")
+		alert("Date in the month for automatic payment is required field!")
 		return false;
 	}
+	
 	if(day_in_month > 31) {
-	   	alert("Datum u mjesecu ne može biti veći od 31!.");
-	return false;
-	  }
-	if(day_in_month == 30 || day_in_month == 31) {
-		if (confirm('Preporučeni datum je manji od 29, mjeseci koji nemaju 30 ili 31 dana, neće imati ispravan unos. Želite li ipak unijeti ovaj datum?')) {
+	   	alert("Date in the month cannot be greater then 31!");
+	   	return false;
+	 }
+	
+	if(day_in_month == 29 || day_in_month == 30 || day_in_month == 31) {
+		if (confirm('Recommended date is lower then 29, months without 30 or 31 days, will not have accurate automatic input. Do you still wish to enter this date in th month?')) {
 			return TRUE;
         }
         else {
