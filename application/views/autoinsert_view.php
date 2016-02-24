@@ -89,10 +89,13 @@ function showCategories(in_out) {
 
 </form>
 
-</div>
 
 <hr />
 </div>
+<p>
+	<a href="<?php echo base_url().''.$language;?>/autoinsert/check/1" class="update"><?php echo lang('manual_update')?></a>
+</p>
+<br>
 <table id="myTable" class="tablesorter" border="1" cellspacing="1"> 
 <thead> 
 <tr> 

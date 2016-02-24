@@ -29,6 +29,8 @@ class Autoinsert extends CI_Controller {
 		$this->form_validation->set_rules('input_group', 'Input group', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('accounts', 'Accounts', 'required|trim|xss_clean');
 		$this->form_validation->set_rules('currency', 'Currency', 'required|trim|xss_clean');
+		
+		//$this->output->set_header();
 	}
 
 	// list all currencies, entry for the new one
@@ -271,10 +273,88 @@ class Autoinsert extends CI_Controller {
 		redirect('autoinsert','refresh');
 	}
 	
-	public function check() {
-		$q = $this->auto_insert_model->get_all();
+	public function check($manual = 0) {
+		$this->output->set_header('Last-Modified: ' . gmdate("D, d M Y H:i:s") . ' GMT');('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+		$this->output->set_header('Pragma: no-cache');
+		$this->output->set_header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 		
-		// if there were some update, launch alert box
+		$q = $this->auto_insert_model->get_all();
+		// var for final message about updated 
+		$check = 0;  
+		foreach ($q->result() as $row) {
+			$desc   = $row->description;
+			$amount = $row->bookingAmount;
+			$day_payment = $row->dateMonthPayment;
+			$category_id = $row->categoryId;
+			$account_id = $row->accountId;
+			$currency_id = $row->currencyId;
+			$in_out = $row->incomeOutcome;
+				
+			$today_day = date('d');
+			if($today_day >= $day_payment) {
+				$update1 = $this->update_automatic($desc, $amount, $day_payment, $category_id, $account_id, $currency_id, $in_out);
+				if($update1 > 0) {
+					$check++;
+				}
+			}
+		}
+		// if manually started method, at least inform user that everything is just fine, nothing to worry about
+		if($manual == 1 && $check == 0){
+			$nothing_to_update = lang('nothing_to_update');
+			echo "<script>alert('$nothing_to_update')</script>";
+			
+			redirect('autoinsert','refresh');
+			//exit;
+		}
+		// if check > 0, controller will create alert about update
+		elseif($check > 0) {
+			$data_updated = lang('data_updated');
+			echo "<script>alert('$data_updated')</script>";
+			
+			redirect('booking/booking/all_records','refresh');
+		}
+		else {
+			redirect('booking/booking/all_records','refresh');
+		}
+	
+		//$this->output->enable_profiler(TRUE); // benchmark - I'm ok :-)
+
+		
+	}
+	
+	private function update_automatic($desc, $amount, $day_payment, $category_id, $account_id, $currency_id, $in_out) {
+		$payment_day_db = date('Y-m-'.$day_payment);
+		
+		//echo "paymanet day: $payment_day_db <br>";
+		// check if payment is done for current month
+		$q1 = $this->auto_insert_model->check_payment($desc, $amount, $payment_day_db, $category_id, $account_id, $currency_id, $in_out);
+
+		// if null, insert data
+		if($q1->num_rows() == 0) {
+			// is it income (1) or outcome (0)?
+			if($in_out == 0){
+				$outcome = $amount;
+				$income  = NULL;
+			}
+			else {
+				$outcome = NULL;
+				$income  = $amount;
+			}
+			// array for database insert
+			$data = array('idCurrency' => $currency_id,
+					'idAccounts' => $account_id,
+					'idinputGroup' => $category_id,
+					'income' => $income,
+					'dateEntry' =>  $payment_day_db,
+					'outcome' => $outcome,
+					'pending' => NULL,
+					'description' => $desc,
+					'transaction' => NULL);
+			
+			$this->auto_insert_model->insert_automatic($data);
+			return 1;
+		}
+		
 	}
 
 	// used by add, edit methods and error handling
@@ -314,21 +394,6 @@ class Autoinsert extends CI_Controller {
 		$all_data = array($default_accounts, $acc_options);
 		return $all_data;
 	
-	}
-	
-	
-	
-	// hr date in format yyyy-mm-dd
-	private function hrdatum($datum_b){
-		$datum_conv = explode(".", $datum_b);
-		$datum = strftime("%Y-%m-%d",mktime(0,0,0,$datum_conv[1],$datum_conv[0],$datum_conv[2]));
-		return $datum;
-	}
-	
-	private function formatDate($hrDate) {
-		$datum_conv = explode("-", $hrDate);
-		$datum = "$datum_conv[2].$datum_conv[1].$datum_conv[0]";
-		return $datum;
 	}
 	
 }

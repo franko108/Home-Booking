@@ -37,8 +37,8 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
-$route['default_controller'] = "currency";
+// check for regular monthly income/outcome, as defined in autoinsert controller, then redirect to view of all inserted data
+$route['default_controller'] = "autoinsert/check";
 $route['404_override'] = '';
 
 // i18n library:

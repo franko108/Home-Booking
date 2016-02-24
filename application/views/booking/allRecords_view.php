@@ -12,14 +12,14 @@ $language = $this->lang->lang();
 <script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery.tablesorter.pager.js"></script>
 <script type="text/javascript" src="<?php echo base_url()."/js/".$language; ?>/tcal.js"></script>
 <script type="text/javascript">
-$(function() {
-    $("#myTable")
-        .tablesorter({widthFixed: true, widgets: ['zebra'],
-                              dateFormat: 'dd.mm.yyyy',
-                              headers: {0:{sorter:'hrdate'}}
-                              })
-        .tablesorterPager({container: $("#pager")});
-});
+    $(function() {
+        $("#myTable")
+            .tablesorter({widthFixed: true, widgets: ['zebra'],
+                                  dateFormat: 'dd.mm.yyyy',
+                                  headers: {0:{sorter:'hrdate'}}
+                                  })
+            .tablesorterPager({container: $("#pager")});
+    });
 </script>
 <title><?php echo lang('all_records'); ?></title>
 </head>
@@ -36,12 +36,12 @@ echo form_open('booking/booking/all_records'); ?>
 <span class="back_blue"><h2><?php echo lang('change_date'); ?>:</h2></span> 
 <label for="dateFrom"><?php echo lang('date_from'); ?>
  <input  type="text" name="dateFrom" class="tcal" size="9" value="">
-
+</label>
 
 
  <label for="dateTo"><?php echo lang('date_to'); ?>
  <input  type="text" name="dateTo" class="tcal" size="9" value="" >
-
+</label>
 <?php 
 	echo form_submit( 'submit', lang('submit')); 
 	echo form_close(); 
