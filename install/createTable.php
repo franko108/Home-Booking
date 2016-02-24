@@ -85,7 +85,7 @@ $fixedPayment = 'CREATE TABLE `fixedPayment` (
   PRIMARY KEY (`id`, `categoryId`),
   INDEX `categoryId` (`categoryId` ASC) ) 
   	ENGINE=InnoDB DEFAULT CHARSET=utf8';
-$sql5 = $db->query($sql5);
+$sql5 = $db->query($fixedPayment);
 
 if($sql5 == FALSE) {
 	echo "Failure on creating table <b>fixedPayment</b>";

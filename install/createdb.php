@@ -172,6 +172,25 @@ if($sql4 == FALSE) {
 		exit;
 }
 
+$fixedPayment = 'CREATE TABLE `fixedPayment` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(255)   DEFAULT NULL ,
+  `bookingAmount` DECIMAL(10,2) NOT NULL,		
+  `dateMonthPayment` INT(2) NOT NULL,
+  `numberDays` INT(5) NOT NULL ,
+  `categoryId` INT(11) NOT NULL ,
+  `accountId` INT(11) NOT NULL ,
+  `currencyId` INT(11) NOT NULL ,
+  `incomeOutcome` TINYINT(1) NOT NULL ,
+  PRIMARY KEY (`id`, `categoryId`),
+  INDEX `categoryId` (`categoryId` ASC) ) 
+  	ENGINE=InnoDB DEFAULT CHARSET=utf8';
+$sql5 = $db->query($fixedPayment);
+
+if($sql5 == FALSE) {
+	echo "Failure on creating table <b>fixedPayment</b>";
+	exit;
+}
 echo "<p>Tables created...</p>";
 
 ///////////////////////////////////////////////////////////////////////////////////
