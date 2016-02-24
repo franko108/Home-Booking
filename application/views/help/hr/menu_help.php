@@ -10,6 +10,8 @@
 <div class="col3">
 	<?php echo anchor('help/guide','Matični podaci');  ?>
 	<br />
+	<?php echo anchor('help/autoinsert','Fiksni unos');  ?>
+	<br />
 	<?php echo anchor('help/recording','Knjiženje');  ?>
 	<br />
 	<?php echo anchor('help/transaction','Transakcije');  ?>

@@ -12,7 +12,7 @@ function __construct()
     	
     }
     
-    function index() {
+    public function index() {
     	$language = $this->lang->lang();
     	
     	$this->load->view('header');	
@@ -20,7 +20,7 @@ function __construct()
 		
     }
     
-    function install() {
+    public function install() {
     	$language = $this->lang->lang();
     	
     	$this->load->view('header');	
@@ -28,7 +28,7 @@ function __construct()
 		
     }
     
-    function guide() {
+    public function guide() {
     	$language = $this->lang->lang();
     	
     	$this->load->view('header');	
@@ -36,7 +36,7 @@ function __construct()
     	
     }
     
-	function recording() {
+	public function recording() {
     	$language = $this->lang->lang();
     	
     	$this->load->view('header');	
@@ -44,35 +44,42 @@ function __construct()
     	
     }
     
-	function transaction() {
+	public function transaction() {
     	$language = $this->lang->lang();
     	
     	$this->load->view('header');	
 		$this->load->view("help/$language/transaction_view");
     }
     
-    function allRecords() {
+    public function allRecords() {
     	$language = $this->lang->lang();
     	
     	$this->load->view('header');	
 		$this->load->view("help/$language/allRecords_view");
     }
     
-	function categories() {
+	public function categories() {
     	$language = $this->lang->lang();
     	
     	$this->load->view('header');	
 		$this->load->view("help/$language/categories_view");
     }
     
-	function search() {
+    public function autoinsert() {
+    	$language = $this->lang->lang();
+    	 
+    	$this->load->view('header');
+    	$this->load->view("help/$language/autoinsert_view");
+    }
+    
+	public function search() {
     	$language = $this->lang->lang();
     	
     	$this->load->view('header');	
 		$this->load->view("help/$language/search_view");
     }
     
-	function backup() {
+	public function backup() {
     	$language = $this->lang->lang();
     	
     	$this->load->view('header');	
