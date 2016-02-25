@@ -10,6 +10,8 @@
 <div class="col3">
 	<?php echo anchor('help/guide','Settings');  ?>
 	<br />
+	<?php echo anchor('help/autoinsert','Fixed insert');  ?>
+	<br />
 	<?php echo anchor('help/recording','Booking');  ?>
 	<br />
 	<?php echo anchor('help/transaction','Transaction');  ?>

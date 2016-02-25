@@ -46,7 +46,7 @@ Prvo treba popuniti podatke sa slike:
 
 <h3>Kako radi</h3>
 &nbsp; Program radi na slijedeći način - nakon što popunite potrebne podatke, kod svakog pokretanja programa, provjeriti će se da li postoje već uplate/isplate
-u tekućem mjesecu koje odgovaraju definiranom datumu, vrsti (kategoriji uplate/isplate) i iznosu.
+u tekućem mjesecu koje odgovaraju definiranom datumu, vrsti (kategoriji uplate/isplate) i iznosu. Ako ne postoji takva uplata/isplata, biti će automatski ubačena u bazu.
 <br>Ako je npr. definirana uplata za 14-tog dana u mjesecu, program će kod pokretanja provjeriti da li je datum veći ili jednak definiranom datumu i da li već postoji
 takav upis u bazi za tekući mjesec. Ako je takva situacija, pokrenuti će se upisivanje definiranog sadržaja kao prihod ili rashod.   
 
@@ -57,13 +57,23 @@ fiksnih prihoda/rashoda.
 <br>Ranije upisani prihodi ili troškovi neće se dirati iz baze nego jednostavno se više neće novi unosi automatski ubacivati.
 </p>
 
+<h3>Cron job (linux) ili scheduled task (windows)</h3>
+Druga varijanta automatskog upisa je pozivanje skripte izvan browsera, tj. automatski poziv iz operativnog sistema.
+<br>Ako je u pitanju linux, treba otvoriti cron tab i postaviti npr. da <i>lynx</i> ili bilo koji browser pokrene <i>http://localhost/home-booking/hr/autoinsert/check</i>
+<br>(gdje je localhost/home-booking path do programa).
+<p>
+Ako je pitanju windows, možete postaviti <i>scheduled task</i> da pokrene skriptu, npr:
+<pre>"C:\Program Files (x86)\Mozilla Firefox\Firefox" http://localhost/home-booking/hr/autoinsert/check</pre>
+(umjesto firefox postavite path za željeni browser. Opet je localhost/home-booking path do programa).
+</p>
+
 <h3>Ograničenja</h3>
 Program pokreće ovu provjeru kada se pokrene početna stranica. Ako imate u bookmarku nešto drugo, kao pregled svih prihoda ili rashoda, ili unos prihoda,
 program se neće automatski pokrenuti.
 <br>U takvom slučaju, eventualno možete na linku pokrenuti provjeru:
 <br> <pre>Matični->Fiksni unos->Pokretanje ažuriranja redovnih uplata/isplata</pre>
 <p>
-Također, ako program ne pokrećete nekoliko mjeseci, neće se raditi provjera za prethodne mjesece. Provjera se uvijek obavlja za tekući mjesec.
+Također, ako program ne pokrećete nekoliko mjeseci, a niste postavili niti cron job ili scheduled task, neće se raditi provjera za prethodne mjesece. Provjera se uvijek obavlja za tekući mjesec.
 <br>Eventualno bi se moglo definirati i timestamp, tj. početak postavljanja automatskih uplata/isplata i usporedbu za čitavo prethodno vrijeme.
 <br>Ipak, ako se koristi ovaj program, za očekivati je da će se pokrenuti više puta mjesečno kako bi ažurirali stanje. 
 </p>

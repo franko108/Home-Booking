@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'dbPassword';
-$db['default']['database'] = 'booking';
+$db['default']['username'] = 'fivasic';
+$db['default']['password'] = 'PulA1970+';
+$db['default']['database'] = 'homebooking';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

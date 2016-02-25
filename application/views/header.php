@@ -79,7 +79,7 @@ jQuery(function(){
 	echo form_hidden('language', $language); 
 ?>
 	
-	<input class="transparent" type="text" name="search" size="11" height="15" value="Search" onclick="clickclear(this, 'Search')" onblur="clickrecall(this, 'Search')" />
+	<input class="transparent" type="text" name="search" size="11" height="15" placeholder="Search" onclick="clickclear(this, 'Search')" onblur="clickrecall(this, 'Search')" />
 	<a href="javascript: submitform()"></a>
 <?php echo form_close(); ?>
 
