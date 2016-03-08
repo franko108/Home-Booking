@@ -347,7 +347,7 @@ class Autoinsert extends CI_Controller {
 					'income' => $income,
 					'dateEntry' =>  $payment_day_db,
 					'outcome' => $outcome,
-					'pending' => NULL,
+					'pending' => 0,
 					'description' => $desc,
 					'transaction' => NULL);
 			
