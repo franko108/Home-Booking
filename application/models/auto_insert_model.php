@@ -18,7 +18,7 @@ class Auto_insert_model extends CI_Model {
 	public  function check_payment($desc, $amount, $payment_day_db, $category_id, $account_id, $currency_id, $in_out) {
 		$q = "SELECT id  FROM recording WHERE description = '$desc'
 			AND dateEntry = '$payment_day_db'
-			AND outcome OR income = '$amount'
+			AND (outcome = '$amount' OR income = '$amount')
 			LIMIT 1";
 		return $this->db->query($q);
 	}
