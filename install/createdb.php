@@ -200,10 +200,22 @@ echo "<p>Tables created...</p>";
   // edit the database.php:
  $file1 = '../application/config/database.php';
  $content = file_get_contents('../application/config/database.php');
- $content = str_replace('localhost', $dbhost, $content);
- $content = str_replace('root', $dbuser, $content);
- $content = str_replace('dbPassword', $dbpass, $content);
- $content = str_replace('booking', $dbname, $content);
+ 
+ $old_host = "['hostname'] = 'localhost'";
+ $new_host = "['hostname'] = '$dbhost'";
+ $content = str_replace($old_host,  $new_host, $content);
+  
+ $old_user = "['username'] = 'root'";
+ $new_user = "['username'] = '$dbuser'";
+ $content = str_replace($old_user, $new_user, $content);
+  
+ $old_passwd = "['password'] = 'dbPassword'";
+ $new_passwd = "['password'] = '$dbpass'";
+ $content = str_replace($old_passwd, $new_passwd, $content);
+ 
+ $old_db = "['database'] = 'booking';";
+ $new_db = "['database'] = '$dbname';";
+ $content = str_replace($old_db, $new_db, $content);
  
  file_put_contents($file1, $content);
   
