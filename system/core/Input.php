@@ -28,6 +28,12 @@
  */
 class CI_Input {
 
+	protected $security;  // Declare the $security property
+    protected $uni;       // Declare the $uni property
+    // protected $_allow_get_array;
+    //protected $_enable_xss;
+    //protected $_enable_csrf;
+
 	/**
 	 * IP address of the current user
 	 *

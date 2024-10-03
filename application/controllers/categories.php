@@ -1,7 +1,7 @@
 <?php
 class Categories extends CI_Controller {
 	
-	function __construct()
+	public function __construct()
     {
     	parent::__construct();
     	
@@ -12,7 +12,7 @@ class Categories extends CI_Controller {
     	$this->load->model('categoriesmodel','',TRUE);
     }
     
-    function index() {
+    public function index() {
     	// workaround for language within js
     	$delete = lang('delete');
     	$update = lang('update_data');
@@ -47,7 +47,7 @@ class Categories extends CI_Controller {
     	
     }
     
-    function add() {
+    public function add() {
     	
     	// validation
     	if ($this->form_validation->run('categories') == FALSE)  
@@ -76,7 +76,7 @@ class Categories extends CI_Controller {
     	
     }
     
-    function edit($id) {
+    public function edit($id) {
    		$data['action'] = 'categories/update';
    		
    		$curr = $this->categoriesmodel->get($id)->row();
@@ -91,7 +91,7 @@ class Categories extends CI_Controller {
     	
     }
     
-    function update(){
+    public function update(){
     	$name_categories = form_prep($this->input->post('name'));
     	$type_categories = $this->input->post('income_outcome');  
     	$id = $this->input->post('id');
@@ -114,7 +114,7 @@ class Categories extends CI_Controller {
     	
     }
     
-	function delete($id) {
+	public function delete($id) {
 		$this->categoriesmodel->delete($id);
 		
 		redirect('categories','refresh');

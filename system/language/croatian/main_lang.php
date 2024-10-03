@@ -3,7 +3,7 @@ $lang['yes'] = 'Da';
 $lang['menu_settings'] = 'Matični';
 $lang['menu_currency'] = 'Valuta';
 $lang['menu_accounts'] = 'Računi';
-$lang['menu_category'] = 'Vrste';
+$lang['menu_category'] = 'Kategorije';
 $lang['menu_autoinsert'] = 'Fiksni unos';
 
 $lang['menu_booking']  = 'Knjiženje';

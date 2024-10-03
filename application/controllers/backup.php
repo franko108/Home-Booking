@@ -6,7 +6,7 @@ class Backup extends CI_Controller {
     	parent::__construct();
     }
 
-    function index() {
+    public function index() {
     	
 	   	// Load the DB utility class
 		$this->load->dbutil();

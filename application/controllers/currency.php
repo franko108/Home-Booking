@@ -1,7 +1,7 @@
 <?php
 class Currency extends CI_Controller {
 	
-	function __construct()
+	public function __construct()
     {
     	parent::__construct();
     	
@@ -18,7 +18,7 @@ class Currency extends CI_Controller {
     }
     
     // list all currencies, entry the new one
-    function index() {
+    public function index() {
     	// workaround for language within js
     	$delete = lang('delete');
     	$update = lang('update_data');
@@ -51,7 +51,7 @@ class Currency extends CI_Controller {
     	
     }
     
-    function add() {
+    public function add() {
     	
     	// validation
     	if ($this->form_validation->run() == FALSE)
@@ -85,7 +85,7 @@ class Currency extends CI_Controller {
     	
     }
     
-    function edit($id) {
+    public function edit($id) {
 		// $data['link'] = '../';
    		$data['action'] = 'currency/update';
    		
@@ -97,11 +97,9 @@ class Currency extends CI_Controller {
    		
    		$this->load->view('header');
    		$this->load->view('currency_edit', $data);	
-   		
-    	
     }
     
-    function update(){
+    public function update(){
     	$name_currency = form_prep($this->input->post('name'));
     	$default_currency = $this->input->post('deff');
     	$id = $this->input->post('id');
@@ -132,13 +130,10 @@ class Currency extends CI_Controller {
     	
     }
     
-	function delete($id) {
+	public function delete($id) {
 		$this->currencymodel->delete($id);
 		
 		// redirect to skola list page
 		redirect('currency','refresh');
 	}
-    
-	
-	
 }

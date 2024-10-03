@@ -105,6 +105,8 @@ class MY_Lang extends CI_Lang {
    
     function switch_uri($lang)
      {
+         $uri = '';  // Initialize $uri to avoid uninitialized variable issues
+
          if ((!empty($this->uri)) && (array_key_exists($lang, $this->languages)))
          {
 

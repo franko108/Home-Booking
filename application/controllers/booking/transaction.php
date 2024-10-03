@@ -1,7 +1,7 @@
 <?php
 class Transaction extends CI_Controller {
 	
-	function __construct()
+	public function __construct()
     {
     	parent::__construct();
     	
@@ -27,7 +27,7 @@ class Transaction extends CI_Controller {
      * Form for transaction from one account to another 
      * and list of all transactions
      */
-    function index() {
+    public function index() {
     	$this->load->model('accountsmodel','',TRUE);
     	$this->load->model('currencymodel','',TRUE);
     	$language = $this->lang->lang(); 
@@ -72,7 +72,7 @@ class Transaction extends CI_Controller {
 		$this->load->view('booking/transaction_view', $data);
     }
     
-    function add() {
+    public function add() {
 
     	// validation
     	if ($this->form_validation->run() == FALSE) 
@@ -180,7 +180,7 @@ class Transaction extends CI_Controller {
     	
     }
     
-    function edit($id) {
+    public function edit($id) {
     	$this->load->model('accountsmodel','',TRUE);
     	$this->load->model('currencymodel','',TRUE);
     	$language = $this->lang->lang(); 
@@ -232,14 +232,14 @@ class Transaction extends CI_Controller {
     }
     
     
-    function delete($idTransaction){
+    public function delete($idTransaction){
 
     	$this->transactionmodel->delete($idTransaction);
 		redirect('booking/transaction','refresh');
     }
     
 	// used by add, edit methods and error handling 
-	function currencies() {
+	public function currencies() {
 		 // currencies
     	$curr = $this->currencymodel->list_all()->result();
     	
@@ -260,8 +260,8 @@ class Transaction extends CI_Controller {
 	}
 
 	
-		// used by add, edit methods and error handling
-	function accounts() {
+	// used by add, edit methods and error handling
+	private function accounts() {
 
     	$acc = $this->accountsmodel->list_all()->result();
     	$default_accounts = NULL;
@@ -279,11 +279,13 @@ class Transaction extends CI_Controller {
 	}
     
 	// dd.mm.yyyy date in format yyyy-mm-dd		
-	function hrdatum($datum_b){
-  		$datum_conv = explode(".", $datum_b);
-		$datum = strftime("%Y-%m-%d",mktime(0,0,0,$datum_conv[1],$datum_conv[0],$datum_conv[2]));
+	private function hrdatum($datum_b){
+		$datum_conv = explode(".", $datum_b);
+		$date = DateTime::createFromFormat('d.m.Y', $datum_b);
+		$datum = $date->format('Y-m-d');
+
 		return $datum;
-	}
+  }
     
 	
 }

@@ -1,7 +1,7 @@
 <?php
 class Accounts extends CI_Controller {
 	
-	function __construct()
+	public function __construct()
     {
     	parent::__construct();
     	
@@ -17,7 +17,7 @@ class Accounts extends CI_Controller {
     }
     
     // list all 
-    function index() {
+    public function index() {
     	// workaround for language within js
     	$delete = lang('delete');
     	$update = lang('update_data');
@@ -49,7 +49,7 @@ class Accounts extends CI_Controller {
     	
     }
     
-    function add() {
+    public function add() {
     	
     	
     	if ($this->form_validation->run() == FALSE)
@@ -78,7 +78,7 @@ class Accounts extends CI_Controller {
     	
     }
     
-    function edit($id) {
+    public function edit($id) {
    		$data['action'] = 'accounts/update';
    		
    		$curr = $this->accountsmodel->get($id)->row();
@@ -92,7 +92,7 @@ class Accounts extends CI_Controller {
     	
     }
     
-    function update(){
+    public function update(){
     	$name_accounts = form_prep($this->input->post('name'));
     	$default_accounts = $this->input->post('deff');
     	$id = $this->input->post('id');
@@ -124,22 +124,15 @@ class Accounts extends CI_Controller {
     	
     }
     
-	function delete($id) {
+	public function delete($id) {
 		$this->accountsmodel->delete($id);
 		
 		redirect('accounts','refresh');
 	}
 	
 	// test pdf
-	 function pdf() {
-		 
-		 /*
-		   $this->load->library('mdf57/mpdf');
-		$this->mpdf->WriteHTML('<p>Hello There šta ima šđčćž</p>');
-		$this->mpdf->Output('aaa.pdf', 'I');
-		* */
-		
-		
+	public function pdf() {
+		 		
 		// workaround for language within js
     	$delete = lang('delete');
     	$update = lang('update_data');

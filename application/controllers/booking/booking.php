@@ -1,7 +1,7 @@
 <?php
 class Booking extends CI_Controller {
 	
-	function __construct()
+	public function __construct()
     {
     	parent::__construct();
     	
@@ -26,7 +26,7 @@ class Booking extends CI_Controller {
     	
     }
  
-    function in($in_out) {
+    public function in($in_out) {
     	$this->load->model('categoriesmodel','',TRUE);
     	$this->load->model('currencymodel','',TRUE);
     	$this->load->model('accountsmodel','',TRUE);
@@ -86,7 +86,7 @@ class Booking extends CI_Controller {
     	
     }
     
-    function add() {
+    public function add() {
     	
     	// validation
     	if ($this->form_validation->run() == FALSE)  
@@ -170,7 +170,7 @@ class Booking extends CI_Controller {
     }
     
     
-    function edit($in_out, $id) {
+    public function edit($in_out, $id) {
     	$this->load->model('categoriesmodel','',TRUE);
     	$this->load->model('currencymodel','',TRUE);
     	$this->load->model('accountsmodel','',TRUE);
@@ -252,7 +252,7 @@ class Booking extends CI_Controller {
     	
     }
     
-    function update(){
+    public function update(){
     	 
     	$id = $this->input->post('id');
     	
@@ -341,7 +341,7 @@ class Booking extends CI_Controller {
     	
     }
     
-	function delete($id) {
+	public function delete($id) {
 		$this->bookingmodel->delete($id);
 		
 		redirect('booking/booking/all_records','refresh');
@@ -350,7 +350,7 @@ class Booking extends CI_Controller {
     /*
      *  using jquery for sort table
      */
-    function all_records(){
+    public function all_records(){
 		
     	$language = $this->lang->lang();
 				
@@ -480,7 +480,7 @@ class Booking extends CI_Controller {
 	/*
 	 * details of category input/output within defined period
 	 */
-	function category_details($category_name_id ,$dateFrom, $dateTo) {
+	public function category_details($category_name_id ,$dateFrom, $dateTo) {
 		$language = $this->lang->lang();
 		if($language == 'hr') {
 				// if there is no entry yet
@@ -506,7 +506,7 @@ class Booking extends CI_Controller {
 		$this->load->view('booking/category_details_view', $data);
 	}
 	
-	function search() {
+	public function search() {
 		
 		$value = $this->input->post('search');
 		$language = $this->input->post('language');
@@ -562,9 +562,8 @@ class Booking extends CI_Controller {
     	return $all_data;
     	
 	}
-
 	
-		// used by add, edit methods and error handling
+	// used by add, edit methods and error handling
 	private function accounts() {
 
     	$acc = $this->accountsmodel->list_all()->result();
@@ -580,13 +579,14 @@ class Booking extends CI_Controller {
     	return $all_data;
 		
 	}
-	
-
-	
+		
 	// hr date in format yyyy-mm-dd		
 	private function hrdatum($datum_b){
   		$datum_conv = explode(".", $datum_b);
-		$datum = strftime("%Y-%m-%d",mktime(0,0,0,$datum_conv[1],$datum_conv[0],$datum_conv[2]));
+
+		$date = DateTime::createFromFormat('d.m.Y', $datum_b);
+		$datum = $date->format('Y-m-d');
+
 		return $datum;
 	}
 	
@@ -595,6 +595,4 @@ class Booking extends CI_Controller {
         $datum = "$datum_conv[2].$datum_conv[1].$datum_conv[0]";
 		return $datum;
 	}
-	
-	
 }
